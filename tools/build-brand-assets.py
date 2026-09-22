@@ -5,6 +5,7 @@ from pathlib import Path
 import shutil
 import subprocess
 import tempfile
+import xml.etree.ElementTree as ElementTree
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -28,6 +29,31 @@ def render(inkscape, source, output, size):
     )
 
 
+def build_dark_wordmark(source, output):
+    ElementTree.register_namespace("", "http://www.w3.org/2000/svg")
+    tree = ElementTree.parse(source)
+    elements = {
+        element.get("id"): element
+        for element in tree.getroot().iter()
+        if element.get("id")
+    }
+    required = {"title1", "g1", "wordmark-o", "path1", "path2", "path3"}
+    if missing := required - elements.keys():
+        raise SystemExit(f"The wordmark is missing elements: {', '.join(sorted(missing))}.")
+    elements["title1"].text = "Allomer logo for dark backgrounds"
+    elements["g1"].set("fill", "#F4F6F8")
+    elements["wordmark-o"].attrib.pop("stroke", None)
+    for identifier, color in (
+        ("path1", "#D9DDF2"),
+        ("path2", "#60CDBD"),
+        ("path3", "#8B92ED"),
+    ):
+        elements[identifier].set("stroke", color)
+    tree.write(output, encoding="UTF-8", xml_declaration=True)
+    with output.open("a") as wordmark:
+        wordmark.write("\n")
+
+
 def main():
     inkscape = shutil.which("inkscape")
     if not inkscape:
@@ -46,6 +72,10 @@ def main():
     )
     if "<text" in (BRANDING / "allomer-logo.svg").read_text():
         raise SystemExit("The published wordmark still contains editable text.")
+    build_dark_wordmark(
+        BRANDING / "allomer-logo.svg",
+        BRANDING / "allomer-logo-dark.svg",
+    )
 
     icon_names = {
         16: ("icon_16x16.png",),

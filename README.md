@@ -1,5 +1,9 @@
 <p align="center">
-  <img src="branding/allomer-logo.svg" alt="Allomer" width="560">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="branding/allomer-logo-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="branding/allomer-logo.svg">
+    <img src="branding/allomer-logo.svg" alt="Allomer" width="560">
+  </picture>
 </p>
 
 Allomer is a native, open source file converter for Apple Silicon Macs. It converts files locally. It can also watch folders and convert a file when its extension changes.

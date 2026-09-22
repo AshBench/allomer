@@ -11,6 +11,7 @@ The mark is one stable circular form made from three sections. The long section 
 - `allomer-mark.svg` is the one-color product mark.
 - `allomer-mark-color.svg` is the color product mark.
 - `allomer-logo.svg` is the outlined wordmark used in published material.
+- `allomer-logo-dark.svg` is the wordmark for dark backgrounds.
 - `allomer-logo-source.svg` is the editable wordmark source.
 - `allomer-app-icon.svg` is the macOS Dock icon source.
 - `allomer-menu-bar.svg` is the 18-point menu bar reference.
