@@ -16,10 +16,11 @@ what is checked automatically, what was last checked by hand, and what is still 
 `tools/check-app.py` drives `Contents/MacOS/allomer`, the command-line converter. It never
 launches the app itself, so the watcher, decisions, Undo, history, and the menu bar are outside it.
 
-Last clean oldest-system run: 2026-09-21 on macOS 14.8.7, arm64, in a fresh Tart clone. The
-packaged-app suite and the cold-cache Vision sandbox probe both passed. The run found and fixed
-three system differences: AVIF encoding availability, VideoToolbox quality handling, and EPUB ZIP
-metadata. The checks now exercise those paths on macOS 14.
+Last clean oldest-system run: 2026-09-22 on macOS 14.8.7, arm64, in a Tart clone, against the
+packaged app from commit [`9dbe478`](https://github.com/AshBench/allomer/commit/9dbe4789647e6b9b044f83c78c616dbede09e5ad).
+The packaged-app suite and the cold-cache Vision sandbox probe both passed. Earlier runs found and
+fixed three system differences: AVIF encoding availability, VideoToolbox quality handling, and EPUB
+ZIP metadata. The checks now exercise those paths on macOS 14.
 
 `WatchedFolderTests` covers the saved watched and excluded folders, which are the only preference
 stored as bookmarks. If they do not come back after a restart, every automatic behavior stops at
@@ -87,26 +88,16 @@ passed. Two defects found and fixed in the same change: the menu bar item was an
 symbol's name rather than the app's, and monitoring a folder that the skip list covers reported
 success and then converted nothing.
 
-## Still open
+Last oldest-system GUI run: 2026-09-22 on macOS 14.8.7, arm64, against the same packaged app. Every
+menu bar command reopened the window in front and selected its named tab. The waiting-decision list,
+status-menu count, active/waiting count, and running History step row updated while conversions ran.
+The image picker offered AVIF, HEIC, ICNS, and ICO. With **Full Keyboard Access** enabled, Tab reached
+the main controls and the keyboard activated all four tabs. A VoiceOver navigation smoke test also
+announced the focused tab and content area without an app failure.
 
-These need a machine or virtual machine running **macOS 14 on Apple silicon**. The source matrix
-does not answer GUI behavior, and a successful build does not settle it.
+## Signed-build checks
 
-1. **Menu bar activation.** Close the window, then use each menu bar command. Confirm the window
-   reopens *in front* and on the tab named. `NSApp.activate()` is the macOS 14 form and activation
-   from a status item is weaker there than on later systems.
-2. **Live updates.** Watch the active/waiting counter, the running step rows in History, and the
-   waiting-decision list while a conversion runs. macOS 14 was the first release with the
-   Observation runtime this app relies on throughout.
-3. **Offered image outputs.** Open an image on the **Manual** tab. Confirm AVIF appears through the
-   bundled fallback. Record whether HEIC, ICNS, and ICO appear. Those writers come from ImageIO at
-   run time, so macOS 14 can offer fewer.
-
-Also open, and not tied to macOS 14: keyboard navigation with **Full Keyboard Access** turned on in
-System Settings. The checks above were run on a machine where it is off, so Tab reaches only text
-fields and lists there.
-
-A signed build also needs these checks on a clean account:
+After Developer ID signing and notarization are configured, run these checks on a clean account:
 
 1. **Quarantined first launch and translocation.** Download the disk image in a browser. Launch the
    app once from the mounted image, then drag it to Applications and launch it again. Confirm both
