@@ -1,0 +1,29 @@
+{
+  "recorded_at_utc": "2026-09-08T06:46:36.128780+00:00",
+  "macos": "26.6.2",
+  "architecture": "arm64",
+  "workload": "100000 data rows, 5 columns, CSV to XLSX with validation",
+  "scope": "Spreadsheet helper process only; native app memory is separate",
+  "input_bytes": 5127809,
+  "input_sha256": "a76c2ddaa3da5d63acd741479a17407d0b552f52c5667b5433923d46d8601275",
+  "helper_sha256": "e149c1714cc3add6f710b794c0e4f7af2fb6483349982ca2239ea162fe3a4a6f",
+  "samples": [
+    {
+      "elapsed_seconds": 0.79,
+      "peak_resident_bytes": 4358144,
+      "output_bytes": 2468054
+    },
+    {
+      "elapsed_seconds": 0.79,
+      "peak_resident_bytes": 4308992,
+      "output_bytes": 2468054
+    },
+    {
+      "elapsed_seconds": 0.79,
+      "peak_resident_bytes": 4374528,
+      "output_bytes": 2468054
+    }
+  ],
+  "median_elapsed_seconds": 0.79,
+  "median_peak_resident_bytes": 4358144
+}

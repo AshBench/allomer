@@ -1,0 +1,67 @@
+{
+  "recorded_at_utc": "2026-09-08T14:47:03.156972+00:00",
+  "macos": "26.6.2",
+  "architecture": "arm64",
+  "workload": "Original 640 by 400 SVG with styled text, gradients, clipping, a filter, a pattern, local font, bitmap, and SVG use",
+  "source_sha256": "0501d6824a491033928804604b4a4a10e6f02b196c4ccb6657c663a15c5a3f12",
+  "source_bytes": 1458,
+  "assets_sha256": {
+    "asset % caf\u00e9.png": "a76a4c41922cf3c19cf222cc56c03da3c7aa8c88441643f1e7e07e29af5c0659",
+    "fixture.ttf": "525979822591a3447cfc49d943d6f7683508e25543407871c0ed8fed05fd2bd9",
+    "style.css": "ad5c21c03009d47086c9625f3b1dbd1de335affe9360cc0941921bf4f1dcb48c",
+    "extra.css": "bb9f76748d52e10b36d379a02d14b46e78c45d2f2d7ecf201cd09cc1b186a8eb",
+    "shape.svg": "9dcb39a02029fd84c8ea302ace03f7f07a32b9c16c853f8f888e32276a24c4b6"
+  },
+  "helper_sha256": "7ebad5cbe10a89de06139869826d558906701fe68bbc48a68936cb64989b8b06",
+  "launcher_sha256": "d0799e692f70a1dface6ee64801c223da34daeb64455eb450c52eaa4496aae77",
+  "packaged": true,
+  "runs": [
+    {
+      "format": "pdf",
+      "scale": 1,
+      "samples": [
+        {
+          "elapsed_seconds": 0.29,
+          "peak_resident_bytes": 64700416,
+          "output_bytes": 46212
+        },
+        {
+          "elapsed_seconds": 0.29,
+          "peak_resident_bytes": 64749568,
+          "output_bytes": 46212
+        },
+        {
+          "elapsed_seconds": 0.29,
+          "peak_resident_bytes": 64798720,
+          "output_bytes": 46212
+        }
+      ],
+      "median_elapsed_seconds": 0.29,
+      "median_peak_resident_bytes": 64749568
+    },
+    {
+      "format": "png",
+      "scale": 4,
+      "samples": [
+        {
+          "elapsed_seconds": 0.39,
+          "peak_resident_bytes": 104857600,
+          "output_bytes": 460289
+        },
+        {
+          "elapsed_seconds": 0.4,
+          "peak_resident_bytes": 105807872,
+          "output_bytes": 460289
+        },
+        {
+          "elapsed_seconds": 0.31,
+          "peak_resident_bytes": 99729408,
+          "output_bytes": 460289
+        }
+      ],
+      "median_elapsed_seconds": 0.39,
+      "median_peak_resident_bytes": 104857600
+    }
+  ],
+  "memory_scope": "Peak renderer helper RSS from macOS time -l. Excludes separate WebKit services, the native app, and Swift adapter checks. This is not total conversion memory. Three warm serial runs after content checks."
+}

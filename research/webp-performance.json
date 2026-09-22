@@ -1,0 +1,111 @@
+{
+  "recorded_at_utc": "2026-09-08T19:49:17.335735+00:00",
+  "macos": "26.6.2",
+  "command_sha256": "ab992314774af5ef2b9c03f46b6139cdb3abb1475c393d2abd4b12506334c085",
+  "helper_sha256": {
+    "cwebp": "50c8f58344513b039aacb79e06917bc949b7de7a0f80747a3eee0c3434b30eb7",
+    "webpguard": "2f81ad260ea3eee87eb4c3aa637bcac9552e12c345bf60487b23b0d73e6fed3b"
+  },
+  "quality": 0.85,
+  "effort": 4,
+  "lossy_low_memory": true,
+  "cases": [
+    {
+      "width": 1024,
+      "height": 1024,
+      "mode": "lossy",
+      "input_sha256": "c89186543e57189417ae0050e3cbfa6570a93fe6ab386f3f17a5e37de8104f59",
+      "input_bytes": 3149416,
+      "output_bytes": 785656,
+      "runs": [
+        {
+          "seconds": 0.24,
+          "resident_bytes": 19873792
+        },
+        {
+          "seconds": 0.24,
+          "resident_bytes": 19906560
+        },
+        {
+          "seconds": 0.24,
+          "resident_bytes": 19841024
+        }
+      ],
+      "median_seconds": 0.24,
+      "median_resident_bytes": 19873792
+    },
+    {
+      "width": 1024,
+      "height": 1024,
+      "mode": "lossless",
+      "input_sha256": "c89186543e57189417ae0050e3cbfa6570a93fe6ab386f3f17a5e37de8104f59",
+      "input_bytes": 3149416,
+      "output_bytes": 3145808,
+      "runs": [
+        {
+          "seconds": 0.15,
+          "resident_bytes": 53706752
+        },
+        {
+          "seconds": 0.15,
+          "resident_bytes": 53706752
+        },
+        {
+          "seconds": 0.15,
+          "resident_bytes": 53690368
+        }
+      ],
+      "median_seconds": 0.15,
+      "median_resident_bytes": 53706752
+    },
+    {
+      "width": 6000,
+      "height": 4000,
+      "mode": "lossy",
+      "input_sha256": "e58d1ec8aaccc138bd5e590a261b91d9e5393e324ca70eccc59cfd7c21c9de7f",
+      "input_bytes": 72059087,
+      "output_bytes": 17501044,
+      "runs": [
+        {
+          "seconds": 9.21,
+          "resident_bytes": 233553920
+        },
+        {
+          "seconds": 9.25,
+          "resident_bytes": 233472000
+        },
+        {
+          "seconds": 9.29,
+          "resident_bytes": 233455616
+        }
+      ],
+      "median_seconds": 9.25,
+      "median_resident_bytes": 233472000
+    },
+    {
+      "width": 6000,
+      "height": 4000,
+      "mode": "lossless",
+      "input_sha256": "e58d1ec8aaccc138bd5e590a261b91d9e5393e324ca70eccc59cfd7c21c9de7f",
+      "input_bytes": 72059087,
+      "output_bytes": 72000080,
+      "runs": [
+        {
+          "seconds": 2.88,
+          "resident_bytes": 1097973760
+        },
+        {
+          "seconds": 2.84,
+          "resident_bytes": 1097826304
+        },
+        {
+          "seconds": 2.85,
+          "resident_bytes": 1097957376
+        }
+      ],
+      "median_seconds": 2.85,
+      "median_resident_bytes": 1097957376
+    }
+  ],
+  "scope": "Three complete PNG-to-WebP CLI conversions per case. RSS is not aggregate command-plus-helper memory. GUI excluded."
+}

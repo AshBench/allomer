@@ -1,0 +1,165 @@
+{
+  "recorded_at_utc": "2026-09-09T05:07:53.710613+00:00",
+  "macos": "26.6.2",
+  "chip": "Apple M2 Max",
+  "command_sha256": "05fc055e548ca5a88e2fb50e02f116b36c21431247c22978ee4049d12b339496",
+  "cjxl_sha256": "646e1cf2f620849f39d00ae69c2c8c753f41c5e8292a3e8a9823c9e997892de4",
+  "decoder_sha256": "4acce0b511140d7208049d08bab247e49cd113eb67d64688a0ad935e4dae5212",
+  "lossy_effort": 7,
+  "lossless_effort": 4,
+  "buffering": 2,
+  "output_mode": 1,
+  "resampling": 1,
+  "ec_resampling": 1,
+  "cases": [
+    {
+      "width": 1000,
+      "height": 1000,
+      "quality": 0.85,
+      "effort": 7,
+      "mean_rgb_error": [
+        18.356006,
+        10.24471,
+        29.069367
+      ],
+      "rms_rgb_error": [
+        26.479527450466332,
+        14.211697083740562,
+        38.76510349528297
+      ],
+      "input_bytes": 3005266,
+      "input_sha256": "fd85a0a966668706ed8b25a6f2fe61fbc9661adb257f7faf94d28ba9e4601946",
+      "runs": [
+        {
+          "seconds": 1.3,
+          "resident_bytes": 115032064,
+          "output_bytes": 1027851
+        },
+        {
+          "seconds": 0.42,
+          "resident_bytes": 116244480,
+          "output_bytes": 1027851
+        },
+        {
+          "seconds": 0.42,
+          "resident_bytes": 116047872,
+          "output_bytes": 1027851
+        }
+      ],
+      "median_seconds": 0.42,
+      "median_resident_bytes": 116047872
+    },
+    {
+      "width": 1000,
+      "height": 1000,
+      "quality": 1,
+      "effort": 4,
+      "mean_rgb_error": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rms_rgb_error": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "input_bytes": 3005266,
+      "input_sha256": "fd85a0a966668706ed8b25a6f2fe61fbc9661adb257f7faf94d28ba9e4601946",
+      "runs": [
+        {
+          "seconds": 0.25,
+          "resident_bytes": 69451776,
+          "output_bytes": 3271208
+        },
+        {
+          "seconds": 0.25,
+          "resident_bytes": 71991296,
+          "output_bytes": 3271208
+        },
+        {
+          "seconds": 0.25,
+          "resident_bytes": 68370432,
+          "output_bytes": 3271208
+        }
+      ],
+      "median_seconds": 0.25,
+      "median_resident_bytes": 69451776
+    },
+    {
+      "width": 6000,
+      "height": 4000,
+      "quality": 0.85,
+      "effort": 7,
+      "mean_rgb_error": [
+        18.398701041666666,
+        10.254324375,
+        29.063436
+      ],
+      "rms_rgb_error": [
+        26.551093481091634,
+        14.22881404492307,
+        38.744599225784576
+      ],
+      "input_bytes": 72076983,
+      "input_sha256": "34033c5a05e0404591d30f3fb7cfcf7841ce0caf7a096bd1eae9e783dc2d71fe",
+      "runs": [
+        {
+          "seconds": 9.15,
+          "resident_bytes": 659947520,
+          "output_bytes": 24617658
+        },
+        {
+          "seconds": 9.13,
+          "resident_bytes": 652181504,
+          "output_bytes": 24617658
+        },
+        {
+          "seconds": 8.97,
+          "resident_bytes": 657244160,
+          "output_bytes": 24617658
+        }
+      ],
+      "median_seconds": 9.13,
+      "median_resident_bytes": 657244160
+    },
+    {
+      "width": 6000,
+      "height": 4000,
+      "quality": 1,
+      "effort": 4,
+      "mean_rgb_error": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rms_rgb_error": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "input_bytes": 72076983,
+      "input_sha256": "34033c5a05e0404591d30f3fb7cfcf7841ce0caf7a096bd1eae9e783dc2d71fe",
+      "runs": [
+        {
+          "seconds": 4.9,
+          "resident_bytes": 505872384,
+          "output_bytes": 78496140
+        },
+        {
+          "seconds": 4.89,
+          "resident_bytes": 496779264,
+          "output_bytes": 78496140
+        },
+        {
+          "seconds": 4.9,
+          "resident_bytes": 509526016,
+          "output_bytes": 78496140
+        }
+      ],
+      "median_seconds": 4.9,
+      "median_resident_bytes": 505872384
+    }
+  ],
+  "scope": "Three complete command conversions per case. Seeded random RGB input. RSS can include a child helper's peak; it is not aggregate simultaneous process memory. GUI excluded."
+}

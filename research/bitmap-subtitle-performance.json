@@ -1,0 +1,35 @@
+{
+  "recorded_at_utc": "2026-09-09T14:42:54.386459+00:00",
+  "macos": "26.6.2",
+  "command_sha256": "0c356380b76df67514064a2f667ab9b7dd0cc5886caa2a5539243da5e3d7e588",
+  "input_sha256": "c27d908aa644fce71cd9106cb89c0f84a221457a21348627b4c47448915b1dbf",
+  "input_bytes": 596435,
+  "input_fixture": ".tools/bitmap-subtitle-benchmark-c27d908aa644.mkv",
+  "helper_sha256": {
+    "nativeconvert": "cd9f42dc1368adc7db8b6d345140604f29d6187e194ac6c5a89d943f6c2f860c",
+    "nativeguard": "dd4e9027c5697fde32ab2268c93a746abdb8577eaa066e20d06c97ca6ea230e1",
+    "ffmpeg": "db0e370419f7790d579e6c392cb906665526bf5ca1bd899c5ef1f78b0924e290",
+    "ffprobe": "b5cdb425fd3d198cdc8c5259d686a938af1a5e62e6cb759831aec2b47c200267"
+  },
+  "cues": 200,
+  "runs": [
+    {
+      "seconds": 5.51,
+      "resident_bytes": 55050240,
+      "output_bytes": 9092
+    },
+    {
+      "seconds": 5.8,
+      "resident_bytes": 58687488,
+      "output_bytes": 9092
+    },
+    {
+      "seconds": 5.95,
+      "resident_bytes": 59359232,
+      "output_bytes": 9092
+    }
+  ],
+  "median_seconds": 5.8,
+  "median_resident_bytes": 58687488,
+  "scope": "Three complete PGS-in-Matroska to SRT conversions. Includes probing, bitmap decoding, Vision recognition, cue validation and publication. Original repeated text spans ten minutes; the video has six black frames. Source hashes warm the file cache. GUI and Python work are excluded. RSS is per-process peak, not aggregate app/helper/service memory."
+}

@@ -1,0 +1,66 @@
+module.exports = {
+  guide: [
+    'index',
+    {
+      type: 'category',
+      label: 'Start here',
+      collapsed: false,
+      items: ['getting-started', 'automatic', 'formats'],
+    },
+    {
+      type: 'category',
+      label: 'Images and artwork',
+      items: [
+        'images',
+        'animation',
+        'webp',
+        'jpegxl',
+        'raw-camera',
+        'photoshop',
+        'svg',
+        'tracing',
+        'icon-images',
+        'icon-projects',
+        'image-video',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Audio, video, and subtitles',
+      items: ['audio', 'video', 'subtitles'],
+    },
+    {
+      type: 'category',
+      label: 'Documents and text',
+      items: [
+        'documents',
+        'pdf',
+        'postscript',
+        'presentations',
+        'spreadsheets',
+        'ebooks',
+        'email',
+        'ocr',
+        'fonts',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Data and packages',
+      items: ['configuration', 'archives', 'models'],
+    },
+    {
+      type: 'category',
+      label: 'Developing Allomer',
+      items: [
+        'architecture',
+        'dependencies',
+        'size',
+        'release-checks',
+        'release',
+        'publishing',
+        'project-status',
+      ],
+    },
+  ],
+};

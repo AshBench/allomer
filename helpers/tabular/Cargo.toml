@@ -1,0 +1,20 @@
+[package]
+name = "tabular"
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+publish = false
+
+[dependencies]
+calamine = { version = "=0.36.1", features = ["dates"] }
+csv = "=1.4.0"
+serde_json = "=1.0.151"
+quick-xml = { version = "=0.41.0", features = ["encoding"] }
+rust_xlsxwriter = { version = "=0.99.0", features = ["constant_memory"] }
+tempfile = "=3.27.0"
+zip = { version = "=8.6.0", default-features = false, features = ["deflate"] }
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true

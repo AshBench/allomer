@@ -1,0 +1,95 @@
+{
+  "recorded_at_utc": "2026-09-09T00:43:51.379943+00:00",
+  "macos": "26.6.2",
+  "architecture": "arm64",
+  "command_sha256": "bd36cde1c66804a253b8bc8c1b8a6edacba5e6df8862173a32d06f2b43a9b785",
+  "helpers_sha256": {
+    "gs": "ab259d91cd54a8f6f755f03d371b2a32c76bdccb4388f2314d9cc68f00c8282e",
+    "postscript": "c8972bc3d94aa1119917e7cb21f03e541c17230935d4ea039514b1d81cf2fc40"
+  },
+  "memory_scope": "macOS time -l peak for the command; not aggregate simultaneous app and helper memory. GUI excluded.",
+  "scope": "Three runs per original fixture. Includes output reinterpretation and page checks. Default settings may differ between writers.",
+  "results": {
+    "vector": {
+      "input_sha256": "6e0b401177d22e08c863b21b222bcb645412bc863c8d74e1decefd8fffc8d0d2",
+      "input_bytes": 17733,
+      "pages": 30,
+      "samples": [
+        {
+          "elapsed_seconds": 0.23,
+          "reported_peak_resident_bytes": 20545536,
+          "output_bytes": 189208,
+          "language_level": 2
+        },
+        {
+          "elapsed_seconds": 0.18,
+          "reported_peak_resident_bytes": 20545536,
+          "output_bytes": 189208,
+          "language_level": 2
+        },
+        {
+          "elapsed_seconds": 0.16,
+          "reported_peak_resident_bytes": 20512768,
+          "output_bytes": 189208,
+          "language_level": 2
+        }
+      ],
+      "median_elapsed_seconds": 0.18,
+      "median_reported_peak_resident_bytes": 20545536
+    },
+    "gradient": {
+      "input_sha256": "9b0501d4f3c1f1557f597cd6f1370823c928c86c62773d0eafe21f35dbe812b5",
+      "input_bytes": 17819,
+      "pages": 20,
+      "samples": [
+        {
+          "elapsed_seconds": 0.29,
+          "reported_peak_resident_bytes": 20348928,
+          "output_bytes": 1668078,
+          "language_level": 2
+        },
+        {
+          "elapsed_seconds": 0.29,
+          "reported_peak_resident_bytes": 20692992,
+          "output_bytes": 1668078,
+          "language_level": 2
+        },
+        {
+          "elapsed_seconds": 0.29,
+          "reported_peak_resident_bytes": 20758528,
+          "output_bytes": 1668078,
+          "language_level": 2
+        }
+      ],
+      "median_elapsed_seconds": 0.29,
+      "median_reported_peak_resident_bytes": 20692992
+    },
+    "transparent": {
+      "input_sha256": "4a81cc0600ad6d6228728d80efb479dbd23b373aeabd9266e3507f5dd2e8dee7",
+      "input_bytes": 1517,
+      "pages": 1,
+      "samples": [
+        {
+          "elapsed_seconds": 3.6,
+          "reported_peak_resident_bytes": 20201472,
+          "output_bytes": 1024537,
+          "language_level": 2
+        },
+        {
+          "elapsed_seconds": 3.6,
+          "reported_peak_resident_bytes": 20119552,
+          "output_bytes": 1024537,
+          "language_level": 2
+        },
+        {
+          "elapsed_seconds": 3.65,
+          "reported_peak_resident_bytes": 20152320,
+          "output_bytes": 1024537,
+          "language_level": 2
+        }
+      ],
+      "median_elapsed_seconds": 3.6,
+      "median_reported_peak_resident_bytes": 20152320
+    }
+  }
+}

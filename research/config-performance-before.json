@@ -1,0 +1,25 @@
+{
+  "recorded_at_utc": "2026-09-08T05:45:33.467115+00:00",
+  "macos": "26.6.2",
+  "architecture": "arm64",
+  "workload": "10000 objects, JSON to TOML",
+  "input_bytes": 902791,
+  "input_sha256": "2e9aa2e80905643de117b48cdda56e42d0fd70df6edf2053d8621eff79a13b58",
+  "command_sha256": "ad3b1db98dd9289411c4b865fa48ec5ce1837b43de89cafc68f6a9c3b0b3eecb",
+  "samples": [
+    {
+      "elapsed_seconds": 0.46,
+      "peak_resident_bytes": 365461504
+    },
+    {
+      "elapsed_seconds": 0.46,
+      "peak_resident_bytes": 366854144
+    },
+    {
+      "elapsed_seconds": 0.46,
+      "peak_resident_bytes": 367542272
+    }
+  ],
+  "median_elapsed_seconds": 0.46,
+  "median_peak_resident_bytes": 366854144
+}

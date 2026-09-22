@@ -1,0 +1,103 @@
+{
+  "recorded_at_utc": "2026-09-09T18:14:45.609640+00:00",
+  "macos": "26.6.2",
+  "chip": "Apple M2 Max",
+  "source": {
+    "width": 1280,
+    "height": 720,
+    "rate": 24,
+    "seconds": 30,
+    "bytes": 555572831,
+    "sha256": "df2db5162bb098654894a674c393a15fd511a67de29bb8c34e0cae97dbd71a80"
+  },
+  "cases": [
+    {
+      "case": "before-bitrate",
+      "options": {
+        "videoMode": "bitrate",
+        "videoBitrateKbps": 2500,
+        "videoQuality": 100,
+        "cpuProfile": "medium"
+      },
+      "command_sha256": "599629835acd49e803c58d581f669501310b630be9756850bff23efac063b444",
+      "runs": [
+        {
+          "seconds": 8.84,
+          "resident_bytes": 81215488,
+          "output_bytes": 15988057
+        },
+        {
+          "seconds": 7.81,
+          "resident_bytes": 77447168,
+          "output_bytes": 15988057
+        },
+        {
+          "seconds": 7.83,
+          "resident_bytes": 79691776,
+          "output_bytes": 15988057
+        }
+      ],
+      "median_seconds": 7.83,
+      "median_resident_bytes": 79691776
+    },
+    {
+      "case": "after-bitrate",
+      "options": {
+        "videoMode": "bitrate",
+        "videoBitrateKbps": 2500,
+        "videoQuality": 100,
+        "cpuProfile": "medium"
+      },
+      "command_sha256": "45d228d12f0f85046a3718e1e329d5939e801e24781003d65429b5d3224e5050",
+      "runs": [
+        {
+          "seconds": 10.5,
+          "resident_bytes": 82870272,
+          "output_bytes": 15991897
+        },
+        {
+          "seconds": 10.81,
+          "resident_bytes": 85344256,
+          "output_bytes": 15991897
+        },
+        {
+          "seconds": 10.53,
+          "resident_bytes": 80691200,
+          "output_bytes": 15991897
+        }
+      ],
+      "median_seconds": 10.53,
+      "median_resident_bytes": 82870272
+    },
+    {
+      "case": "after-quality100",
+      "options": {
+        "videoMode": "quality",
+        "videoBitrateKbps": 2500,
+        "videoQuality": 100,
+        "cpuProfile": "medium"
+      },
+      "command_sha256": "45d228d12f0f85046a3718e1e329d5939e801e24781003d65429b5d3224e5050",
+      "runs": [
+        {
+          "seconds": 19.65,
+          "resident_bytes": 119734272,
+          "output_bytes": 786471148
+        },
+        {
+          "seconds": 20.24,
+          "resident_bytes": 118374400,
+          "output_bytes": 786471148
+        },
+        {
+          "seconds": 19.56,
+          "resident_bytes": 118226944,
+          "output_bytes": 786471148
+        }
+      ],
+      "median_seconds": 19.65,
+      "median_resident_bytes": 118374400
+    }
+  ],
+  "scope": "Three isolated whole-command runs per setting, in listed order. Original 720p/24 fps FFV1 input repeats a one-second synthetic pattern for 30 seconds, without audio. Includes conversion, validation, and publication. Input hashes warm the file cache. Fixture creation and external output checks are excluded. RSS is a per-process high-water reading, not aggregate simultaneous app/helper/system-service memory. GUI excluded. This is not a general quality, speed, or memory guarantee."
+}

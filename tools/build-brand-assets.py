@@ -1,0 +1,85 @@
+#!/usr/bin/env python3
+"""Render the checked-in Allomer vector artwork for app and web packaging."""
+
+from pathlib import Path
+import shutil
+import subprocess
+import tempfile
+
+
+ROOT = Path(__file__).resolve().parent.parent
+BRANDING = ROOT / "branding"
+GENERATED = BRANDING / "generated"
+WEBSITE_IMAGES = ROOT / "website/static/img"
+
+
+def run(*arguments):
+    subprocess.run(list(map(str, arguments)), cwd=ROOT, check=True)
+
+
+def render(inkscape, source, output, size):
+    run(
+        inkscape,
+        source,
+        "--export-type=png",
+        f"--export-filename={output}",
+        f"--export-width={size}",
+        f"--export-height={size}",
+    )
+
+
+def main():
+    inkscape = shutil.which("inkscape")
+    if not inkscape:
+        raise SystemExit("Inkscape is required to rebuild the brand assets.")
+
+    GENERATED.mkdir(parents=True, exist_ok=True)
+    WEBSITE_IMAGES.mkdir(parents=True, exist_ok=True)
+    run(
+        inkscape,
+        BRANDING / "allomer-logo-source.svg",
+        "--export-type=svg",
+        f"--export-filename={BRANDING / 'allomer-logo.svg'}",
+        "--export-text-to-path",
+        "--export-plain-svg",
+        "--export-area-drawing",
+    )
+    if "<text" in (BRANDING / "allomer-logo.svg").read_text():
+        raise SystemExit("The published wordmark still contains editable text.")
+
+    icon_names = {
+        16: ("icon_16x16.png",),
+        32: ("icon_16x16@2x.png", "icon_32x32.png"),
+        64: ("icon_32x32@2x.png",),
+        128: ("icon_128x128.png",),
+        256: ("icon_128x128@2x.png", "icon_256x256.png"),
+        512: ("icon_256x256@2x.png", "icon_512x512.png"),
+        1024: ("icon_512x512@2x.png",),
+    }
+
+    with tempfile.TemporaryDirectory(prefix="allomer-icon-") as temporary:
+        iconset = Path(temporary) / "Allomer.iconset"
+        iconset.mkdir()
+        for size, names in icon_names.items():
+            rendered = Path(temporary) / f"{size}.png"
+            render(inkscape, BRANDING / "allomer-app-icon.svg", rendered, size)
+            for name in names:
+                shutil.copy2(rendered, iconset / name)
+            if size == 1024:
+                shutil.copy2(rendered, GENERATED / "Allomer-1024.png")
+        run("/usr/bin/iconutil", "-c", "icns", "-o", GENERATED / "Allomer.icns", iconset)
+
+    render(inkscape, BRANDING / "allomer-mark.svg", GENERATED / "Allomer-mark-512.png", 512)
+    run(
+        inkscape,
+        BRANDING / "allomer-logo.svg",
+        "--export-type=png",
+        f"--export-filename={GENERATED / 'Allomer-logo.png'}",
+        "--export-width=1200",
+    )
+    shutil.copy2(BRANDING / "allomer-mark-color.svg", WEBSITE_IMAGES / "allomer-mark.svg")
+    render(inkscape, BRANDING / "allomer-app-icon.svg", WEBSITE_IMAGES / "allomer-app-icon.png", 64)
+
+
+if __name__ == "__main__":
+    main()

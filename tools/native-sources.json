@@ -1,0 +1,263 @@
+{
+  "visioncortex": {
+    "name": "visioncortex",
+    "version": "0.8.10",
+    "url": "https://static.crates.io/crates/visioncortex/visioncortex-0.8.10.crate",
+    "sha256": "7c9a7e6cc136c7c79b4adbd311c46c323a19db7baf446822b5f90f84375934e3"
+  },
+  "tiff": {
+    "name": "tiff",
+    "version": "4.7.2",
+    "url": "https://download.osgeo.org/libtiff/tiff-4.7.2.tar.xz",
+    "sha256": "4996f0c4f93094719b1ca5c6279b20e588773ba8a247533e486416fb662ddb88"
+  },
+  "media": [
+    {
+      "name": "libogg",
+      "version": "1.3.6",
+      "url": "https://ftp.osuosl.org/pub/xiph/releases/ogg/libogg-1.3.6.tar.gz",
+      "sha256": "83e6704730683d004d20e21b8f7f55dcb3383cdf84c0daedf30bde175f774638"
+    },
+    {
+      "name": "libvorbis",
+      "version": "1.3.7",
+      "url": "https://ftp.osuosl.org/pub/xiph/releases/vorbis/libvorbis-1.3.7.tar.xz",
+      "sha256": "b33cc4934322bcbf6efcbacf49e3ca01aadbea4114ec9589d1b1e9d20f72954b"
+    },
+    {
+      "name": "lame",
+      "version": "4.0",
+      "url": "https://downloads.sourceforge.net/project/lame/lame/4.0/lame-4.0.tar.gz",
+      "sha256": "3df5124d5ad3a98312ffd7ba6a9b36230e4f8a3e66d3ce0f425e336c32d216eb"
+    },
+    {
+      "name": "opus",
+      "version": "1.6.1",
+      "url": "https://ftp.osuosl.org/pub/xiph/releases/opus/opus-1.6.1.tar.gz",
+      "sha256": "6ffcb593207be92584df15b32466ed64bbec99109f007c82205f0194572411a1"
+    },
+    {
+      "name": "libvpx",
+      "version": "1.17.0",
+      "url": "https://github.com/webmproject/libvpx/archive/refs/tags/v1.17.0.tar.gz",
+      "sha256": "1020f184046187baa2985dbde38e0691f49c44088bca7a1842b0236c6081dc0a"
+    },
+    {
+      "name": "libaom",
+      "version": "3.15.0",
+      "url": "https://storage.googleapis.com/aom-releases/libaom-3.15.0.tar.gz",
+      "sha256": "ea08c38ecc078bc85bb1b691020e52b06250f1a81fe7ca5b624629225081af96"
+    },
+    {
+      "name": "svt-av1",
+      "version": "4.2.0",
+      "url": "https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v4.2.0/SVT-AV1-v4.2.0.tar.bz2",
+      "sha256": "512f2ea5649e3e76c2dddcc25c2556fb67a9582baaab207c9c96161c94659dad"
+    },
+    {
+      "name": "dav1d",
+      "version": "1.5.4",
+      "url": "https://download.videolan.org/pub/videolan/dav1d/1.5.4/dav1d-1.5.4.tar.xz",
+      "sha256": "686616b7c69eb88d44459391ab25cac13b6647a3b288835c5784e71c1514a5c5"
+    },
+    {
+      "name": "ffmpeg",
+      "version": "9.0.1",
+      "url": "https://ffmpeg.org/releases/ffmpeg-9.0.1.tar.xz",
+      "sha256": "cf38e0e28c7e5605942c4a77755349b0145804a397af37eb1fb4c77cb237f635"
+    }
+  ],
+  "fonts": [
+    {
+      "name": "brotli",
+      "version": "1.2.0",
+      "url": "https://github.com/google/brotli/archive/refs/tags/v1.2.0.tar.gz",
+      "sha256": "816c96e8e8f193b40151dad7e8ff37b1221d019dbcb9c35cd3fadbfe6477dfec"
+    },
+    {
+      "name": "woff2",
+      "version": "fb9c3379f2605b10f3e8f1d9636664ab5576775c",
+      "url": "https://codeload.github.com/google/woff2/tar.gz/fb9c3379f2605b10f3e8f1d9636664ab5576775c",
+      "sha256": "f32f80941d621632fd668a00f3e30b00cde69df04ccb4730afb1809144bc6299"
+    },
+    {
+      "name": "freetype",
+      "version": "2.14.3",
+      "url": "https://downloads.sourceforge.net/project/freetype/freetype2/2.14.3/freetype-2.14.3.tar.xz",
+      "sha256": "36bc4f1cc413335368ee656c42afca65c5a3987e8768cc28cf11ba775e785a5f"
+    },
+    {
+      "name": "harfbuzz",
+      "version": "14.4.0",
+      "url": "https://github.com/harfbuzz/harfbuzz/releases/download/14.4.0/harfbuzz-14.4.0.tar.xz",
+      "sha256": "2357ed966c6ced7bfa720b0640c0231065af01158fbea215093ffa15aed44371"
+    }
+  ],
+  "font-build-tools": [
+    {
+      "name": "meson",
+      "version": "1.12.0",
+      "archive": "meson-1.12.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/07/68/b0117422eb0a46d9d8d9e328f0c5b5c835179bfc058688bca35c90c89eba/meson-1.12.0-py3-none-any.whl",
+      "sha256": "71f133147fa0fcfe8f4df49fa1045771064947834538409e5d97b3613aac8b4e"
+    },
+    {
+      "name": "ninja",
+      "version": "1.13.2",
+      "archive": "ninja-1.13.2-py3-none-macosx_10_9_universal2.whl",
+      "url": "https://files.pythonhosted.org/packages/b5/b8/90a9518f2264637084d6199bc20c2f3fb97fefc4c474d277720150c3bd6d/ninja-1.13.2-py3-none-macosx_10_9_universal2.whl",
+      "sha256": "fd82e26c0706ad4ab88e5fdd26f3fab0a987a90f810160f6c322e752c6af298b"
+    }
+  ],
+  "libmobi": {
+    "version": "0.12",
+    "url": "https://github.com/bfabiszewski/libmobi/releases/download/v0.12/libmobi-0.12.tar.gz",
+    "sha256": "9a6fb2c56b916f8fa8b15e0c71008d908109508c944ea1d297881d4e277bf7e7"
+  },
+  "assimp": {
+    "version": "6.0.5",
+    "url": "https://codeload.github.com/assimp/assimp/tar.gz/refs/tags/v6.0.5",
+    "sha256": "edf3749559c2b7d1f758ffb66fc5bec62186221e623b7f2e8969f17ee46ecb6f"
+  },
+  "ghostscript": {
+    "version": "10.07.1",
+    "url": "https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10071/ghostscript-10.07.1.tar.gz",
+    "sha256": "2fc74362f9be6fae1b0a65d38fdcfd4f0b518cc3b07c5581fb661eb4d2e15251"
+  },
+  "mupdf": {
+    "version": "1.28.3",
+    "url": "https://github.com/ArtifexSoftware/mupdf-downloads/releases/download/1.28.3/mupdf-1.28.3-source.tar.gz",
+    "sha256": "37c3209dc0e06fa4f3781ed44839ad933a9e6143eb4731f99e069204715bcef2"
+  },
+  "carta": {
+    "version": "0.0.10",
+    "revision": "df621b1074c9751494cedc782342765cacdd81de",
+    "url": "https://codeload.github.com/mfkrause/carta/tar.gz/df621b1074c9751494cedc782342765cacdd81de",
+    "sha256": "3ef3695c0d95837075408bb374e85e15a5b33e1f7be9fe91fcf90ed14ef2106f"
+  },
+  "presentation": [
+    {
+      "name": "pptx-renderer",
+      "version": "5b8280f3d72fcab764837b705d07f229e08bfe47",
+      "archive": "pptx-renderer-5b8280f3.tar.gz",
+      "url": "https://codeload.github.com/aiden0z/pptx-renderer/tar.gz/5b8280f3d72fcab764837b705d07f229e08bfe47",
+      "sha256": "c45f3fdfcac18f1000bc67d1fc87613cc369da02945c0ca7d8beb25cc8f1f936"
+    },
+    {
+      "name": "docx-renderer",
+      "version": "0.4.0",
+      "revision": "191d3e0db009da578fbe4da70d55305cd8d50226",
+      "archive": "docx-renderer-0.4.0.tar.gz",
+      "url": "https://codeload.github.com/VolodymyrBaydalka/docxjs/tar.gz/refs/tags/0.4.0",
+      "sha256": "b3639cd6d40dd5a6e7ddc6ba538846e52d11cc323731ba952584d5035a4a33fe"
+    },
+    {
+      "name": "mtx-decompressor",
+      "version": "1.4.2",
+      "archive": "mtx-decompressor-1.4.2.tar.gz",
+      "url": "https://codeload.github.com/ChristopherVR/mtx-decompressor/tar.gz/refs/tags/v1.4.2",
+      "sha256": "e4edf429b1614a8f7366a55cffe58b35c58e784f0d4719d209cc3aa28ef3d970"
+    }
+  ],
+  "rustup": {
+    "version": "1.29.1",
+    "url": "https://static.rust-lang.org/rustup/archive/1.29.1/aarch64-apple-darwin/rustup-init",
+    "sha256": "ec1b9233e7f72990ecd8e62063fa7f6c3dfc2bec8e97f88bff165f9100ac696a"
+  },
+  "webp": [
+    {
+      "name": "libpng",
+      "version": "1.6.58",
+      "url": "https://downloads.sourceforge.net/project/libpng/libpng16/1.6.58/libpng-1.6.58.tar.xz",
+      "sha256": "28eb403f51f0f7405249132cecfe82ea5c0ef97f1b32c5a65828814ae0d34775"
+    },
+    {
+      "name": "libwebp",
+      "version": "1.6.0",
+      "url": "https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-1.6.0.tar.gz",
+      "sha256": "e4ab7009bf0629fd11982d4c2aa83964cf244cffba7347ecd39019a9e38c4564"
+    }
+  ],
+  "jpegxl": [
+    {
+      "name": "libjxl",
+      "version": "0.12.0",
+      "url": "https://github.com/libjxl/libjxl/archive/refs/tags/v0.12.0.tar.gz",
+      "sha256": "03e9be69a30be4011f559da75328b6d7cea8ad921fabfbd551ce10bf45cdc992"
+    },
+    {
+      "name": "highway",
+      "version": "457c891775a7397bdb0376bb1031e6e027af1c48",
+      "url": "https://codeload.github.com/google/highway/tar.gz/457c891775a7397bdb0376bb1031e6e027af1c48",
+      "sha256": "5124b0501c98d9930dbb065bfa1a5bbbd59ce0f12facb7e1e33aaef01a5f1f1a"
+    },
+    {
+      "name": "skcms",
+      "version": "96d9171c94b937a1b5f0293de7309ac16311b722",
+      "url": "https://codeload.github.com/google/skcms/tar.gz/96d9171c94b937a1b5f0293de7309ac16311b722",
+      "sha256": "9bb4b5bba0b7c04f6c2bce9ff713d61e23c9a20c4945161ae16290498ad74627"
+    }
+  ],
+  "poppler": [
+    {
+      "name": "poppler",
+      "version": "26.09.0",
+      "url": "https://poppler.freedesktop.org/poppler-26.09.0.tar.xz",
+      "sha256": "8059eadb6805340768f138c465b57f8164c92b4a0773c37ef031ea6c0d987b2e"
+    },
+    {
+      "name": "poppler-data",
+      "version": "0.4.12",
+      "url": "https://poppler.freedesktop.org/poppler-data-0.4.12.tar.gz",
+      "sha256": "c835b640a40ce357e1b83666aabd95edffa24ddddd49b8daff63adb851cdab74"
+    },
+    {
+      "name": "libjpeg-turbo",
+      "version": "3.2.0",
+      "url": "https://github.com/libjpeg-turbo/libjpeg-turbo/releases/download/3.2.0/libjpeg-turbo-3.2.0.tar.gz",
+      "sha256": "6f30092cef9fb839779646608f4ee14ae3cbac989c47fa05e841b0841f09878e"
+    },
+    {
+      "name": "lcms2",
+      "version": "2.19.1",
+      "url": "https://github.com/mm2/Little-CMS/releases/download/lcms2.19.1/lcms2-2.19.1.tar.gz",
+      "sha256": "bfc54f7bab59fbc921012014a8032e4cba4abd46db47d46b76416a8c0b2815c8"
+    },
+    {
+      "name": "openjpeg",
+      "version": "2.5.4",
+      "url": "https://github.com/uclouvain/openjpeg/archive/refs/tags/v2.5.4.tar.gz",
+      "sha256": "a695fbe19c0165f295a8531b1e4e855cd94d0875d2f88ec4b61080677e27188a"
+    }
+  ],
+  "vendored": [
+    {
+      "name": "apache-license",
+      "version": "2.0",
+      "path": "licenses/Apache-2.0.txt",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "name": "toml++",
+      "version": "3.4.0",
+      "path": "Sources/ConfigBridge/vendor/toml.hpp",
+      "url": "https://raw.githubusercontent.com/marzer/tomlplusplus/v3.4.0/toml.hpp",
+      "sha256": "6b5172ad4dd6519aec67b919181fa7a38a2234131e5b2afa232dfe444819783e"
+    },
+    {
+      "name": "libarchive-header",
+      "version": "3.7.4",
+      "path": "Sources/CArchive/include/archive.h",
+      "url": "https://raw.githubusercontent.com/libarchive/libarchive/v3.7.4/libarchive/archive.h",
+      "sha256": "618cd16c8fa40ddabc44f2d3eb3a35860f6b1d1d856b62a7f4f035b7a319bdab"
+    },
+    {
+      "name": "libarchive-entry-header",
+      "version": "3.7.4",
+      "path": "Sources/CArchive/include/archive_entry.h",
+      "url": "https://raw.githubusercontent.com/libarchive/libarchive/v3.7.4/libarchive/archive_entry.h",
+      "sha256": "3695eb0193741b16b99e06cf1fc5e6db427b68a9475696ef746c024ae0a6ae72"
+    }
+  ]
+}

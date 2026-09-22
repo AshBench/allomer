@@ -1,0 +1,62 @@
+{
+  "recorded_at_utc": "2026-09-08T15:50:17.115212+00:00",
+  "macos": "26.6.2",
+  "architecture": "arm64",
+  "resolution_dpi": 144,
+  "workload": "One and twelve A4 pages, each with text, a vector shape, and a deterministic 1024-square RGB noise image",
+  "command_sha256": "1b26ee7c418f690dd6d7262ac693491eb7b4d7d8719efe4d697055ae992f9d3c",
+  "helper_sha256": "8a02f511b3d5668af58d96d30065531642c7a1fcf11c07276aa44006b45b81aa",
+  "launcher_sha256": "157b880fb34e9210c0744c157b6dfeaa2b4beb6127100626c54c024d16ffb3be",
+  "memory_scope": "Maximum resident size reported by macOS time -l for the conversion command. This is not the sum of simultaneously resident parent and helper processes. The GUI is excluded.",
+  "timing_scope": "Complete command conversion, including page rendering, ZIP writing, content checks, and publication. Warm local runs; not a comparison with another app.",
+  "runs": [
+    {
+      "pages": 1,
+      "source_bytes": 3935263,
+      "source_sha256": "f186741780bab8ea6e6b2a5695ed24fad8dfbcd8e8b43357a6ac828d76c1d143",
+      "samples": [
+        {
+          "elapsed_seconds": 0.19,
+          "reported_peak_resident_bytes": 23953408,
+          "output_bytes": 3145857
+        },
+        {
+          "elapsed_seconds": 0.19,
+          "reported_peak_resident_bytes": 23969792,
+          "output_bytes": 3145857
+        },
+        {
+          "elapsed_seconds": 0.19,
+          "reported_peak_resident_bytes": 23969792,
+          "output_bytes": 3145857
+        }
+      ],
+      "median_elapsed_seconds": 0.19,
+      "median_reported_peak_resident_bytes": 23969792
+    },
+    {
+      "pages": 12,
+      "source_bytes": 3942133,
+      "source_sha256": "908a7eb454313f02c9b0b20be03933fd2b5c206480a6257b6653e30646eae890",
+      "samples": [
+        {
+          "elapsed_seconds": 1.83,
+          "reported_peak_resident_bytes": 59211776,
+          "output_bytes": 37709301
+        },
+        {
+          "elapsed_seconds": 1.83,
+          "reported_peak_resident_bytes": 59228160,
+          "output_bytes": 37709301
+        },
+        {
+          "elapsed_seconds": 1.83,
+          "reported_peak_resident_bytes": 59326464,
+          "output_bytes": 37709301
+        }
+      ],
+      "median_elapsed_seconds": 1.83,
+      "median_reported_peak_resident_bytes": 59228160
+    }
+  ]
+}

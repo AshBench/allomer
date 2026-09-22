@@ -1,0 +1,97 @@
+{
+  "recorded_at_utc": "2026-09-09T00:50:08.272805+00:00",
+  "macos": "26.6.2",
+  "architecture": "arm64",
+  "command_sha256": "293139e9fed18d8d027b1189a1dd00cce987b7cb0ed15f786094420fcb440c9a",
+  "helpers_sha256": {
+    "gs": "ab259d91cd54a8f6f755f03d371b2a32c76bdccb4388f2314d9cc68f00c8282e",
+    "postscript": "c8972bc3d94aa1119917e7cb21f03e541c17230935d4ea039514b1d81cf2fc40",
+    "pdftops": "d268ed539d0560903fb332316bac18f5261e828b5086963661a831fa8a79ab99",
+    "psguard": "df4c20b82ddd5dc44d2548ea7f513dffd0156b8c2173d57bac036c89f652053d"
+  },
+  "memory_scope": "macOS time -l peak for the command; not aggregate simultaneous app and helper memory. GUI excluded.",
+  "scope": "Three runs per original fixture. Includes output reinterpretation and page checks. Default settings may differ between writers.",
+  "results": {
+    "vector": {
+      "input_sha256": "6e0b401177d22e08c863b21b222bcb645412bc863c8d74e1decefd8fffc8d0d2",
+      "input_bytes": 17733,
+      "pages": 30,
+      "samples": [
+        {
+          "elapsed_seconds": 0.1,
+          "reported_peak_resident_bytes": 20267008,
+          "output_bytes": 42301,
+          "language_level": 3
+        },
+        {
+          "elapsed_seconds": 0.1,
+          "reported_peak_resident_bytes": 20316160,
+          "output_bytes": 42301,
+          "language_level": 3
+        },
+        {
+          "elapsed_seconds": 0.1,
+          "reported_peak_resident_bytes": 20201472,
+          "output_bytes": 42301,
+          "language_level": 3
+        }
+      ],
+      "median_elapsed_seconds": 0.1,
+      "median_reported_peak_resident_bytes": 20267008
+    },
+    "gradient": {
+      "input_sha256": "9b0501d4f3c1f1557f597cd6f1370823c928c86c62773d0eafe21f35dbe812b5",
+      "input_bytes": 17819,
+      "pages": 20,
+      "samples": [
+        {
+          "elapsed_seconds": 0.1,
+          "reported_peak_resident_bytes": 20267008,
+          "output_bytes": 37771,
+          "language_level": 3
+        },
+        {
+          "elapsed_seconds": 0.1,
+          "reported_peak_resident_bytes": 20299776,
+          "output_bytes": 37771,
+          "language_level": 3
+        },
+        {
+          "elapsed_seconds": 0.1,
+          "reported_peak_resident_bytes": 20299776,
+          "output_bytes": 37771,
+          "language_level": 3
+        }
+      ],
+      "median_elapsed_seconds": 0.1,
+      "median_reported_peak_resident_bytes": 20299776
+    },
+    "transparent": {
+      "input_sha256": "4a81cc0600ad6d6228728d80efb479dbd23b373aeabd9266e3507f5dd2e8dee7",
+      "input_bytes": 1517,
+      "pages": 1,
+      "samples": [
+        {
+          "elapsed_seconds": 0.53,
+          "reported_peak_resident_bytes": 42762240,
+          "output_bytes": 112175,
+          "language_level": 3
+        },
+        {
+          "elapsed_seconds": 0.53,
+          "reported_peak_resident_bytes": 43008000,
+          "output_bytes": 112175,
+          "language_level": 3
+        },
+        {
+          "elapsed_seconds": 0.53,
+          "reported_peak_resident_bytes": 42876928,
+          "output_bytes": 112175,
+          "language_level": 3
+        }
+      ],
+      "median_elapsed_seconds": 0.53,
+      "median_reported_peak_resident_bytes": 42876928
+    }
+  }
+}

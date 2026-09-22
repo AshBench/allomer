@@ -1,0 +1,316 @@
+{
+  "recorded_at_utc": "2026-09-09T08:59:33.825527+00:00",
+  "macos": "26.6.2",
+  "chip": "Apple M2 Max",
+  "command_sha256": "126d83e0c40ce2fdc2dddb887cfb4ad9cfbabfac9fc2284777ee982f30c37f8e",
+  "oracle": {
+    "psd-tools": "1.17.4",
+    "Pillow": "12.3.0",
+    "numpy": "2.3.5",
+    "attrs": "25.4.0",
+    "typing_extensions": "4.16.0"
+  },
+  "cases": [
+    {
+      "case": "rgb8-noise",
+      "compression": 0,
+      "input_bytes": 3145768,
+      "input_sha256": "c8b77648db5db9a35663e20a2cf5914d2a9b57e5ba78c4d1cb882a2737b63ac8",
+      "runs": [
+        {
+          "seconds": 0.17,
+          "resident_bytes": 29376512,
+          "output_bytes": 3150172
+        },
+        {
+          "seconds": 0.17,
+          "resident_bytes": 29343744,
+          "output_bytes": 3150172
+        },
+        {
+          "seconds": 0.18,
+          "resident_bytes": 29343744,
+          "output_bytes": 3150172
+        }
+      ],
+      "median_seconds": 0.17,
+      "median_resident_bytes": 29343744
+    },
+    {
+      "case": "rgb8-noise",
+      "compression": 1,
+      "input_bytes": 3179518,
+      "input_sha256": "5c0e3d653283a8e6924dcf7009ac5ecb12328f470569f72df65da16c6436148c",
+      "runs": [
+        {
+          "seconds": 0.17,
+          "resident_bytes": 29474816,
+          "output_bytes": 3150172
+        },
+        {
+          "seconds": 0.17,
+          "resident_bytes": 29474816,
+          "output_bytes": 3150172
+        },
+        {
+          "seconds": 0.18,
+          "resident_bytes": 29474816,
+          "output_bytes": 3150172
+        }
+      ],
+      "median_seconds": 0.17,
+      "median_resident_bytes": 29474816
+    },
+    {
+      "case": "rgb8-noise",
+      "compression": 2,
+      "input_bytes": 3146734,
+      "input_sha256": "576482e55cdca674dbffa07bb2f0628bc932d5aab2382e6da741a0676783b8e7",
+      "runs": [
+        {
+          "seconds": 0.18,
+          "resident_bytes": 32899072,
+          "output_bytes": 3150172
+        },
+        {
+          "seconds": 0.18,
+          "resident_bytes": 32800768,
+          "output_bytes": 3150172
+        },
+        {
+          "seconds": 0.18,
+          "resident_bytes": 32882688,
+          "output_bytes": 3150172
+        }
+      ],
+      "median_seconds": 0.18,
+      "median_resident_bytes": 32882688
+    },
+    {
+      "case": "rgb8-noise",
+      "compression": 3,
+      "input_bytes": 3146734,
+      "input_sha256": "030b281b840deb8a39ffe5d157181aa49229e7a33fb47dcd35b182c847469073",
+      "runs": [
+        {
+          "seconds": 0.2,
+          "resident_bytes": 32931840,
+          "output_bytes": 3150172
+        },
+        {
+          "seconds": 0.2,
+          "resident_bytes": 32882688,
+          "output_bytes": 3150172
+        },
+        {
+          "seconds": 0.2,
+          "resident_bytes": 32800768,
+          "output_bytes": 3150172
+        }
+      ],
+      "median_seconds": 0.2,
+      "median_resident_bytes": 32882688
+    },
+    {
+      "case": "rgb16-gradient",
+      "compression": 0,
+      "input_bytes": 6291496,
+      "input_sha256": "ea7925ff2a0fb760e0a66db063c072a6e7c4185ee32f2c9546397ca9c37c59cb",
+      "runs": [
+        {
+          "seconds": 0.1,
+          "resident_bytes": 36732928,
+          "output_bytes": 8680
+        },
+        {
+          "seconds": 0.1,
+          "resident_bytes": 36732928,
+          "output_bytes": 8680
+        },
+        {
+          "seconds": 0.1,
+          "resident_bytes": 36749312,
+          "output_bytes": 8680
+        }
+      ],
+      "median_seconds": 0.1,
+      "median_resident_bytes": 36732928
+    },
+    {
+      "case": "rgb16-gradient",
+      "compression": 1,
+      "input_bytes": 6345768,
+      "input_sha256": "9f62bc6c0a2cab7a6276dca881d301ccda31c84eecf48e0d30266ed64e8a8e5c",
+      "runs": [
+        {
+          "seconds": 0.11,
+          "resident_bytes": 45629440,
+          "output_bytes": 8680
+        },
+        {
+          "seconds": 0.11,
+          "resident_bytes": 45662208,
+          "output_bytes": 8680
+        },
+        {
+          "seconds": 0.11,
+          "resident_bytes": 45645824,
+          "output_bytes": 8680
+        }
+      ],
+      "median_seconds": 0.11,
+      "median_resident_bytes": 45645824
+    },
+    {
+      "case": "rgb16-gradient",
+      "compression": 2,
+      "input_bytes": 40538,
+      "input_sha256": "42c8c0a8f8ef5c174024e1aa9f8defae4afadd30f120429759bd3f70afcf1532",
+      "runs": [
+        {
+          "seconds": 0.11,
+          "resident_bytes": 37175296,
+          "output_bytes": 8680
+        },
+        {
+          "seconds": 0.11,
+          "resident_bytes": 37126144,
+          "output_bytes": 8680
+        },
+        {
+          "seconds": 0.11,
+          "resident_bytes": 37126144,
+          "output_bytes": 8680
+        }
+      ],
+      "median_seconds": 0.11,
+      "median_resident_bytes": 37126144
+    },
+    {
+      "case": "rgb16-gradient",
+      "compression": 3,
+      "input_bytes": 12384,
+      "input_sha256": "06f9824ed9c5d9fd51babe8110c0522a7c7152f1bd53e9c01e6a00a20dc8e0ae",
+      "runs": [
+        {
+          "seconds": 0.13,
+          "resident_bytes": 37109760,
+          "output_bytes": 8680
+        },
+        {
+          "seconds": 0.13,
+          "resident_bytes": 37076992,
+          "output_bytes": 8680
+        },
+        {
+          "seconds": 0.13,
+          "resident_bytes": 37109760,
+          "output_bytes": 8680
+        }
+      ],
+      "median_seconds": 0.13,
+      "median_resident_bytes": 37109760
+    },
+    {
+      "case": "rgb8-flat-24mp",
+      "compression": 0,
+      "input_bytes": 72000040,
+      "input_sha256": "295edd50357b51fcd772c05927220a50d069a459dda7c4b5eac03d9db3011a43",
+      "runs": [
+        {
+          "seconds": 0.83,
+          "resident_bytes": 190119936,
+          "output_bytes": 80184
+        },
+        {
+          "seconds": 0.82,
+          "resident_bytes": 190169088,
+          "output_bytes": 80184
+        },
+        {
+          "seconds": 0.82,
+          "resident_bytes": 190169088,
+          "output_bytes": 80184
+        }
+      ],
+      "median_seconds": 0.82,
+      "median_resident_bytes": 190169088
+    },
+    {
+      "case": "rgb8-flat-24mp",
+      "compression": 1,
+      "input_bytes": 1152040,
+      "input_sha256": "20f168ca9821251ffb3ee4c0fe14a41c57d54a4a2fd0653f753417c71967e5bb",
+      "runs": [
+        {
+          "seconds": 0.84,
+          "resident_bytes": 119373824,
+          "output_bytes": 80184
+        },
+        {
+          "seconds": 0.82,
+          "resident_bytes": 119373824,
+          "output_bytes": 80184
+        },
+        {
+          "seconds": 0.85,
+          "resident_bytes": 119308288,
+          "output_bytes": 80184
+        }
+      ],
+      "median_seconds": 0.84,
+      "median_resident_bytes": 119373824
+    },
+    {
+      "case": "rgb8-flat-24mp",
+      "compression": 2,
+      "input_bytes": 70053,
+      "input_sha256": "cf7571dc286b995352c6ff26e045fb1da3489572580f4fcb3357479b4a92386f",
+      "runs": [
+        {
+          "seconds": 0.87,
+          "resident_bytes": 190578688,
+          "output_bytes": 80184
+        },
+        {
+          "seconds": 0.88,
+          "resident_bytes": 190513152,
+          "output_bytes": 80184
+        },
+        {
+          "seconds": 0.88,
+          "resident_bytes": 190529536,
+          "output_bytes": 80184
+        }
+      ],
+      "median_seconds": 0.88,
+      "median_resident_bytes": 190529536
+    },
+    {
+      "case": "rgb8-flat-24mp",
+      "compression": 3,
+      "input_bytes": 95099,
+      "input_sha256": "9d06c70bf39290d86d0ecb792c1e4aee23e21237eda8027b01840f2452bb959e",
+      "runs": [
+        {
+          "seconds": 1.37,
+          "resident_bytes": 190529536,
+          "output_bytes": 80184
+        },
+        {
+          "seconds": 1.38,
+          "resident_bytes": 190595072,
+          "output_bytes": 80184
+        },
+        {
+          "seconds": 1.37,
+          "resident_bytes": 190529536,
+          "output_bytes": 80184
+        }
+      ],
+      "median_seconds": 1.37,
+      "median_resident_bytes": 190529536
+    }
+  ],
+  "scope": "Three complete command conversions per original workload/compression. Includes PSD preparation, native image encoding, PNG recompression, validation, and publication. Source integrity reads warm the file cache. Python fixture/pixel work and GUI are excluded. RSS is per-process high-water memory, not aggregate simultaneous memory."
+}

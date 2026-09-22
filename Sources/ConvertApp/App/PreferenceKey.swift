@@ -1,0 +1,28 @@
+enum PreferenceKey {
+    static let automaticAction = "automaticAction"
+    static let backupRetention = "backupRetention"
+    static let conversionRules = "conversionRules"
+    static let conversionSettings = "conversionSettings"
+    static let convertMultipleFormats = "convertMultipleFormats"
+    static let convertNewFiles = "convertNewFiles"
+    static let excludedFolders = "excludedFolders"
+    static let ignoreSystemFiles = "ignoreSystemFiles"
+    static let keepOriginal = "keepOriginal"
+    static let monitoring = "monitoring"
+    static let showNotifications = "showNotifications"
+    static let watchedFolders = "watchedFolders"
+    static let watchWholeSystem = "watchWholeSystem"
+
+    // Read only to migrate settings saved before ConversionSettings.
+    static let legacyArchiveOptions = "archiveOptions"
+    static let legacyConfigOptions = "configOptions"
+    static let legacyDocumentOptions = "documentOptions"
+    static let legacyEmailOptions = "emailOptions"
+    static let legacyImageOptions = "imageOptions"
+    static let legacyMediaOptions = "mediaOptions"
+    static let legacyModelOptions = "modelOptions"
+    static let legacyPDFOptions = "pdfOptions"
+    static let legacyPostScriptOptions = "postScriptOptions"
+    static let legacySpreadsheetOptions = "spreadsheetOptions"
+    static let legacySubtitleOptions = "subtitleOptions"
+}

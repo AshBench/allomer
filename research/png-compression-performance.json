@@ -1,0 +1,183 @@
+{
+  "recorded_at_utc": "2026-09-09T01:22:45.401053+00:00",
+  "macos": "26.6.2",
+  "architecture": "arm64",
+  "command_sha256": "0a7964a432685e5b61fb5d2bec2bd4b699ed4a3d768d26886365729a0c412651",
+  "scope": "Three complete TIFF-to-PNG CLI conversions per setting. GUI excluded. Native ImageIO and system zlib run in the command process.",
+  "workloads": [
+    {
+      "fixture": "flat",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "compression_level": 0,
+      "input_bytes": 3145868,
+      "input_sha256": "f3754f1aff66d8ef260ab3a741ded7e6d859a89c3d0f8dff544abc1ffc8683de",
+      "runs": [
+        {
+          "seconds": 0.86,
+          "resident_bytes": 29442048,
+          "output_bytes": 3148174
+        },
+        {
+          "seconds": 0.06,
+          "resident_bytes": 29425664,
+          "output_bytes": 3148174
+        },
+        {
+          "seconds": 0.06,
+          "resident_bytes": 29474816,
+          "output_bytes": 3148174
+        }
+      ],
+      "median_seconds": 0.06,
+      "median_resident_bytes": 29442048
+    },
+    {
+      "fixture": "flat",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "compression_level": 6,
+      "input_bytes": 3145868,
+      "input_sha256": "f3754f1aff66d8ef260ab3a741ded7e6d859a89c3d0f8dff544abc1ffc8683de",
+      "runs": [
+        {
+          "seconds": 0.07,
+          "resident_bytes": 29474816,
+          "output_bytes": 5918
+        },
+        {
+          "seconds": 0.07,
+          "resident_bytes": 29442048,
+          "output_bytes": 5918
+        },
+        {
+          "seconds": 0.07,
+          "resident_bytes": 29442048,
+          "output_bytes": 5918
+        }
+      ],
+      "median_seconds": 0.07,
+      "median_resident_bytes": 29442048
+    },
+    {
+      "fixture": "flat",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "compression_level": 9,
+      "input_bytes": 3145868,
+      "input_sha256": "f3754f1aff66d8ef260ab3a741ded7e6d859a89c3d0f8dff544abc1ffc8683de",
+      "runs": [
+        {
+          "seconds": 0.07,
+          "resident_bytes": 29442048,
+          "output_bytes": 5132
+        },
+        {
+          "seconds": 0.07,
+          "resident_bytes": 29458432,
+          "output_bytes": 5132
+        },
+        {
+          "seconds": 0.07,
+          "resident_bytes": 29491200,
+          "output_bytes": 5132
+        }
+      ],
+      "median_seconds": 0.07,
+      "median_resident_bytes": 29458432
+    },
+    {
+      "fixture": "noise",
+      "dimensions": [
+        6000,
+        4000
+      ],
+      "compression_level": 0,
+      "input_bytes": 72000140,
+      "input_sha256": "a4777a14b66f5f8e622dc387f80dc606b60a46377b05a0cb200ab8a632a1b519",
+      "runs": [
+        {
+          "seconds": 2.05,
+          "resident_bytes": 190267392,
+          "output_bytes": 72029523
+        },
+        {
+          "seconds": 2.02,
+          "resident_bytes": 190234624,
+          "output_bytes": 72029523
+        },
+        {
+          "seconds": 2.01,
+          "resident_bytes": 190283776,
+          "output_bytes": 72029523
+        }
+      ],
+      "median_seconds": 2.02,
+      "median_resident_bytes": 190267392
+    },
+    {
+      "fixture": "noise",
+      "dimensions": [
+        6000,
+        4000
+      ],
+      "compression_level": 6,
+      "input_bytes": 72000140,
+      "input_sha256": "a4777a14b66f5f8e622dc387f80dc606b60a46377b05a0cb200ab8a632a1b519",
+      "runs": [
+        {
+          "seconds": 3.29,
+          "resident_bytes": 190234624,
+          "output_bytes": 72079282
+        },
+        {
+          "seconds": 3.28,
+          "resident_bytes": 190283776,
+          "output_bytes": 72079282
+        },
+        {
+          "seconds": 3.3,
+          "resident_bytes": 190251008,
+          "output_bytes": 72079282
+        }
+      ],
+      "median_seconds": 3.29,
+      "median_resident_bytes": 190251008
+    },
+    {
+      "fixture": "noise",
+      "dimensions": [
+        6000,
+        4000
+      ],
+      "compression_level": 9,
+      "input_bytes": 72000140,
+      "input_sha256": "a4777a14b66f5f8e622dc387f80dc606b60a46377b05a0cb200ab8a632a1b519",
+      "runs": [
+        {
+          "seconds": 3.31,
+          "resident_bytes": 190267392,
+          "output_bytes": 72079282
+        },
+        {
+          "seconds": 3.28,
+          "resident_bytes": 190267392,
+          "output_bytes": 72079282
+        },
+        {
+          "seconds": 3.37,
+          "resident_bytes": 190283776,
+          "output_bytes": 72079282
+        }
+      ],
+      "median_seconds": 3.31,
+      "median_resident_bytes": 190267392
+    }
+  ]
+}

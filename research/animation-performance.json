@@ -1,0 +1,129 @@
+{
+  "recorded_at_utc": "2026-09-09T04:28:45.350277+00:00",
+  "macos": "26.6.2",
+  "command_sha256": "294addb2869cc9aca2d2deb4c4f69023bb08dc54336fd77499222e4c9d9f2795",
+  "ffmpeg_sha256": "db0e370419f7790d579e6c392cb906665526bf5ca1bd899c5ef1f78b0924e290",
+  "media_libraries": {
+    "libavfilter.12.1.101.dylib": "cf68366fe4616a2157fb39eca50d947235ef1246bfd4b62e7d1ed8cb2611c0cf",
+    "libswresample.7.1.101.dylib": "d7466f49d38bb7d24c2c93047bf0750d07c3cdadc7273b4bcaeae33076d7be1a",
+    "libswscale.10.1.101.dylib": "d5338449910cfafff025d8c8055ebf3fb361fb8a31bc0f45fa2f480cb7ad8070",
+    "libavutil.61.1.101.dylib": "dcc01a9e63b9a7b837a5cf77c523d9f4b0934de77827b6f20193b5782e35bd71",
+    "libavcodec.63.1.101.dylib": "c9f04bf1b4b5ad94aef1fd5c348d13a88cc8ca681bded71e44f86f7eb826d18b",
+    "libavformat.63.1.101.dylib": "8cd2cdb9457c52d37c11d07caa35cc5ca8eff69a24622de1cdee6dbafa592c02"
+  },
+  "cases": [
+    {
+      "input_format": "gif",
+      "frames": 30,
+      "width": 640,
+      "height": 360,
+      "input_sha256": "e3c31e4d2637ad453c933fb073eeecf4e34898a37d39336546eee38e81f5650c",
+      "input_bytes": 19099,
+      "runs": [
+        {
+          "seconds": 0.16,
+          "resident_bytes": 54640640,
+          "output_bytes": 109167
+        },
+        {
+          "seconds": 0.16,
+          "resident_bytes": 53673984,
+          "output_bytes": 109167
+        },
+        {
+          "seconds": 0.16,
+          "resident_bytes": 53690368,
+          "output_bytes": 109167
+        }
+      ],
+      "maximum_rgb_error": 0,
+      "median_seconds": 0.16,
+      "median_resident_bytes": 53690368
+    },
+    {
+      "input_format": "gif",
+      "frames": 120,
+      "width": 640,
+      "height": 360,
+      "input_sha256": "ee5582844696a047a50bfe3e0d5c3287ef286c8c6d7e41dc3d581e80b559a1fc",
+      "input_bytes": 68425,
+      "runs": [
+        {
+          "seconds": 0.45,
+          "resident_bytes": 54181888,
+          "output_bytes": 434572
+        },
+        {
+          "seconds": 0.48,
+          "resident_bytes": 56082432,
+          "output_bytes": 434572
+        },
+        {
+          "seconds": 0.45,
+          "resident_bytes": 56180736,
+          "output_bytes": 434572
+        }
+      ],
+      "maximum_rgb_error": 0,
+      "median_seconds": 0.45,
+      "median_resident_bytes": 56082432
+    },
+    {
+      "input_format": "webp",
+      "frames": 120,
+      "width": 640,
+      "height": 360,
+      "input_sha256": "6d4079f4253a1fe6ff29b2453da2f3c223dee0c1f6c0257517458e61e3d79ea5",
+      "input_bytes": 44998,
+      "runs": [
+        {
+          "seconds": 1.19,
+          "resident_bytes": 57901056,
+          "output_bytes": 434572
+        },
+        {
+          "seconds": 1.17,
+          "resident_bytes": 57966592,
+          "output_bytes": 434572
+        },
+        {
+          "seconds": 1.17,
+          "resident_bytes": 57966592,
+          "output_bytes": 434572
+        }
+      ],
+      "maximum_rgb_error": 0,
+      "median_seconds": 1.17,
+      "median_resident_bytes": 57966592
+    },
+    {
+      "input_format": "png",
+      "frames": 120,
+      "width": 640,
+      "height": 360,
+      "input_sha256": "3dc185f78a1a912e5a08e4dcfce34d06c841cff37fdb76649f4dad3de970867f",
+      "input_bytes": 54019,
+      "runs": [
+        {
+          "seconds": 0.92,
+          "resident_bytes": 53690368,
+          "output_bytes": 434572
+        },
+        {
+          "seconds": 0.92,
+          "resident_bytes": 53657600,
+          "output_bytes": 434572
+        },
+        {
+          "seconds": 0.91,
+          "resident_bytes": 53657600,
+          "output_bytes": 434572
+        }
+      ],
+      "maximum_rgb_error": 0,
+      "median_seconds": 0.92,
+      "median_resident_bytes": 53657600
+    }
+  ],
+  "scope": "Three complete conversions per case. Original 640 by 360 animation with irregular delays. RSS can include a child helper's peak; it is not aggregate simultaneous process memory. GUI excluded."
+}

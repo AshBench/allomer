@@ -1,0 +1,517 @@
+{
+  "source_sha256": "183359c32ae3f083172c6572c35015956e143afc9379fd563ccc66e2e0b22efd",
+  "command_sha256": "bab89c0e790872fa90a848f732e531de3932dec73118a329fc228ba1281d29f1",
+  "helper_sha256": "7e224546422d8b31a7324d1177a1230320751a70aa3a36826e6c437e3ad0e8a9",
+  "scope": "One diagnostic run. Sum of resident sizes for the command, its observed descendants, and WebKit processes absent from a pre-run snapshot. WebKit ownership is inferred from start time, not independently verified. Pre-existing shared services are excluded. Shared physical pages can be counted more than once. Samples can miss short peaks. Run without other WebKit activity. Sampling overhead makes elapsed times unsuitable for speed comparisons.",
+  "peak_observed_resident_bytes": 493748224,
+  "peak_sample": {
+    "elapsed_seconds": 2.188,
+    "resident_bytes": 493748224,
+    "processes": {
+      "61891": {
+        "parent": 61204,
+        "resident_bytes": 27049984,
+        "name": "<checkout>/dist/preview/Allomer.app/Contents/MacOS/allomer"
+      },
+      "61895": {
+        "parent": 61891,
+        "resident_bytes": 128303104,
+        "name": "<checkout>/dist/preview/Allomer.app/Contents/Helpers/webconvert"
+      },
+      "61897": {
+        "parent": 1,
+        "resident_bytes": 17432576,
+        "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.GPU.xpc/Contents/MacOS/com.apple.WebKit.GPU"
+      },
+      "61898": {
+        "parent": 1,
+        "resident_bytes": 24018944,
+        "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/Contents/MacOS/com.apple.WebKit.Networking"
+      },
+      "61899": {
+        "parent": 1,
+        "resident_bytes": 296943616,
+        "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent"
+      }
+    }
+  },
+  "samples": [
+    {
+      "elapsed_seconds": 0.038,
+      "resident_bytes": 589824,
+      "processes": {
+        "61891": {
+          "parent": 61204,
+          "resident_bytes": 589824,
+          "name": "<checkout>/dist/preview/Allomer.app/Contents/MacOS/allomer"
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 0.18,
+      "resident_bytes": 41058304,
+      "processes": {
+        "61891": {
+          "parent": 61204,
+          "resident_bytes": 27099136,
+          "name": "<checkout>/dist/preview/Allomer.app/Contents/MacOS/allomer"
+        },
+        "61895": {
+          "parent": 61891,
+          "resident_bytes": 13959168,
+          "name": "<checkout>/dist/preview/Allomer.app/Contents/Helpers/webconvert"
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 0.322,
+      "resident_bytes": 143933440,
+      "processes": {
+        "61891": {
+          "parent": 61204,
+          "resident_bytes": 27049984,
+          "name": "<checkout>/dist/preview/Allomer.app/Contents/MacOS/allomer"
+        },
+        "61895": {
+          "parent": 61891,
+          "resident_bytes": 65093632,
+          "name": "<checkout>/dist/preview/Allomer.app/Contents/Helpers/webconvert"
+        },
+        "61897": {
+          "parent": 1,
+          "resident_bytes": 14745600,
+          "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.GPU.xpc/Contents/MacOS/com.apple.WebKit.GPU"
+        },
+        "61898": {
+          "parent": 1,
+          "resident_bytes": 13484032,
+          "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/Contents/MacOS/com.apple.WebKit.Networking"
+        },
+        "61899": {
+          "parent": 1,
+          "resident_bytes": 23560192,
+          "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent"
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 0.462,
+      "resident_bytes": 198344704,
+      "processes": {
+        "61891": {
+          "parent": 61204,
+          "resident_bytes": 27049984,
+          "name": "<checkout>/dist/preview/Allomer.app/Contents/MacOS/allomer"
+        },
+        "61895": {
+          "parent": 61891,
+          "resident_bytes": 73515008,
+          "name": "<checkout>/dist/preview/Allomer.app/Contents/Helpers/webconvert"
+        },
+        "61897": {
+          "parent": 1,
+          "resident_bytes": 17432576,
+          "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.GPU.xpc/Contents/MacOS/com.apple.WebKit.GPU"
+        },
+        "61898": {
+          "parent": 1,
+          "resident_bytes": 13598720,
+          "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/Contents/MacOS/com.apple.WebKit.Networking"
+        },
+        "61899": {
+          "parent": 1,
+          "resident_bytes": 66748416,
+          "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent"
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 0.603,
+      "resident_bytes": 250396672,
+      "processes": {
+        "61891": {
+          "parent": 61204,
+          "resident_bytes": 27049984,
+          "name": "<checkout>/dist/preview/Allomer.app/Contents/MacOS/allomer"
+        },
+        "61895": {
+          "parent": 61891,
+          "resident_bytes": 87572480,
+          "name": "<checkout>/dist/preview/Allomer.app/Contents/Helpers/webconvert"
+        },
+        "61897": {
+          "parent": 1,
+          "resident_bytes": 17432576,
+          "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.GPU.xpc/Contents/MacOS/com.apple.WebKit.GPU"
+        },
+        "61898": {
+          "parent": 1,
+          "resident_bytes": 20283392,
+          "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/Contents/MacOS/com.apple.WebKit.Networking"
+        },
+        "61899": {
+          "parent": 1,
+          "resident_bytes": 98058240,
+          "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent"
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 0.747,
+      "resident_bytes": 278970368,
+      "processes": {
+        "61891": {
+          "parent": 61204,
+          "resident_bytes": 27049984,
+          "name": "<checkout>/dist/preview/Allomer.app/Contents/MacOS/allomer"
+        },
+        "61895": {
+          "parent": 61891,
+          "resident_bytes": 89554944,
+          "name": "<checkout>/dist/preview/Allomer.app/Contents/Helpers/webconvert"
+        },
+        "61897": {
+          "parent": 1,
+          "resident_bytes": 17432576,
+          "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.GPU.xpc/Contents/MacOS/com.apple.WebKit.GPU"
+        },
+        "61898": {
+          "parent": 1,
+          "resident_bytes": 23969792,
+          "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/Contents/MacOS/com.apple.WebKit.Networking"
+        },
+        "61899": {
+          "parent": 1,
+          "resident_bytes": 120963072,
+          "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent"
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 0.892,
+      "resident_bytes": 301694976,
+      "processes": {
+        "61891": {
+          "parent": 61204,
+          "resident_bytes": 27049984,
+          "name": "<checkout>/dist/preview/Allomer.app/Contents/MacOS/allomer"
+        },
+        "61895": {
+          "parent": 61891,
+          "resident_bytes": 92995584,
+          "name": "<checkout>/dist/preview/Allomer.app/Contents/Helpers/webconvert"
+        },
+        "61897": {
+          "parent": 1,
+          "resident_bytes": 17432576,
+          "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.GPU.xpc/Contents/MacOS/com.apple.WebKit.GPU"
+        },
+        "61898": {
+          "parent": 1,
+          "resident_bytes": 23986176,
+          "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/Contents/MacOS/com.apple.WebKit.Networking"
+        },
+        "61899": {
+          "parent": 1,
+          "resident_bytes": 140230656,
+          "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent"
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 1.037,
+      "resident_bytes": 327647232,
+      "processes": {
+        "61891": {
+          "parent": 61204,
+          "resident_bytes": 27049984,
+          "name": "<checkout>/dist/preview/Allomer.app/Contents/MacOS/allomer"
+        },
+        "61895": {
+          "parent": 61891,
+          "resident_bytes": 96452608,
+          "name": "<checkout>/dist/preview/Allomer.app/Contents/Helpers/webconvert"
+        },
+        "61897": {
+          "parent": 1,
+          "resident_bytes": 17432576,
+          "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.GPU.xpc/Contents/MacOS/com.apple.WebKit.GPU"
+        },
+        "61898": {
+          "parent": 1,
+          "resident_bytes": 23986176,
+          "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/Contents/MacOS/com.apple.WebKit.Networking"
+        },
+        "61899": {
+          "parent": 1,
+          "resident_bytes": 162725888,
+          "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent"
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 1.178,
+      "resident_bytes": 353697792,
+      "processes": {
+        "61891": {
+          "parent": 61204,
+          "resident_bytes": 27049984,
+          "name": "<checkout>/dist/preview/Allomer.app/Contents/MacOS/allomer"
+        },
+        "61895": {
+          "parent": 61891,
+          "resident_bytes": 99893248,
+          "name": "<checkout>/dist/preview/Allomer.app/Contents/Helpers/webconvert"
+        },
+        "61897": {
+          "parent": 1,
+          "resident_bytes": 17432576,
+          "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.GPU.xpc/Contents/MacOS/com.apple.WebKit.GPU"
+        },
+        "61898": {
+          "parent": 1,
+          "resident_bytes": 24002560,
+          "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/Contents/MacOS/com.apple.WebKit.Networking"
+        },
+        "61899": {
+          "parent": 1,
+          "resident_bytes": 185319424,
+          "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent"
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 1.321,
+      "resident_bytes": 374882304,
+      "processes": {
+        "61891": {
+          "parent": 61204,
+          "resident_bytes": 27049984,
+          "name": "<checkout>/dist/preview/Allomer.app/Contents/MacOS/allomer"
+        },
+        "61895": {
+          "parent": 61891,
+          "resident_bytes": 103366656,
+          "name": "<checkout>/dist/preview/Allomer.app/Contents/Helpers/webconvert"
+        },
+        "61897": {
+          "parent": 1,
+          "resident_bytes": 17432576,
+          "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.GPU.xpc/Contents/MacOS/com.apple.WebKit.GPU"
+        },
+        "61898": {
+          "parent": 1,
+          "resident_bytes": 24002560,
+          "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/Contents/MacOS/com.apple.WebKit.Networking"
+        },
+        "61899": {
+          "parent": 1,
+          "resident_bytes": 203030528,
+          "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent"
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 1.467,
+      "resident_bytes": 394330112,
+      "processes": {
+        "61891": {
+          "parent": 61204,
+          "resident_bytes": 27049984,
+          "name": "<checkout>/dist/preview/Allomer.app/Contents/MacOS/allomer"
+        },
+        "61895": {
+          "parent": 61891,
+          "resident_bytes": 106823680,
+          "name": "<checkout>/dist/preview/Allomer.app/Contents/Helpers/webconvert"
+        },
+        "61897": {
+          "parent": 1,
+          "resident_bytes": 17432576,
+          "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.GPU.xpc/Contents/MacOS/com.apple.WebKit.GPU"
+        },
+        "61898": {
+          "parent": 1,
+          "resident_bytes": 24002560,
+          "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/Contents/MacOS/com.apple.WebKit.Networking"
+        },
+        "61899": {
+          "parent": 1,
+          "resident_bytes": 219021312,
+          "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent"
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 1.612,
+      "resident_bytes": 415465472,
+      "processes": {
+        "61891": {
+          "parent": 61204,
+          "resident_bytes": 27049984,
+          "name": "<checkout>/dist/preview/Allomer.app/Contents/MacOS/allomer"
+        },
+        "61895": {
+          "parent": 61891,
+          "resident_bytes": 112164864,
+          "name": "<checkout>/dist/preview/Allomer.app/Contents/Helpers/webconvert"
+        },
+        "61897": {
+          "parent": 1,
+          "resident_bytes": 17432576,
+          "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.GPU.xpc/Contents/MacOS/com.apple.WebKit.GPU"
+        },
+        "61898": {
+          "parent": 1,
+          "resident_bytes": 24002560,
+          "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/Contents/MacOS/com.apple.WebKit.Networking"
+        },
+        "61899": {
+          "parent": 1,
+          "resident_bytes": 234815488,
+          "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent"
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 1.755,
+      "resident_bytes": 435896320,
+      "processes": {
+        "61891": {
+          "parent": 61204,
+          "resident_bytes": 27049984,
+          "name": "<checkout>/dist/preview/Allomer.app/Contents/MacOS/allomer"
+        },
+        "61895": {
+          "parent": 61891,
+          "resident_bytes": 115785728,
+          "name": "<checkout>/dist/preview/Allomer.app/Contents/Helpers/webconvert"
+        },
+        "61897": {
+          "parent": 1,
+          "resident_bytes": 17432576,
+          "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.GPU.xpc/Contents/MacOS/com.apple.WebKit.GPU"
+        },
+        "61898": {
+          "parent": 1,
+          "resident_bytes": 24002560,
+          "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/Contents/MacOS/com.apple.WebKit.Networking"
+        },
+        "61899": {
+          "parent": 1,
+          "resident_bytes": 251625472,
+          "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent"
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 1.901,
+      "resident_bytes": 457539584,
+      "processes": {
+        "61891": {
+          "parent": 61204,
+          "resident_bytes": 27049984,
+          "name": "<checkout>/dist/preview/Allomer.app/Contents/MacOS/allomer"
+        },
+        "61895": {
+          "parent": 61891,
+          "resident_bytes": 119242752,
+          "name": "<checkout>/dist/preview/Allomer.app/Contents/Helpers/webconvert"
+        },
+        "61897": {
+          "parent": 1,
+          "resident_bytes": 17432576,
+          "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.GPU.xpc/Contents/MacOS/com.apple.WebKit.GPU"
+        },
+        "61898": {
+          "parent": 1,
+          "resident_bytes": 24002560,
+          "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/Contents/MacOS/com.apple.WebKit.Networking"
+        },
+        "61899": {
+          "parent": 1,
+          "resident_bytes": 269811712,
+          "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent"
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 2.046,
+      "resident_bytes": 479133696,
+      "processes": {
+        "61891": {
+          "parent": 61204,
+          "resident_bytes": 27049984,
+          "name": "<checkout>/dist/preview/Allomer.app/Contents/MacOS/allomer"
+        },
+        "61895": {
+          "parent": 61891,
+          "resident_bytes": 124649472,
+          "name": "<checkout>/dist/preview/Allomer.app/Contents/Helpers/webconvert"
+        },
+        "61897": {
+          "parent": 1,
+          "resident_bytes": 17432576,
+          "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.GPU.xpc/Contents/MacOS/com.apple.WebKit.GPU"
+        },
+        "61898": {
+          "parent": 1,
+          "resident_bytes": 24018944,
+          "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/Contents/MacOS/com.apple.WebKit.Networking"
+        },
+        "61899": {
+          "parent": 1,
+          "resident_bytes": 285982720,
+          "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent"
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 2.188,
+      "resident_bytes": 493748224,
+      "processes": {
+        "61891": {
+          "parent": 61204,
+          "resident_bytes": 27049984,
+          "name": "<checkout>/dist/preview/Allomer.app/Contents/MacOS/allomer"
+        },
+        "61895": {
+          "parent": 61891,
+          "resident_bytes": 128303104,
+          "name": "<checkout>/dist/preview/Allomer.app/Contents/Helpers/webconvert"
+        },
+        "61897": {
+          "parent": 1,
+          "resident_bytes": 17432576,
+          "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.GPU.xpc/Contents/MacOS/com.apple.WebKit.GPU"
+        },
+        "61898": {
+          "parent": 1,
+          "resident_bytes": 24018944,
+          "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/Contents/MacOS/com.apple.WebKit.Networking"
+        },
+        "61899": {
+          "parent": 1,
+          "resident_bytes": 296943616,
+          "name": "/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent"
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 2.342,
+      "resident_bytes": 27049984,
+      "processes": {
+        "61891": {
+          "parent": 61204,
+          "resident_bytes": 27049984,
+          "name": "(allomer)"
+        },
+        "61895": {
+          "parent": 61891,
+          "resident_bytes": 0,
+          "name": "(webconvert)"
+        }
+      }
+    }
+  ]
+}

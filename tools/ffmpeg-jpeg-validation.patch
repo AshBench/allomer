@@ -1,0 +1,14 @@
+--- a/libavcodec/mjpegdec.c
++++ b/libavcodec/mjpegdec.c
+@@ -2622,7 +2622,11 @@
+                "marker parser used %d bytes\n",
+                bytestream2_tell(&s->gB));
+     }
+     if (s->got_picture && s->cur_scan) {
++        if (avctx->err_recognition & AV_EF_EXPLODE) {
++            av_log(avctx, AV_LOG_ERROR, "JPEG end marker is missing\n");
++            return AVERROR_INVALIDDATA;
++        }
+         av_log(avctx, AV_LOG_WARNING, "EOI missing, emulating\n");
+         goto eoi_parser;
+     }

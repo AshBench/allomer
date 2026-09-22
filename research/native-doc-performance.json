@@ -1,0 +1,31 @@
+{
+  "recorded_at_utc": "2026-09-09T13:21:32.048919+00:00",
+  "macos": "26.6.2",
+  "command_sha256": "b8d24fcd6e9a5386503ce664c6e7401628488b7b4c19672f0615318579a3c7be",
+  "helper_sha256": "226a206c66ca06e16cfa451f3d19e3cf07c813f5752afb7aac64cc5b76e4f4a1",
+  "reader_sha256": "c326573c7835a9c58f4fa531d3dd31422f7fa6c09fc450da4757f8b84ad2a5fb",
+  "input_bytes": 1550000,
+  "input_sha256": "667a22c94477127436abcf48d53416212b9ad711ce4f275a375fede305ebcb76",
+  "paragraphs": 25000,
+  "runs": [
+    {
+      "seconds": 0.22,
+      "resident_bytes": 40894464,
+      "output_bytes": 3091968
+    },
+    {
+      "seconds": 0.22,
+      "resident_bytes": 40681472,
+      "output_bytes": 3091968
+    },
+    {
+      "seconds": 0.22,
+      "resident_bytes": 40681472,
+      "output_bytes": 3091968
+    }
+  ],
+  "median_seconds": 0.22,
+  "median_resident_bytes": 40681472,
+  "scope": "Three complete TXT-to-DOC conversions of one original workload. Includes native input reading and DOC writing, declared text checks, container rebuilding, and publication. Input hashing warms the cache. Python and independent reader work are excluded. RSS is per-process high-water memory, not aggregate simultaneous app/helper/service memory. GUI memory is excluded.",
+  "container_checker_sha256": "a6e4d099e8b7ac8ecdf8c2563b21d1fc0b01cd01c35fc76972e5ca9eca7cc89a"
+}

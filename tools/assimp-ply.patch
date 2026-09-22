@@ -1,0 +1,34 @@
+--- a/code/AssetLib/Ply/PlyExporter.cpp
++++ b/code/AssetLib/Ply/PlyExporter.cpp
+@@ -162,5 +162,11 @@
+     // and texture coordinates).
+     for (unsigned int n = PLY_EXPORT_HAS_TEXCOORDS, c = 0; (components & n) && c != AI_MAX_NUMBER_OF_TEXTURECOORDS; n <<= 1, ++c) {
++        const std::string suffix = c ? std::to_string(c) : "";
++        mOutput << "property " << typeName << " s" << suffix << endl;
++        mOutput << "property " << typeName << " t" << suffix << endl;
++    }
++
++    for (unsigned int n = PLY_EXPORT_HAS_COLORS, c = 0; (components & n) && c != AI_MAX_NUMBER_OF_COLOR_SETS; n <<= 1, ++c) {
+         if (!c) {
+             mOutput << "property " << "uchar" << " red" << endl;
+             mOutput << "property " << "uchar" << " green" << endl;
+@@ -241,10 +247,5 @@
+             if (m->HasTextureCoords(c)) {
+-                if (m->mNumUVComponents[c] == 3) {
+-                    mOutput <<
+-                        " " << m->mTextureCoords[c][i].x <<
+-                        " " << m->mTextureCoords[c][i].y <<
+-                        " " << m->mTextureCoords[c][i].z;
+-                } else if (m->mNumUVComponents[c] == 2) {
++                if (m->mNumUVComponents[c] == 2 || m->mNumUVComponents[c] == 3) {
+                     mOutput <<
+                         " " << m->mTextureCoords[c][i].x <<
+                         " " << m->mTextureCoords[c][i].y;
+@@ -264,6 +265,6 @@
+                     " " << (int)(m->mColors[c][i].b * 255) <<
+                     " " << (int)(m->mColors[c][i].a * 255);
+             } else {
+-                mOutput << " 0 0 0";
++                mOutput << " 0 0 0 0";
+             }
+         }

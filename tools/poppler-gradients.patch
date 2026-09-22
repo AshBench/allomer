@@ -1,0 +1,128 @@
+--- a/poppler/PSOutputDev.cc
++++ b/poppler/PSOutputDev.cc
+@@ -60,6 +60,8 @@
+ #include <algorithm>
+ #include <array>
+ #include <numbers>
++#include <iomanip>
++#include <sstream>
+ #include "goo/GooString.h"
+ #include "poppler-config.h"
+ #include "GlobalParams.h"
+@@ -4400,8 +4402,96 @@
+     return true;
+ }
+ 
++// Local changes, 2026-09-08: use Level 3 gradients without seams between small polygon fills.
++static std::optional<std::string> nativeGradientFunction(const Function *function, int &remaining, int depth = 0)
++{
++    if (--remaining < 0 || depth > 8 || function->getInputSize() != 1) {
++        return {};
++    }
++    std::ostringstream out;
++    out << std::setprecision(17) << "<< /Domain [" << function->getDomainMin(0) << ' ' << function->getDomainMax(0) << "] ";
++    if (function->getType() == Function::Type::Exponential) {
++        const auto *exponential = static_cast<const ExponentialFunction *>(function);
++        out << "/FunctionType 2 /N " << exponential->getE() << " /C0 [";
++        for (int i = 0; i < function->getOutputSize(); ++i) {
++            out << exponential->getC0()[i] << ' ';
++        }
++        out << "] /C1 [";
++        for (int i = 0; i < function->getOutputSize(); ++i) {
++            out << exponential->getC1()[i] << ' ';
++        }
++        out << "] ";
++    } else if (function->getType() == Function::Type::Stitching) {
++        const auto *stitching = static_cast<const StitchingFunction *>(function);
++        out << "/FunctionType 3 /Functions [";
++        for (int i = 0; i < stitching->getNumFuncs(); ++i) {
++            const auto child = nativeGradientFunction(stitching->getFunc(i), remaining, depth + 1);
++            if (!child) {
++                return {};
++            }
++            out << *child << ' ';
++        }
++        out << "] /Bounds [";
++        for (int i = 1; i < stitching->getNumFuncs(); ++i) {
++            out << stitching->getBounds()[i] << ' ';
++        }
++        out << "] /Encode [";
++        for (int i = 0; i < 2 * stitching->getNumFuncs(); ++i) {
++            out << stitching->getEncode()[i] << ' ';
++        }
++        out << "] ";
++    } else {
++        return {};
++    }
++    if (function->getHasRange()) {
++        out << "/Range [";
++        for (int i = 0; i < function->getOutputSize(); ++i) {
++            out << function->getRangeMin(i) << ' ' << function->getRangeMax(i) << ' ';
++        }
++        out << "] ";
++    }
++    out << ">>";
++    return out.str();
++}
++
++bool PSOutputDev::nativeGradient(GfxState *state, GfxUnivariateShading *shading)
++{
++    if (level != psLevel3) {
++        return false;
++    }
++    std::string functions;
++    int remaining = 4096;
++    for (int i = 0; i < shading->getNFuncs(); ++i) {
++        const auto function = nativeGradientFunction(shading->getFunc(i), remaining);
++        if (!function) {
++            return false;
++        }
++        functions += *function + ' ';
++    }
++    writePSFmt("<< /ShadingType {0:d} /ColorSpace ", static_cast<int>(shading->getType()));
++    dumpColorSpaceL2(state, shading->getColorSpace(), false, false, false);
++    double x0, y0, x1, y1, r0, r1;
++    if (shading->getType() == GfxShading::AxialShading) {
++        static_cast<GfxAxialShading *>(shading)->getCoords(&x0, &y0, &x1, &y1);
++        writePSFmt(" /Coords [{0:.10g} {1:.10g} {2:.10g} {3:.10g}]", x0, y0, x1, y1);
++    } else {
++        static_cast<GfxRadialShading *>(shading)->getCoords(&x0, &y0, &r0, &x1, &y1, &r1);
++        writePSFmt(" /Coords [{0:.10g} {1:.10g} {2:.10g} {3:.10g} {4:.10g} {5:.10g}]", x0, y0, r0, x1, y1, r1);
++    }
++    writePSFmt(" /Domain [{0:.10g} {1:.10g}] /Extend [{2:s} {3:s}] /Function ", shading->getDomain0(), shading->getDomain1(), shading->getExtend0() ? "true" : "false", shading->getExtend1() ? "true" : "false");
++    if (shading->getNFuncs() > 1) {
++        functions = "[" + functions + "]";
++    }
++    writePS(functions.c_str());
++    writePS(" >> shfill\n");
++    return true;
++}
++
+ bool PSOutputDev::axialShadedFill(GfxState *state, GfxAxialShading *shading, double /*tMin*/, double /*tMax*/)
+ {
++    if (nativeGradient(state, shading)) {
++        return true;
++    }
+     double xMin, yMin, xMax, yMax;
+     double x0, y0, x1, y1, dx, dy, mul;
+     double tMin, tMax, t, t0, t1;
+@@ -4496,6 +4586,9 @@
+ 
+ bool PSOutputDev::radialShadedFill(GfxState *state, GfxRadialShading *shading, double /*sMin*/, double /*sMax*/)
+ {
++    if (nativeGradient(state, shading)) {
++        return true;
++    }
+     double xMin, yMin, xMax, yMax;
+     double x0, y0, r0, x1, y1, r1, t0, t1;
+     double xa, ya, ra;
+--- a/poppler/PSOutputDev.h
++++ b/poppler/PSOutputDev.h
+@@ -397,6 +397,7 @@
+     void opiBegin13(GfxState *state, const Dict &dict);
+     void opiTransform(GfxState *state, double x0, double y0, double *x1, double *y1) const;
+     void cvtFunction(const Function *func, bool invertPSFunction = false);
++    bool nativeGradient(GfxState *state, GfxUnivariateShading *shading);
+     static std::string filterPSName(const std::string &name);
+ 
+     // Write the document-level setup.

@@ -1,0 +1,199 @@
+{
+  "generated": "2026-09-20T04:53:23.920140+00:00",
+  "machine": "arm64",
+  "command": "dist/preview/Allomer.app/Contents/MacOS/allomer",
+  "command_sha256": "3ea4dc7c3a47dd7c251cb2ef8d9b7aa58c378813c1891a865bd98b51d6836410",
+  "fixtures": {
+    "AdobeVFPrototype.otf": {
+      "url": "https://github.com/adobe-fonts/adobe-variable-font-prototype/releases/download/1.004/AdobeVFPrototype.otf",
+      "sha256": "f7dc16e1ae8ed7de13e186fd20b9c254c1a0209724d30e2686874df64fa41e35"
+    },
+    "AdobeVFPrototype.ttf": {
+      "url": "https://github.com/adobe-fonts/adobe-variable-font-prototype/releases/download/1.004/AdobeVFPrototype.ttf",
+      "sha256": "a4b42a574f42232d321667141bef98b34b01a96597fbc0dcd33802d51f27c447"
+    },
+    "Roboto-Regular.ttf": {
+      "url": "https://raw.githubusercontent.com/googlefonts/roboto-2/eaef3058ec9d4f426c013b29fae53345e1c36f67/src/hinted/Roboto-Regular.ttf",
+      "sha256": "56a45233d29f11b4dfb86d248e921939d115778f87325e7ae8cc108383d6664d"
+    },
+    "Roboto-LICENSE.txt": {
+      "url": "https://raw.githubusercontent.com/googlefonts/roboto-2/eaef3058ec9d4f426c013b29fae53345e1c36f67/LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    }
+  },
+  "fixture_license": {
+    "url": "https://raw.githubusercontent.com/adobe-fonts/adobe-variable-font-prototype/1.004/LICENSE.md",
+    "sha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2"
+  },
+  "fonttools": "4.62.1",
+  "conversions": [
+    {
+      "source": "AdobeVFPrototype.otf",
+      "target": "ttf",
+      "bytes": 76752,
+      "max_bound_delta": 0.0,
+      "sha256": "014bd2d00f0e24935d659f6cff19878928841d944ff4b185653747791b9a8e72"
+    },
+    {
+      "source": "AdobeVFPrototype.otf",
+      "target": "otf",
+      "bytes": 61576,
+      "max_bound_delta": 0.0,
+      "sha256": "34a556082e7b57da40a6e7e12396c92ee431db78ed840d2c56cfe46ce7eae74a"
+    },
+    {
+      "source": "AdobeVFPrototype.otf",
+      "target": "woff",
+      "bytes": 30036,
+      "max_bound_delta": 0.0,
+      "sha256": "e28874d81577e512598d09aa5e94b867ad0ea5ab50a2f01c538638bec84d7aee"
+    },
+    {
+      "source": "AdobeVFPrototype.otf",
+      "target": "woff2",
+      "bytes": 22180,
+      "max_bound_delta": 0.0,
+      "sha256": "62fea460fd86f51e74dc1dba70637f29baca2c044eccc020a56cb243924b05ee"
+    },
+    {
+      "source": "AdobeVFPrototype.ttf",
+      "target": "ttf",
+      "bytes": 66728,
+      "max_bound_delta": 0.0,
+      "sha256": "d0b706a007cec3b891f10b3a2375b7f8ca9f319ec0985d747a88ad879c19b500"
+    },
+    {
+      "source": "AdobeVFPrototype.ttf",
+      "target": "otf",
+      "bytes": 88584,
+      "max_bound_delta": 0.0,
+      "sha256": "8aee194c302548693ad34716ca2037e0bf65632e602ba1aa57c9b0fc2ee1e25d"
+    },
+    {
+      "source": "AdobeVFPrototype.ttf",
+      "target": "woff",
+      "bytes": 26844,
+      "max_bound_delta": 0.0,
+      "sha256": "d5f34a7c3e3fb5e27e614ab414fd81d0f0c79c653b258f915ada37837a091b8a"
+    },
+    {
+      "source": "AdobeVFPrototype.ttf",
+      "target": "woff2",
+      "bytes": 21036,
+      "max_bound_delta": 0.0,
+      "sha256": "53b4b433e9103e906c7064af328bdd255a863f3029dfb17d86859b8d9dd75c1d"
+    },
+    {
+      "source": "Roboto-Regular.ttf",
+      "target": "ttf",
+      "bytes": 507564,
+      "max_bound_delta": 0.0,
+      "sha256": "0c0a9939686cf25e875cfa08137ba9381bfd95e2ac4b9213620e8c8720eaf289"
+    },
+    {
+      "source": "Roboto-Regular.ttf",
+      "target": "otf",
+      "bytes": 534488,
+      "max_bound_delta": 0.39794921875,
+      "sha256": "10c52615715123dbfbc3b552ed8092a77a21a2c5a905dc4f1a04be7b92509319"
+    },
+    {
+      "source": "Roboto-Regular.ttf",
+      "target": "woff",
+      "bytes": 257596,
+      "max_bound_delta": 0.0,
+      "sha256": "7f45db447c382d76826e39b786d48817499d7674d0fd4ba627a6116bf2f75579"
+    },
+    {
+      "source": "Roboto-Regular.ttf",
+      "target": "woff2",
+      "bytes": 176616,
+      "max_bound_delta": 0.0,
+      "sha256": "b4e94b6ceb770b234844927086dd738961cb7994cc386b334aa718757173e327"
+    },
+    {
+      "source": "font-values.ttf",
+      "target": "ttf",
+      "bytes": 1948,
+      "max_bound_delta": 0.0,
+      "sha256": "2dc560086af83251035cf4395a4ce0ead2df3bbbafa461db96107f11415fc413"
+    },
+    {
+      "source": "font-values.ttf",
+      "target": "otf",
+      "bytes": 2052,
+      "max_bound_delta": 0.21331521739125492,
+      "sha256": "e64bd0bddb0f3e43d87c7d6139bd5372ed307eec0b930c48398c59bd14ab4e65"
+    },
+    {
+      "source": "font-values.ttf",
+      "target": "woff",
+      "bytes": 1344,
+      "max_bound_delta": 0.0,
+      "sha256": "d1dc6ec715bac9a5d4875f58b910f1b77149e55a70b72fa61ea2188bce2b027b"
+    },
+    {
+      "source": "font-values.ttf",
+      "target": "woff2",
+      "bytes": 792,
+      "max_bound_delta": 0.0,
+      "sha256": "5d6049896c537b8824d24420e2ca9cfed9becfd5ee7ec530e69c9412cd63f5fb"
+    },
+    {
+      "source": "font-values.otf",
+      "target": "ttf",
+      "bytes": 1940,
+      "max_bound_delta": 0.02391931575562012,
+      "sha256": "3ec4b559b7295b95d76641515bc4ab26ad7e9a2a2177828bee3855228d3c179b"
+    },
+    {
+      "source": "font-values.otf",
+      "target": "otf",
+      "bytes": 1800,
+      "max_bound_delta": 0.0,
+      "sha256": "4cea91029bb03cafec661cced9c07d01f7d7d710fb6d20406e7f9c080a1b0343"
+    },
+    {
+      "source": "font-values.otf",
+      "target": "woff",
+      "bytes": 1224,
+      "max_bound_delta": 0.02391931575562012,
+      "sha256": "0d03936be2214e6252975090799182fda39aa45d90a675cd505e91d79f4e0e7e"
+    },
+    {
+      "source": "font-values.otf",
+      "target": "woff2",
+      "bytes": 776,
+      "max_bound_delta": 0.02391931575562012,
+      "sha256": "ae6d71406156b6da2f015f16a32d6cebc0956da90b3fe8fdc26c205e2eb6d56a"
+    },
+    {
+      "source": "foreign.woff",
+      "target": "ttf",
+      "bytes": 76752,
+      "max_bound_delta": 0.0,
+      "sha256": "e36cbd345851994884d3b2e609b2b864863e43a56b53e1fd34b04b5506b3336e"
+    },
+    {
+      "source": "foreign.woff",
+      "target": "otf",
+      "bytes": 61576,
+      "max_bound_delta": 0.0,
+      "sha256": "0f4159920c699b115d61e848d14f098da6310e34d22a21ee8f700fe094df339f"
+    },
+    {
+      "source": "foreign.woff2",
+      "target": "ttf",
+      "bytes": 76752,
+      "max_bound_delta": 0.0,
+      "sha256": "5ef4473f6d70bc7c52674fd20e1b31e68a9491e8f6b8fa981cbe42ed6884b9ac"
+    },
+    {
+      "source": "foreign.woff2",
+      "target": "otf",
+      "bytes": 61576,
+      "max_bound_delta": 0.0,
+      "sha256": "0aadf89373cc8bdefa9ab25dbe6792a422357d4b532ce2d7c34390bbb1421aa4"
+    }
+  ]
+}

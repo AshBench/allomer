@@ -1,0 +1,20 @@
+--- a/source/tools/mutool.c
++++ b/source/tools/mutool.c
+@@ -35,6 +35,8 @@
+ #define main main_utf8
+ #endif
+ 
++int pdfoverlay_main(int argc, char *argv[]);
++int pdfjpegcheck_main(int argc, char *argv[]);
+ int muconvert_main(int argc, char *argv[]);
+ int mudraw_main(int argc, char *argv[]);
+ int mutrace_main(int argc, char *argv[]);
+@@ -74,6 +76,8 @@
+ 	{ mudraw_main, "draw", "convert document" },
+ 	{ muconvert_main, "convert", "convert document (with simpler options)" },
+ #if FZ_ENABLE_PDF
++	{ pdfoverlay_main, "overlay", "add an existing PDF text layer" },
++	{ pdfjpegcheck_main, "jpegcheck", "check a JPEG without repairing damaged data" },
+ 	{ pdfaudit_main, "audit", "produce usage stats from PDF files" },
+ 	{ pdfbake_main, "bake", "bake PDF form into static content" },
+ 	{ pdfclean_main, "clean", "rewrite PDF file" },

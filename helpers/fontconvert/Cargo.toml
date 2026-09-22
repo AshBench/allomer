@@ -1,0 +1,21 @@
+[package]
+name = "fontconvert"
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+publish = false
+
+[dependencies]
+kurbo = "=0.13.1"
+miniz_oxide = "=0.9.1"
+read-fonts = "=0.44.0"
+skrifa = "=0.47.0"
+write-fonts = "=0.53.0"
+
+[build-dependencies]
+cc = "=1.4.7"
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true

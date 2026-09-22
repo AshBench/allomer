@@ -1,0 +1,68 @@
+{
+  "recorded_at_utc": "2026-09-09T09:18:55.661516+00:00",
+  "macos": "26.6.2",
+  "chip": "Apple M2 Max",
+  "command_sha256": "126d83e0c40ce2fdc2dddb887cfb4ad9cfbabfac9fc2284777ee982f30c37f8e",
+  "pillow": "12.3.0",
+  "cases": [
+    {
+      "camera": "Canon EOS 7D",
+      "file": "eos-7d.cr2",
+      "input_sha256": "b5e47c5fcf7332ac03e0134926f17a338a42e68c1fd7f83e16f45f4b767544e8",
+      "pixels": [
+        5184,
+        3456
+      ],
+      "output": "png",
+      "runs": [
+        {
+          "seconds": 16.78,
+          "resident_bytes": 309837824,
+          "output_bytes": 69123738
+        },
+        {
+          "seconds": 16.88,
+          "resident_bytes": 310509568,
+          "output_bytes": 69123738
+        },
+        {
+          "seconds": 16.97,
+          "resident_bytes": 310706176,
+          "output_bytes": 69123738
+        }
+      ],
+      "median_seconds": 16.88,
+      "median_resident_bytes": 310509568
+    },
+    {
+      "camera": "Canon EOS 7D",
+      "file": "eos-7d.cr2",
+      "input_sha256": "b5e47c5fcf7332ac03e0134926f17a338a42e68c1fd7f83e16f45f4b767544e8",
+      "pixels": [
+        5184,
+        3456
+      ],
+      "output": "jpg",
+      "runs": [
+        {
+          "seconds": 0.73,
+          "resident_bytes": 308264960,
+          "output_bytes": 3781578
+        },
+        {
+          "seconds": 0.77,
+          "resident_bytes": 308674560,
+          "output_bytes": 3781578
+        },
+        {
+          "seconds": 0.7,
+          "resident_bytes": 309788672,
+          "output_bytes": 3781578
+        }
+      ],
+      "median_seconds": 0.73,
+      "median_resident_bytes": 308674560
+    }
+  ],
+  "scope": "Complete command conversions of pinned CC0 camera samples. Includes native RAW decoding, output encoding, validation, and publication. PNG also includes recompression. Fixture integrity reads warm cache. Python image checks and GUI are excluded. RSS is per-process high-water memory, not aggregate simultaneous memory. One run is a check, not a stable performance estimate. Camera support depends on macOS."
+}

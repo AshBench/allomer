@@ -1,0 +1,285 @@
+{
+  "encoder_sha256": "646e1cf2f620849f39d00ae69c2c8c753f41c5e8292a3e8a9823c9e997892de4",
+  "cases": [
+    {
+      "kind": "noise",
+      "width": 1000,
+      "height": 1000,
+      "effort": 2,
+      "input_sha256": "fd85a0a966668706ed8b25a6f2fe61fbc9661adb257f7faf94d28ba9e4601946",
+      "runs": [
+        {
+          "seconds": 0.07,
+          "resident_bytes": 68698112,
+          "output_bytes": 3329168
+        },
+        {
+          "seconds": 0.06,
+          "resident_bytes": 68632576,
+          "output_bytes": 3329168
+        },
+        {
+          "seconds": 0.06,
+          "resident_bytes": 67616768,
+          "output_bytes": 3329168
+        }
+      ],
+      "median_seconds": 0.06,
+      "median_resident_bytes": 68632576
+    },
+    {
+      "kind": "noise",
+      "width": 1000,
+      "height": 1000,
+      "effort": 3,
+      "input_sha256": "fd85a0a966668706ed8b25a6f2fe61fbc9661adb257f7faf94d28ba9e4601946",
+      "runs": [
+        {
+          "seconds": 0.11,
+          "resident_bytes": 68780032,
+          "output_bytes": 3316332
+        },
+        {
+          "seconds": 0.11,
+          "resident_bytes": 70680576,
+          "output_bytes": 3316332
+        },
+        {
+          "seconds": 0.11,
+          "resident_bytes": 69566464,
+          "output_bytes": 3316332
+        }
+      ],
+      "median_seconds": 0.11,
+      "median_resident_bytes": 69566464
+    },
+    {
+      "kind": "noise",
+      "width": 1000,
+      "height": 1000,
+      "effort": 4,
+      "input_sha256": "fd85a0a966668706ed8b25a6f2fe61fbc9661adb257f7faf94d28ba9e4601946",
+      "runs": [
+        {
+          "seconds": 0.21,
+          "resident_bytes": 71270400,
+          "output_bytes": 3271208
+        },
+        {
+          "seconds": 0.21,
+          "resident_bytes": 70516736,
+          "output_bytes": 3271208
+        },
+        {
+          "seconds": 0.21,
+          "resident_bytes": 70123520,
+          "output_bytes": 3271208
+        }
+      ],
+      "median_seconds": 0.21,
+      "median_resident_bytes": 70516736
+    },
+    {
+      "kind": "noise",
+      "width": 1000,
+      "height": 1000,
+      "effort": 7,
+      "input_sha256": "fd85a0a966668706ed8b25a6f2fe61fbc9661adb257f7faf94d28ba9e4601946",
+      "runs": [
+        {
+          "seconds": 1.85,
+          "resident_bytes": 83148800,
+          "output_bytes": 3257839
+        },
+        {
+          "seconds": 1.85,
+          "resident_bytes": 82788352,
+          "output_bytes": 3257839
+        },
+        {
+          "seconds": 1.86,
+          "resident_bytes": 81182720,
+          "output_bytes": 3257839
+        }
+      ],
+      "median_seconds": 1.85,
+      "median_resident_bytes": 82788352
+    },
+    {
+      "kind": "gradient",
+      "width": 1000,
+      "height": 1000,
+      "effort": 2,
+      "input_sha256": "36e8587c48a061d0ce5c32da3c7107876771562113f2f2c60d1d1fd8a3e926af",
+      "runs": [
+        {
+          "seconds": 0.04,
+          "resident_bytes": 58654720,
+          "output_bytes": 195017
+        },
+        {
+          "seconds": 0.04,
+          "resident_bytes": 55164928,
+          "output_bytes": 195017
+        },
+        {
+          "seconds": 0.04,
+          "resident_bytes": 60162048,
+          "output_bytes": 195017
+        }
+      ],
+      "median_seconds": 0.04,
+      "median_resident_bytes": 58654720
+    },
+    {
+      "kind": "gradient",
+      "width": 1000,
+      "height": 1000,
+      "effort": 3,
+      "input_sha256": "36e8587c48a061d0ce5c32da3c7107876771562113f2f2c60d1d1fd8a3e926af",
+      "runs": [
+        {
+          "seconds": 0.09,
+          "resident_bytes": 56541184,
+          "output_bytes": 181393
+        },
+        {
+          "seconds": 0.09,
+          "resident_bytes": 57606144,
+          "output_bytes": 181393
+        },
+        {
+          "seconds": 0.09,
+          "resident_bytes": 62636032,
+          "output_bytes": 181393
+        }
+      ],
+      "median_seconds": 0.09,
+      "median_resident_bytes": 57606144
+    },
+    {
+      "kind": "gradient",
+      "width": 1000,
+      "height": 1000,
+      "effort": 4,
+      "input_sha256": "36e8587c48a061d0ce5c32da3c7107876771562113f2f2c60d1d1fd8a3e926af",
+      "runs": [
+        {
+          "seconds": 0.19,
+          "resident_bytes": 60555264,
+          "output_bytes": 121678
+        },
+        {
+          "seconds": 0.18,
+          "resident_bytes": 60293120,
+          "output_bytes": 121678
+        },
+        {
+          "seconds": 0.18,
+          "resident_bytes": 66125824,
+          "output_bytes": 121678
+        }
+      ],
+      "median_seconds": 0.18,
+      "median_resident_bytes": 60555264
+    },
+    {
+      "kind": "gradient",
+      "width": 1000,
+      "height": 1000,
+      "effort": 7,
+      "input_sha256": "36e8587c48a061d0ce5c32da3c7107876771562113f2f2c60d1d1fd8a3e926af",
+      "runs": [
+        {
+          "seconds": 0.34,
+          "resident_bytes": 74383360,
+          "output_bytes": 36088
+        },
+        {
+          "seconds": 0.34,
+          "resident_bytes": 75382784,
+          "output_bytes": 36088
+        },
+        {
+          "seconds": 0.34,
+          "resident_bytes": 74186752,
+          "output_bytes": 36088
+        }
+      ],
+      "median_seconds": 0.34,
+      "median_resident_bytes": 74383360
+    },
+    {
+      "kind": "noise-large",
+      "width": 6000,
+      "height": 4000,
+      "effort": 3,
+      "input_sha256": "34033c5a05e0404591d30f3fb7cfcf7841ce0caf7a096bd1eae9e783dc2d71fe",
+      "runs": [
+        {
+          "seconds": 2.51,
+          "resident_bytes": 568295424,
+          "output_bytes": 79581606
+        },
+        {
+          "seconds": 2.46,
+          "resident_bytes": 513376256,
+          "output_bytes": 79581606
+        },
+        {
+          "seconds": 2.54,
+          "resident_bytes": 527515648,
+          "output_bytes": 79581606
+        }
+      ],
+      "median_seconds": 2.51,
+      "median_resident_bytes": 527515648
+    },
+    {
+      "kind": "noise-large",
+      "width": 6000,
+      "height": 4000,
+      "effort": 4,
+      "input_sha256": "34033c5a05e0404591d30f3fb7cfcf7841ce0caf7a096bd1eae9e783dc2d71fe",
+      "runs": [
+        {
+          "seconds": 4.85,
+          "resident_bytes": 525467648,
+          "output_bytes": 78496140
+        },
+        {
+          "seconds": 4.82,
+          "resident_bytes": 525189120,
+          "output_bytes": 78496140
+        },
+        {
+          "seconds": 4.89,
+          "resident_bytes": 546177024,
+          "output_bytes": 78496140
+        }
+      ],
+      "median_seconds": 4.85,
+      "median_resident_bytes": 525467648
+    }
+  ],
+  "scope": "Direct encoder, quality 100, one CPU thread. Three runs per case. No app or native validation time. Every first output decoded and compared with source RGB bytes.",
+  "fixture_description": {
+    "noise": "random.Random(6718).randbytes(width*height*3) as RGB PNG",
+    "gradient": "RGB PNG: (x*255//999, y*255//999, (x+y)*255//1998) at 1000 by 1000 pixels"
+  },
+  "flags": [
+    "--quiet",
+    "--quality=100",
+    "--effort=EFFORT",
+    "--num_threads=0",
+    "--keep_invisible=1",
+    "--alpha_distance=0",
+    "--resampling=1",
+    "--ec_resampling=1",
+    "--buffering=2",
+    "--streaming_output",
+    "--output_mode=1"
+  ],
+  "chip": "Apple M2 Max",
+  "macos": "26.6.2"
+}

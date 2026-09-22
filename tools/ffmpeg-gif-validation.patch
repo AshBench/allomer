@@ -1,0 +1,22 @@
+--- a/libavcodec/gifdec.c
++++ b/libavcodec/gifdec.c
+@@ -264,6 +264,8 @@
+     for (y = 0; y < height; y++) {
+         int count = ff_lzw_decode(s->lzw, s->idx_line, width);
+         if (count != width) {
++            if (s->avctx->err_recognition & AV_EF_EXPLODE)
++                return AVERROR_INVALIDDATA;
+             if (count)
+                 av_log(s->avctx, AV_LOG_ERROR, "LZW decode failed\n");
+             goto decode_tail;
+--- a/libavformat/gifdec.c
++++ b/libavformat/gifdec.c
+@@ -214,6 +214,8 @@
+             break;
+         }
+     }
++    if ((s->error_recognition & AV_EF_EXPLODE) && type != GIF_TRAILER)
++        return AVERROR_INVALIDDATA;
+ 
+ skip:
+     /* jump to start because gif decoder needs header data too */

@@ -1,0 +1,29 @@
+name: Feature request
+description: Suggest a focused improvement to Allomer.
+title: "[Feature] "
+labels: [enhancement]
+body:
+  - type: checkboxes
+    attributes:
+      label: Before filing
+      options:
+        - label: I searched for an existing request for this feature.
+          required: true
+  - type: textarea
+    attributes:
+      label: Problem
+      description: Describe the task that is difficult or unavailable now.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Proposed behavior
+      description: Describe what Allomer should do and give one concrete example.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Alternatives
+      description: Describe any current workaround.
+    validations:
+      required: false

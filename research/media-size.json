@@ -1,0 +1,118 @@
+{
+  "recorded_at_utc": "2026-09-09T18:16:54.020489+00:00",
+  "before_static_media_bytes": 42567936,
+  "shared_media_bytes": 23050016,
+  "files": {
+    "Contents/Helpers/ffmpeg": {
+      "bytes": 375696,
+      "sha256": "7d675aebfa5a10385cddd54097052b4bb172bac1fa72fb3cafb3925b28a7244a"
+    },
+    "Contents/Helpers/ffprobe": {
+      "bytes": 203584,
+      "sha256": "5be91cfddb59ea2216a3acc9a822d41276392e8192feaec9537987ed1a21201f"
+    },
+    "Contents/Frameworks/Media/libavfilter.12.1.101.dylib": {
+      "bytes": 2469472,
+      "sha256": "0b6976a1af6363ac1ba4f6a82ccd40eeac69f1d036969f8f3d1205474b7a75a7"
+    },
+    "Contents/Frameworks/Media/libswresample.7.1.101.dylib": {
+      "bytes": 104592,
+      "sha256": "98d4ae5dab9a180c8a96d73e8769ed18ca77f8372a0bb0d408cd45f0db97a035"
+    },
+    "Contents/Frameworks/Media/libswscale.10.1.101.dylib": {
+      "bytes": 621168,
+      "sha256": "2fcce5ba6613fd5d91789a4c053ec83e00fce045a3333c92d378d477cd00dce9"
+    },
+    "Contents/Frameworks/Media/libavutil.61.1.101.dylib": {
+      "bytes": 559760,
+      "sha256": "7573638effe4b6ddb1750bb07b399517cf3c150db9d70e511945c63e78453dec"
+    },
+    "Contents/Frameworks/Media/libavcodec.63.1.101.dylib": {
+      "bytes": 16839376,
+      "sha256": "a9785761f4db4b311a3bd2693f702c9476b6c85a47e3d7d2a13f89bd76eb7165"
+    },
+    "Contents/Frameworks/Media/libavformat.63.1.101.dylib": {
+      "bytes": 1876368,
+      "sha256": "1e789bb654f93c0ed38a918634b1c2489bf0e0fdf8fac77c8032df5cdae65eca"
+    }
+  },
+  "before_av1_decoder": {
+    "before_static_media_bytes": 42567936,
+    "shared_media_bytes": 21585232,
+    "files": {
+      "Contents/Helpers/ffmpeg": {
+        "bytes": 375696,
+        "sha256": "db0e370419f7790d579e6c392cb906665526bf5ca1bd899c5ef1f78b0924e290"
+      },
+      "Contents/Helpers/ffprobe": {
+        "bytes": 203584,
+        "sha256": "b5cdb425fd3d198cdc8c5259d686a938af1a5e62e6cb759831aec2b47c200267"
+      },
+      "Contents/Frameworks/Media/libavfilter.12.1.101.dylib": {
+        "bytes": 2469456,
+        "sha256": "a01633d2e335af35c847acd31bd9a5e3b528f0de42d5db18d774146d6ec38948"
+      },
+      "Contents/Frameworks/Media/libswresample.7.1.101.dylib": {
+        "bytes": 104592,
+        "sha256": "d7466f49d38bb7d24c2c93047bf0750d07c3cdadc7273b4bcaeae33076d7be1a"
+      },
+      "Contents/Frameworks/Media/libswscale.10.1.101.dylib": {
+        "bytes": 621168,
+        "sha256": "d5338449910cfafff025d8c8055ebf3fb361fb8a31bc0f45fa2f480cb7ad8070"
+      },
+      "Contents/Frameworks/Media/libavutil.61.1.101.dylib": {
+        "bytes": 559760,
+        "sha256": "dcc01a9e63b9a7b837a5cf77c523d9f4b0934de77827b6f20193b5782e35bd71"
+      },
+      "Contents/Frameworks/Media/libavcodec.63.1.101.dylib": {
+        "bytes": 15374608,
+        "sha256": "978739d506774ad17ef7df97baa170da90381af4f0685933c972d8a11cf972fe"
+      },
+      "Contents/Frameworks/Media/libavformat.63.1.101.dylib": {
+        "bytes": 1876368,
+        "sha256": "83d203e79659b7e0b0141de538d2bb800a1e4b74a85e1d435591442a89acd6a9"
+      }
+    },
+    "capabilities": "All six encoder, decoder, format, filter, bitstream filter, and protocol listings match the previous static build exactly."
+  },
+  "capabilities": "Encoder, decoder, format, filter, bitstream-filter, and protocol lists match the AV1-decoder checkpoint. VP9 encoder pixel formats now also include 10-bit and 12-bit planes.",
+  "before_video_controls": {
+    "recorded_at_utc": "2026-09-09T17:23:17.038401+00:00",
+    "shared_media_bytes": 22309808,
+    "files": {
+      "Contents/Helpers/ffmpeg": {
+        "bytes": 375696,
+        "sha256": "7d675aebfa5a10385cddd54097052b4bb172bac1fa72fb3cafb3925b28a7244a"
+      },
+      "Contents/Helpers/ffprobe": {
+        "bytes": 203584,
+        "sha256": "5be91cfddb59ea2216a3acc9a822d41276392e8192feaec9537987ed1a21201f"
+      },
+      "Contents/Frameworks/Media/libavfilter.12.1.101.dylib": {
+        "bytes": 2469472,
+        "sha256": "0b6976a1af6363ac1ba4f6a82ccd40eeac69f1d036969f8f3d1205474b7a75a7"
+      },
+      "Contents/Frameworks/Media/libswresample.7.1.101.dylib": {
+        "bytes": 104592,
+        "sha256": "98d4ae5dab9a180c8a96d73e8769ed18ca77f8372a0bb0d408cd45f0db97a035"
+      },
+      "Contents/Frameworks/Media/libswscale.10.1.101.dylib": {
+        "bytes": 621168,
+        "sha256": "2fcce5ba6613fd5d91789a4c053ec83e00fce045a3333c92d378d477cd00dce9"
+      },
+      "Contents/Frameworks/Media/libavutil.61.1.101.dylib": {
+        "bytes": 559760,
+        "sha256": "7573638effe4b6ddb1750bb07b399517cf3c150db9d70e511945c63e78453dec"
+      },
+      "Contents/Frameworks/Media/libavcodec.63.1.101.dylib": {
+        "bytes": 16099168,
+        "sha256": "b80b739ddb2649363f138f3b4f807ce7d56de92065e132072afb6cdc4d0bbb05"
+      },
+      "Contents/Frameworks/Media/libavformat.63.1.101.dylib": {
+        "bytes": 1876368,
+        "sha256": "1e789bb654f93c0ed38a918634b1c2489bf0e0fdf8fac77c8032df5cdae65eca"
+      }
+    },
+    "capabilities": "Only the libdav1d decoder row was added. Encoder, format, filter, bitstream-filter and protocol listings are unchanged. Existing decoder rows are unchanged."
+  }
+}

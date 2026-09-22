@@ -1,0 +1,32 @@
+{
+  "recorded_at_utc": "2026-09-08T23:56:14.163443+00:00",
+  "macos": "26.6.2",
+  "architecture": "arm64",
+  "workload": "Source Sans 3 Regular, OTF to WOFF2 with native validation",
+  "input_url": "https://raw.githubusercontent.com/adobe-fonts/source-sans/87b37a2daaed80fcb8e8ccb0085c4d72ddade12e/OTF/SourceSans3-Regular.otf",
+  "input_license": "SIL Open Font License 1.1",
+  "input_bytes": 334924,
+  "input_sha256": "08df266400933d3178d081a45f94a08814c3e55b4b7dd2e0ff69cb1329f13ab6",
+  "command_sha256": "bd36cde1c66804a253b8bc8c1b8a6edacba5e6df8862173a32d06f2b43a9b785",
+  "helper_sha256": "abdd4045cc80a23b57ad2ad85a172f02cdb5dd9ab1fb92fdb557a1230c12d7bb",
+  "samples": [
+    {
+      "elapsed_seconds": 0.91,
+      "reported_peak_resident_bytes": 57344000,
+      "output_bytes": 112212
+    },
+    {
+      "elapsed_seconds": 0.88,
+      "reported_peak_resident_bytes": 56295424,
+      "output_bytes": 112212
+    },
+    {
+      "elapsed_seconds": 0.88,
+      "reported_peak_resident_bytes": 57196544,
+      "output_bytes": 112212
+    }
+  ],
+  "memory_scope": "Peak reported by macOS time -l for the command; not combined app and helper memory.",
+  "median_elapsed_seconds": 0.88,
+  "median_reported_peak_resident_bytes": 57196544
+}

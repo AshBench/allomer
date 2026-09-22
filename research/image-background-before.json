@@ -1,0 +1,31 @@
+{
+  "recorded_at_utc": "2026-09-09T03:03:20.407530+00:00",
+  "macos": "26.6.2",
+  "architecture": "arm64",
+  "command_sha256": "09b573c4f7a3c5dfa35b47176f866fab5cbf1215f608eb566e2c327672d2fdcc",
+  "scope": "Three complete conversions of the same 24-megapixel RGBA noise PNG to JPEG at quality 100 with white background. Source generation and verification are not timed. RSS is command process memory; GUI excluded.",
+  "input_bytes": 96072374,
+  "input_sha256": "5d77bbf8617acff97fff1b3cb1099f63b8118af07667b1c82cd1209ff1bb943e",
+  "runs": [
+    {
+      "seconds": 0.94,
+      "resident_bytes": 212877312,
+      "output_bytes": 89819889,
+      "output_sha256": "bdd7a36230f22131805c29456cfad0d7b98848cb741a13d522d5a505af653709"
+    },
+    {
+      "seconds": 0.93,
+      "resident_bytes": 212860928,
+      "output_bytes": 89819889,
+      "output_sha256": "bdd7a36230f22131805c29456cfad0d7b98848cb741a13d522d5a505af653709"
+    },
+    {
+      "seconds": 0.92,
+      "resident_bytes": 212926464,
+      "output_bytes": 89819889,
+      "output_sha256": "bdd7a36230f22131805c29456cfad0d7b98848cb741a13d522d5a505af653709"
+    }
+  ],
+  "median_seconds": 0.93,
+  "median_resident_bytes": 212877312
+}

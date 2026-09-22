@@ -1,0 +1,223 @@
+{
+  "recorded_at_utc": "2026-09-09T15:09:57.638938+00:00",
+  "macos": "26.6.2",
+  "architecture": "arm64",
+  "cpu": "Apple M2 Max",
+  "command_sha256": "83f753ea2f4131742ac8cd7cde4cb985a01ae3a26438f6cc249f614d45110204",
+  "helper_sha256": {
+    "ffmpeg": "db0e370419f7790d579e6c392cb906665526bf5ca1bd899c5ef1f78b0924e290",
+    "ffprobe": "b5cdb425fd3d198cdc8c5259d686a938af1a5e62e6cb759831aec2b47c200267"
+  },
+  "input_sha256": "2df9ab15f81e99d23807861612ba17ae417eaad23274c98da962d5f013d1ccff",
+  "input_bytes": 3430645,
+  "duration_seconds": 60,
+  "sample_rate": 48000,
+  "channels": 2,
+  "art_dimensions": [
+    2048,
+    2048
+  ],
+  "art_bytes": 1668525,
+  "art_sha256": "789e1fddc1e0bcffac324dcb84ad7fa1b154990a1738ac5df75e1651e4df2079",
+  "cases": [
+    {
+      "format": "m4a",
+      "options": {
+        "audioMode": "quality",
+        "audioQuality": 100,
+        "flacCompressionLevel": 8,
+        "preserveCoverArt": false,
+        "preserveMetadata": true,
+        "cpuProfile": "medium"
+      },
+      "runs": [
+        {
+          "seconds": 1.66,
+          "resident_bytes": 27738112,
+          "output_bytes": 3319562,
+          "output_sha256": "5ee91785126a94d6b2df33e4837faac23a78a46ec4de4ece40bc85b3c288db6c"
+        },
+        {
+          "seconds": 1.62,
+          "resident_bytes": 27787264,
+          "output_bytes": 3319562,
+          "output_sha256": "5ee91785126a94d6b2df33e4837faac23a78a46ec4de4ece40bc85b3c288db6c"
+        },
+        {
+          "seconds": 1.63,
+          "resident_bytes": 27852800,
+          "output_bytes": 3319562,
+          "output_sha256": "5ee91785126a94d6b2df33e4837faac23a78a46ec4de4ece40bc85b3c288db6c"
+        }
+      ],
+      "median_seconds": 1.63,
+      "median_resident_bytes": 27787264
+    },
+    {
+      "format": "m4a",
+      "options": {
+        "audioMode": "quality",
+        "audioQuality": 100,
+        "flacCompressionLevel": 8,
+        "preserveCoverArt": true,
+        "preserveMetadata": true,
+        "cpuProfile": "medium"
+      },
+      "runs": [
+        {
+          "seconds": 1.69,
+          "resident_bytes": 38502400,
+          "output_bytes": 4988111,
+          "output_sha256": "953a8e1c13e14f66def2e0ed3bbcb905c27f999d19c88012d69f281fc40468cd"
+        },
+        {
+          "seconds": 1.68,
+          "resident_bytes": 37584896,
+          "output_bytes": 4988111,
+          "output_sha256": "953a8e1c13e14f66def2e0ed3bbcb905c27f999d19c88012d69f281fc40468cd"
+        },
+        {
+          "seconds": 1.71,
+          "resident_bytes": 37552128,
+          "output_bytes": 4988111,
+          "output_sha256": "953a8e1c13e14f66def2e0ed3bbcb905c27f999d19c88012d69f281fc40468cd"
+        }
+      ],
+      "median_seconds": 1.69,
+      "median_resident_bytes": 37584896
+    },
+    {
+      "format": "ogg",
+      "options": {
+        "audioMode": "quality",
+        "audioQuality": 100,
+        "flacCompressionLevel": 8,
+        "preserveCoverArt": false,
+        "preserveMetadata": true,
+        "cpuProfile": "medium"
+      },
+      "runs": [
+        {
+          "seconds": 0.59,
+          "resident_bytes": 28131328,
+          "output_bytes": 874119,
+          "output_sha256": "01592852be6df7237a02abb7317dfe871cbb4f70fbca3a791746934039e04622"
+        },
+        {
+          "seconds": 0.59,
+          "resident_bytes": 28311552,
+          "output_bytes": 874119,
+          "output_sha256": "c3376052bf792dbee212b6d181f006a28f76e120b89fd46840ca3afff2bdcd87"
+        },
+        {
+          "seconds": 0.59,
+          "resident_bytes": 28098560,
+          "output_bytes": 874119,
+          "output_sha256": "f0081bd04d855c6f1149d4dd88a2635cc784cd523ab542ecf9fd1976fd95395c"
+        }
+      ],
+      "median_seconds": 0.59,
+      "median_resident_bytes": 28131328
+    },
+    {
+      "format": "ogg",
+      "options": {
+        "audioMode": "quality",
+        "audioQuality": 100,
+        "flacCompressionLevel": 8,
+        "preserveCoverArt": true,
+        "preserveMetadata": true,
+        "cpuProfile": "medium"
+      },
+      "runs": [
+        {
+          "seconds": 0.67,
+          "resident_bytes": 39370752,
+          "output_bytes": 3108544,
+          "output_sha256": "091360bb6c740ab2b133756b4062ea88eef9be946074d1469ba917534dca5e5e"
+        },
+        {
+          "seconds": 0.68,
+          "resident_bytes": 39436288,
+          "output_bytes": 3108544,
+          "output_sha256": "4d0f3c95a0cde11ac9b6c221b07b61ae728fcc6d9d156b66bdf2b9de2b3e2687"
+        },
+        {
+          "seconds": 0.67,
+          "resident_bytes": 39501824,
+          "output_bytes": 3108544,
+          "output_sha256": "c4dfa3be122c4022ec662e8decb19b3031995c6dd85855d94ff67943a8fd2e3a"
+        }
+      ],
+      "median_seconds": 0.67,
+      "median_resident_bytes": 39436288
+    },
+    {
+      "format": "mka",
+      "options": {
+        "audioMode": "quality",
+        "audioQuality": 100,
+        "flacCompressionLevel": 8,
+        "preserveCoverArt": false,
+        "preserveMetadata": true,
+        "cpuProfile": "medium"
+      },
+      "runs": [
+        {
+          "seconds": 0.32,
+          "resident_bytes": 26411008,
+          "output_bytes": 1759757,
+          "output_sha256": "433b212a323a48361a3db412c5a49c0e01835ad74fd7af6f09e78acca64c6ec3"
+        },
+        {
+          "seconds": 0.32,
+          "resident_bytes": 26411008,
+          "output_bytes": 1759757,
+          "output_sha256": "39170120f36a9970046c3f0cd24ae72d64b8ce3adb56fe6a3b474421566552f8"
+        },
+        {
+          "seconds": 0.31,
+          "resident_bytes": 26394624,
+          "output_bytes": 1759757,
+          "output_sha256": "0f9eaef7705e57c8f3f14954c5bc2dfabfc1fee1d174170ef238f106880f57b4"
+        }
+      ],
+      "median_seconds": 0.32,
+      "median_resident_bytes": 26411008
+    },
+    {
+      "format": "mka",
+      "options": {
+        "audioMode": "quality",
+        "audioQuality": 100,
+        "flacCompressionLevel": 8,
+        "preserveCoverArt": true,
+        "preserveMetadata": true,
+        "cpuProfile": "medium"
+      },
+      "runs": [
+        {
+          "seconds": 0.38,
+          "resident_bytes": 33210368,
+          "output_bytes": 3428341,
+          "output_sha256": "cc75abb965ec91dfba567d88e93465bc00bc6c7e238bd72ad02398936525349d"
+        },
+        {
+          "seconds": 0.38,
+          "resident_bytes": 33308672,
+          "output_bytes": 3428341,
+          "output_sha256": "9bc225421a883a757afcfa2c6f33292d92e588c749c0bee4c83453a1a2ecf07b"
+        },
+        {
+          "seconds": 0.38,
+          "resident_bytes": 33406976,
+          "output_bytes": 3428341,
+          "output_sha256": "033dd379f682c59ebe9e7403562c01dd6ff5e16baad617164412b8f569a560bf"
+        }
+      ],
+      "median_seconds": 0.38,
+      "median_resident_bytes": 33308672
+    }
+  ],
+  "scope": "Three complete conversions for each output and cover setting. Original 60-second stereo audio with a 2048-square PNG cover. Includes probing, artwork validation, encoding, output checks and publication. Source hashes warm the cache. GUI, fixture generation and independent Python validation are excluded. RSS is a per-process peak, not aggregate app/helper/system memory. This synthetic signal is not a listening-quality or general music benchmark."
+}

@@ -1,0 +1,278 @@
+Reinitialize Vorbis decoders at new headers and keep chained packet times continuous.
+A seek to zero on a newly opened Vorbis input uses the known data offset.
+Decoder and Vorbis parser changes use LGPL-2.1-or-later. The oggdec.c and
+oggdec.h changes use their existing MIT license. Original notices are retained.
+
+--- a/libavcodec/vorbisdec.c
++++ b/libavcodec/vorbisdec.c
+@@ -1052,11 +1052,10 @@
+ 
+ // Process the extradata using the functions above (identification header, setup header)
+ 
+-static av_cold int vorbis_decode_init(AVCodecContext *avctx)
++static int vorbis_decode_headers(AVCodecContext *avctx, const uint8_t *headers,
++                                 int headers_len)
+ {
+     vorbis_context *vc = avctx->priv_data;
+-    uint8_t *headers   = avctx->extradata;
+-    int headers_len    = avctx->extradata_size;
+     const uint8_t *header_start[3];
+     int header_len[3];
+     GetBitContext *gb = &vc->gb;
+@@ -1077,7 +1076,8 @@
+         return ret;
+     }
+ 
+-    init_get_bits(gb, header_start[0], header_len[0]*8);
++    if ((ret = init_get_bits8(gb, header_start[0], header_len[0])) < 0)
++        return ret;
+     hdr_type = get_bits(gb, 8);
+     if (hdr_type != 1) {
+         av_log(avctx, AV_LOG_ERROR, "First header is not the id header.\n");
+@@ -1089,7 +1089,8 @@
+         return ret;
+     }
+ 
+-    init_get_bits(gb, header_start[2], header_len[2]*8);
++    if ((ret = init_get_bits8(gb, header_start[2], header_len[2])) < 0)
++        return ret;
+     hdr_type = get_bits(gb, 8);
+     if (hdr_type != 5) {
+         av_log(avctx, AV_LOG_ERROR, "Third header is not the setup header.\n");
+@@ -1113,6 +1114,11 @@
+     avctx->sample_rate = vc->audio_samplerate;
+ 
+     return 0;
++}
++
++static av_cold int vorbis_decode_init(AVCodecContext *avctx)
++{
++    return vorbis_decode_headers(avctx, avctx->extradata, avctx->extradata_size);
+ }
+ 
+ // Decode audiopackets -------------------------------------------------
+@@ -1787,6 +1793,18 @@
+     GetBitContext *gb = &vc->gb;
+     float *channel_ptrs[255];
+     int i, len, ret;
++    size_t headers_len;
++    const uint8_t *headers = av_packet_get_side_data(avpkt, AV_PKT_DATA_NEW_EXTRADATA,
++                                                     &headers_len);
++
++    if (headers) {
++        if (headers_len > INT_MAX)
++            return AVERROR_INVALIDDATA;
++        vorbis_free(vc);
++        memset(vc, 0, sizeof(*vc));
++        if ((ret = vorbis_decode_headers(avctx, headers, headers_len)) < 0)
++            return ret;
++    }
+ 
+     ff_dlog(NULL, "packet length %d \n", buf_size);
+ 
+--- a/libavcodec/libvorbisdec.c
++++ b/libavcodec/libvorbisdec.c
+@@ -36,14 +36,15 @@
+ 
+ static int oggvorbis_decode_close(AVCodecContext *avccontext);
+ 
+-static av_cold int oggvorbis_decode_init(AVCodecContext *avccontext)
++static int oggvorbis_decode_headers(AVCodecContext *avccontext, const uint8_t *extradata,
++                                    int extradata_size)
+ {
+     OggVorbisDecContext *context = avccontext->priv_data ;
+-    uint8_t *p= avccontext->extradata;
++    const uint8_t *p = extradata;
+     int i, hsizes[3], ret;
+-    unsigned char *headers[3], *extradata = avccontext->extradata;
+-
+-    if(! avccontext->extradata_size || ! p) {
++    const unsigned char *headers[3];
++
++    if(!extradata_size || !p) {
+         av_log(avccontext, AV_LOG_ERROR, "vorbis extradata absent\n");
+         return AVERROR(EINVAL);
+     }
+@@ -56,7 +57,7 @@
+         for(i = 0; i < 3; i++){
+             hsizes[i] = bytestream_get_be16((const uint8_t **)&p);
+             sizesum += 2 + hsizes[i];
+-            if (sizesum > avccontext->extradata_size) {
++            if (sizesum > extradata_size) {
+                 av_log(avccontext, AV_LOG_ERROR, "vorbis extradata too small\n");
+                 ret = AVERROR_INVALIDDATA;
+                 goto error;
+@@ -71,7 +72,7 @@
+         p++;
+         for(i=0; i<2; i++) {
+             hsizes[i] = 0;
+-            while((*p == 0xFF) && (sizesum < avccontext->extradata_size)) {
++            while((*p == 0xFF) && (sizesum < extradata_size)) {
+                 hsizes[i] += 0xFF;
+                 offset++;
+                 sizesum += 1 + 0xFF;
+@@ -80,7 +81,7 @@
+             hsizes[i] += *p;
+             offset++;
+             sizesum += 1 + *p;
+-            if(sizesum > avccontext->extradata_size) {
++            if(sizesum > extradata_size) {
+                 av_log(avccontext, AV_LOG_ERROR,
+                        "vorbis header sizes damaged\n");
+                 ret = AVERROR_INVALIDDATA;
+@@ -88,7 +89,7 @@
+             }
+             p++;
+         }
+-        hsizes[2] = avccontext->extradata_size - hsizes[0]-hsizes[1]-offset;
++        hsizes[2] = extradata_size - hsizes[0]-hsizes[1]-offset;
+ #if 0
+         av_log(avccontext, AV_LOG_DEBUG,
+                "vorbis header sizes: %d, %d, %d, / extradata_len is %d \n",
+@@ -107,7 +108,7 @@
+     for(i=0; i<3; i++){
+         context->op.b_o_s= i==0;
+         context->op.bytes = hsizes[i];
+-        context->op.packet = headers[i];
++        context->op.packet = (unsigned char *)headers[i];
+         if(vorbis_synthesis_headerin(&context->vi, &context->vc, &context->op)<0){
+             av_log(avccontext, AV_LOG_ERROR, "%d. vorbis header damaged\n", i+1);
+             ret = AVERROR_INVALIDDATA;
+@@ -139,6 +140,12 @@
+ }
+ 
+ 
++static av_cold int oggvorbis_decode_init(AVCodecContext *avccontext)
++{
++    return oggvorbis_decode_headers(avccontext, avccontext->extradata,
++                                    avccontext->extradata_size);
++}
++
+ static int oggvorbis_decode_frame(AVCodecContext *avccontext, AVFrame *frame,
+                                   int *got_frame_ptr, AVPacket *avpkt)
+ {
+@@ -147,6 +154,18 @@
+     ogg_packet *op= &context->op;
+     int samples, total_samples;
+     int ret;
++    size_t headers_len;
++    const uint8_t *headers = av_packet_get_side_data(avpkt, AV_PKT_DATA_NEW_EXTRADATA,
++                                                     &headers_len);
++
++    if (headers) {
++        if (headers_len > INT_MAX)
++            return AVERROR_INVALIDDATA;
++        oggvorbis_decode_close(avccontext);
++        memset(context, 0, sizeof(*context));
++        if ((ret = oggvorbis_decode_headers(avccontext, headers, headers_len)) < 0)
++            return ret;
++    }
+ 
+     if(!avpkt->size){
+     //FIXME flush
+--- a/libavformat/oggdec.c
++++ b/libavformat/oggdec.c
+@@ -180,6 +180,7 @@
+         os->got_data = 0;
+         if (start_pos <= ffformatcontext(s)->data_offset) {
+             os->lastpts = 0;
++            os->chain_offset = 0;
+         }
+         os->start_trimming = 0;
+         os->end_trimming = 0;
+@@ -235,6 +236,13 @@
+     os = &ogg->streams[0];
+     if (os->codec != codec)
+         return AVERROR(EINVAL);
++
++    if (codec == &ff_vorbis_codec && !probing && os->lastpts != AV_NOPTS_VALUE) {
++        int64_t duration = av_rescale_q(os->lastpts, s->streams[0]->time_base, AV_TIME_BASE_Q);
++        if (duration < 0 || os->chain_offset > INT64_MAX - duration)
++            return AVERROR_INVALIDDATA;
++        os->chain_offset += duration;
++    }
+ 
+     os->serial  = serial;
+     os->codec   = codec;
+@@ -804,6 +812,13 @@
+             os->granule = -1LL;
+         }
+     }
++    if (os->chain_offset) {
++        int64_t offset = av_rescale_q(os->chain_offset, AV_TIME_BASE_Q, s->streams[idx]->time_base);
++        if (pts != AV_NOPTS_VALUE)
++            pts = av_sat_add64(pts, offset);
++        if (dts && *dts != AV_NOPTS_VALUE)
++            *dts = av_sat_add64(*dts, offset);
++    }
+     return pts;
+ }
+ 
+@@ -887,7 +902,8 @@
+ 
+     if (os->replace) {
+         os->replace = 0;
+-        pkt->dts = pkt->pts = AV_NOPTS_VALUE;
++        if (os->codec != &ff_vorbis_codec)
++            pkt->dts = pkt->pts = AV_NOPTS_VALUE;
+     }
+ 
+     if (os->new_metadata) {
+@@ -962,6 +978,13 @@
+     int ret;
+ 
+     av_assert0(stream_index < ogg->nstreams);
++    if (!timestamp && ogg->nstreams == 1 && os->codec == &ff_vorbis_codec &&
++        !os->chain_offset) {
++        int64_t pos = avio_seek(s->pb, ffformatcontext(s)->data_offset, SEEK_SET);
++        if (pos < 0)
++            return pos;
++        return ogg_reset(s);
++    }
+     // Ensure everything is reset even when seeking via
+     // the generated index.
+     ogg_reset(s);
+--- a/libavformat/oggdec.h
++++ b/libavformat/oggdec.h
+@@ -77,6 +77,7 @@
+     uint64_t start_granule;
+     int64_t lastpts;
+     int64_t lastdts;
++    int64_t chain_offset; ///< elapsed Vorbis links, in AV_TIME_BASE units
+     int64_t sync_pos;   ///< file offset of the first page needed to reconstruct the current packet
+     int64_t page_pos;   ///< file offset of the current page
+     int flags;
+--- a/libavformat/oggparsevorbis.c
++++ b/libavformat/oggparsevorbis.c
+@@ -466,6 +466,8 @@
+         return AVERROR_INVALIDDATA;
+ 
+     if (os->psize > 0 && !(os->buf[os->pstart] & 1)) {
++        if (priv->header)
++            return AVERROR_INVALIDDATA;
+         if (priv->first_audio_pos < 0) {
+             priv->first_audio_pos = os->page_pos;
+             priv->first_audio_seg = os->segp;
+@@ -611,9 +611,13 @@
+     }
+ 
+     if (priv->header && priv->comment && priv->setup) {
++        if (priv->header_size < 0 || priv->comment_size < 0 || priv->setup_size < 0 ||
++            (uint64_t)priv->header_size + priv->comment_size + priv->setup_size >
++                INT_MAX - 6 - AV_INPUT_BUFFER_PADDING_SIZE)
++            return AVERROR_INVALIDDATA;
+         new_extradata_size = priv->header_size + priv->comment_size + priv->setup_size + 6;
+ 
+-        ret = av_reallocp(&os->new_extradata, new_extradata_size);
++        ret = av_reallocp(&os->new_extradata, new_extradata_size + AV_INPUT_BUFFER_PADDING_SIZE);
+         if (ret < 0)
+             return ret;
+ 
+@@ -625,6 +629,7 @@
+         bytestream2_put_buffer(&pb, priv->comment, priv->comment_size);
+         bytestream2_put_be16(&pb, priv->setup_size);
+         bytestream2_put_buffer(&pb, priv->setup, priv->setup_size);
++        memset(os->new_extradata + new_extradata_size, 0, AV_INPUT_BUFFER_PADDING_SIZE);
+ 
+         av_freep(&priv->header);
+         priv->header_size = 0;

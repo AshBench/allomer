@@ -1,0 +1,11 @@
+{
+  "date_utc": "2026-09-08T04:57:59.866149+00:00",
+  "macos": "26.6.2",
+  "architecture": "arm64",
+  "elapsed_seconds": 10.011,
+  "cpu_seconds": 0.0,
+  "one_core_percent": 0.0,
+  "resident_bytes_before": 133365760,
+  "resident_bytes_after": 133365760,
+  "limits": "One short sample. CPU time is rounded by ps. Keep the app idle while measuring. This is not an energy measurement or a peak-memory measurement."
+}

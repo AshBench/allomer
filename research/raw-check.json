@@ -1,0 +1,466 @@
+{
+  "recorded_at_utc": "2026-09-14T04:54:25.032432+00:00",
+  "macos": "26.6.2",
+  "chip": "Apple M2 Max",
+  "command_sha256": "c7960fc30475937d925a9ec17be56283541bcbf2b4492c7d556d43bcdc2cdd16",
+  "pillow": "12.3.0",
+  "cases": [
+    {
+      "camera": "Canon EOS 7D",
+      "file": "eos-7d.cr2",
+      "input_sha256": "b5e47c5fcf7332ac03e0134926f17a338a42e68c1fd7f83e16f45f4b767544e8",
+      "pixels": [
+        5184,
+        3456
+      ],
+      "output": "png",
+      "runs": [
+        {
+          "seconds": 20.57,
+          "resident_bytes": 314327040,
+          "output_bytes": 69123738
+        }
+      ],
+      "median_seconds": 20.57,
+      "median_resident_bytes": 314327040
+    },
+    {
+      "camera": "Canon EOS 7D",
+      "file": "eos-7d.cr2",
+      "input_sha256": "b5e47c5fcf7332ac03e0134926f17a338a42e68c1fd7f83e16f45f4b767544e8",
+      "pixels": [
+        5184,
+        3456
+      ],
+      "output": "jpg",
+      "runs": [
+        {
+          "seconds": 0.63,
+          "resident_bytes": 311001088,
+          "output_bytes": 3781578
+        }
+      ],
+      "median_seconds": 0.63,
+      "median_resident_bytes": 311001088
+    },
+    {
+      "camera": "Canon EOS 7D",
+      "file": "eos-7d.cr2",
+      "input_sha256": "b5e47c5fcf7332ac03e0134926f17a338a42e68c1fd7f83e16f45f4b767544e8",
+      "pixels": [
+        5184,
+        3456
+      ],
+      "output": "tiff",
+      "runs": [
+        {
+          "seconds": 0.57,
+          "resident_bytes": 313311232,
+          "output_bytes": 107505074
+        }
+      ],
+      "median_seconds": 0.57,
+      "median_resident_bytes": 313311232
+    },
+    {
+      "camera": "Nikon D90",
+      "file": "d90.nef",
+      "input_sha256": "9eb3daa4e3d1c1614bccc4c6d136c4166960f936f17c437cc4d11a5786b2df06",
+      "pixels": [
+        4288,
+        2848
+      ],
+      "output": "png",
+      "runs": [
+        {
+          "seconds": 11.32,
+          "resident_bytes": 229310464,
+          "output_bytes": 46979608
+        }
+      ],
+      "median_seconds": 11.32,
+      "median_resident_bytes": 229310464
+    },
+    {
+      "camera": "Nikon D90",
+      "file": "d90.nef",
+      "input_sha256": "9eb3daa4e3d1c1614bccc4c6d136c4166960f936f17c437cc4d11a5786b2df06",
+      "pixels": [
+        4288,
+        2848
+      ],
+      "output": "jpg",
+      "runs": [
+        {
+          "seconds": 0.51,
+          "resident_bytes": 225755136,
+          "output_bytes": 4413069
+        }
+      ],
+      "median_seconds": 0.51,
+      "median_resident_bytes": 225755136
+    },
+    {
+      "camera": "Nikon D90",
+      "file": "d90.nef",
+      "input_sha256": "9eb3daa4e3d1c1614bccc4c6d136c4166960f936f17c437cc4d11a5786b2df06",
+      "pixels": [
+        4288,
+        2848
+      ],
+      "output": "tiff",
+      "runs": [
+        {
+          "seconds": 0.51,
+          "resident_bytes": 227573760,
+          "output_bytes": 73280358
+        }
+      ],
+      "median_seconds": 0.51,
+      "median_resident_bytes": 227573760
+    },
+    {
+      "camera": "Sony NEX-5",
+      "file": "nex-5.arw",
+      "input_sha256": "3b085569ac1fec37a1289ed5ea517497692a3ea14cea41953dd6e878abf230a3",
+      "pixels": [
+        4592,
+        3056
+      ],
+      "output": "png",
+      "runs": [
+        {
+          "seconds": 17.44,
+          "resident_bytes": 242089984,
+          "output_bytes": 42493744
+        }
+      ],
+      "median_seconds": 17.44,
+      "median_resident_bytes": 242089984
+    },
+    {
+      "camera": "Sony NEX-5",
+      "file": "nex-5.arw",
+      "input_sha256": "3b085569ac1fec37a1289ed5ea517497692a3ea14cea41953dd6e878abf230a3",
+      "pixels": [
+        4592,
+        3056
+      ],
+      "output": "jpg",
+      "runs": [
+        {
+          "seconds": 0.54,
+          "resident_bytes": 221380608,
+          "output_bytes": 2583466
+        }
+      ],
+      "median_seconds": 0.54,
+      "median_resident_bytes": 221380608
+    },
+    {
+      "camera": "Sony NEX-5",
+      "file": "nex-5.arw",
+      "input_sha256": "3b085569ac1fec37a1289ed5ea517497692a3ea14cea41953dd6e878abf230a3",
+      "pixels": [
+        4592,
+        3056
+      ],
+      "output": "tiff",
+      "runs": [
+        {
+          "seconds": 0.53,
+          "resident_bytes": 222511104,
+          "output_bytes": 84207708
+        }
+      ],
+      "median_seconds": 0.53,
+      "median_resident_bytes": 222511104
+    },
+    {
+      "camera": "Pentax K10D",
+      "file": "k10d.dng",
+      "input_sha256": "e7ea961edfea725ad2753f261d20da5e6addd5d641e5bcbc373999710f27941f",
+      "pixels": [
+        3872,
+        2592
+      ],
+      "output": "png",
+      "runs": [
+        {
+          "seconds": 11.63,
+          "resident_bytes": 195264512,
+          "output_bytes": 32212029
+        }
+      ],
+      "median_seconds": 11.63,
+      "median_resident_bytes": 195264512
+    },
+    {
+      "camera": "Pentax K10D",
+      "file": "k10d.dng",
+      "input_sha256": "e7ea961edfea725ad2753f261d20da5e6addd5d641e5bcbc373999710f27941f",
+      "pixels": [
+        3872,
+        2592
+      ],
+      "output": "jpg",
+      "runs": [
+        {
+          "seconds": 0.41,
+          "resident_bytes": 189120512,
+          "output_bytes": 1341213
+        }
+      ],
+      "median_seconds": 0.41,
+      "median_resident_bytes": 189120512
+    },
+    {
+      "camera": "Pentax K10D",
+      "file": "k10d.dng",
+      "input_sha256": "e7ea961edfea725ad2753f261d20da5e6addd5d641e5bcbc373999710f27941f",
+      "pixels": [
+        3872,
+        2592
+      ],
+      "output": "tiff",
+      "runs": [
+        {
+          "seconds": 0.4,
+          "resident_bytes": 190283776,
+          "output_bytes": 60223654
+        }
+      ],
+      "median_seconds": 0.4,
+      "median_resident_bytes": 190283776
+    },
+    {
+      "camera": "Fujifilm X-T1",
+      "file": "x-t1.raf",
+      "input_sha256": "e994a1fd6e87e392432fe146a35b0b88584dc2bd50bee2c8c7e886ac2b59fcde",
+      "pixels": [
+        4896,
+        3264
+      ],
+      "output": "png",
+      "runs": [
+        {
+          "seconds": 15.64,
+          "resident_bytes": 279789568,
+          "output_bytes": 60687814
+        }
+      ],
+      "median_seconds": 15.64,
+      "median_resident_bytes": 279789568
+    },
+    {
+      "camera": "Fujifilm X-T1",
+      "file": "x-t1.raf",
+      "input_sha256": "e994a1fd6e87e392432fe146a35b0b88584dc2bd50bee2c8c7e886ac2b59fcde",
+      "pixels": [
+        4896,
+        3264
+      ],
+      "output": "jpg",
+      "runs": [
+        {
+          "seconds": 0.52,
+          "resident_bytes": 260407296,
+          "output_bytes": 4798904
+        }
+      ],
+      "median_seconds": 0.52,
+      "median_resident_bytes": 260407296
+    },
+    {
+      "camera": "Fujifilm X-T1",
+      "file": "x-t1.raf",
+      "input_sha256": "e994a1fd6e87e392432fe146a35b0b88584dc2bd50bee2c8c7e886ac2b59fcde",
+      "pixels": [
+        4896,
+        3264
+      ],
+      "output": "tiff",
+      "runs": [
+        {
+          "seconds": 0.49,
+          "resident_bytes": 262144000,
+          "output_bytes": 95892274
+        }
+      ],
+      "median_seconds": 0.49,
+      "median_resident_bytes": 262144000
+    },
+    {
+      "camera": "Olympus E-M5",
+      "file": "e-m5.orf",
+      "input_sha256": "b2221977cbc6eba0d3b363351072092e5647eaa0d02a5d8432b5d985b29f669f",
+      "pixels": [
+        4608,
+        3456
+      ],
+      "output": "png",
+      "runs": [
+        {
+          "seconds": 17.36,
+          "resident_bytes": 278953984,
+          "output_bytes": 60519853
+        }
+      ],
+      "median_seconds": 17.36,
+      "median_resident_bytes": 278953984
+    },
+    {
+      "camera": "Olympus E-M5",
+      "file": "e-m5.orf",
+      "input_sha256": "b2221977cbc6eba0d3b363351072092e5647eaa0d02a5d8432b5d985b29f669f",
+      "pixels": [
+        4608,
+        3456
+      ],
+      "output": "jpg",
+      "runs": [
+        {
+          "seconds": 0.71,
+          "resident_bytes": 278740992,
+          "output_bytes": 4655096
+        }
+      ],
+      "median_seconds": 0.71,
+      "median_resident_bytes": 278740992
+    },
+    {
+      "camera": "Olympus E-M5",
+      "file": "e-m5.orf",
+      "input_sha256": "b2221977cbc6eba0d3b363351072092e5647eaa0d02a5d8432b5d985b29f669f",
+      "pixels": [
+        4608,
+        3456
+      ],
+      "output": "tiff",
+      "runs": [
+        {
+          "seconds": 0.66,
+          "resident_bytes": 279379968,
+          "output_bytes": 95561546
+        }
+      ],
+      "median_seconds": 0.66,
+      "median_resident_bytes": 279379968
+    },
+    {
+      "camera": "Panasonic DMC-GF1",
+      "file": "dmc-gf1.rw2",
+      "input_sha256": "c660fac3f9e4a3e03c1496db62abbe50a73ed3bd6a11056c41badf87cd0b7841",
+      "pixels": [
+        4000,
+        3000
+      ],
+      "output": "png",
+      "runs": [
+        {
+          "seconds": 12.53,
+          "resident_bytes": 229572608,
+          "output_bytes": 42524608
+        }
+      ],
+      "median_seconds": 12.53,
+      "median_resident_bytes": 229572608
+    },
+    {
+      "camera": "Panasonic DMC-GF1",
+      "file": "dmc-gf1.rw2",
+      "input_sha256": "c660fac3f9e4a3e03c1496db62abbe50a73ed3bd6a11056c41badf87cd0b7841",
+      "pixels": [
+        4000,
+        3000
+      ],
+      "output": "jpg",
+      "runs": [
+        {
+          "seconds": 0.48,
+          "resident_bytes": 229277696,
+          "output_bytes": 2773133
+        }
+      ],
+      "median_seconds": 0.48,
+      "median_resident_bytes": 229277696
+    },
+    {
+      "camera": "Panasonic DMC-GF1",
+      "file": "dmc-gf1.rw2",
+      "input_sha256": "c660fac3f9e4a3e03c1496db62abbe50a73ed3bd6a11056c41badf87cd0b7841",
+      "pixels": [
+        4000,
+        3000
+      ],
+      "output": "tiff",
+      "runs": [
+        {
+          "seconds": 0.46,
+          "resident_bytes": 230309888,
+          "output_bytes": 72007034
+        }
+      ],
+      "median_seconds": 0.46,
+      "median_resident_bytes": 230309888
+    },
+    {
+      "camera": "Pentax K10D",
+      "file": "k10d.pef",
+      "input_sha256": "e35ae4154a468be3154f5f462e884ba5941f010d3e8f23d347fbec14809f44d3",
+      "pixels": [
+        3872,
+        2592
+      ],
+      "output": "png",
+      "runs": [
+        {
+          "seconds": 9.37,
+          "resident_bytes": 197165056,
+          "output_bytes": 37586933
+        }
+      ],
+      "median_seconds": 9.37,
+      "median_resident_bytes": 197165056
+    },
+    {
+      "camera": "Pentax K10D",
+      "file": "k10d.pef",
+      "input_sha256": "e35ae4154a468be3154f5f462e884ba5941f010d3e8f23d347fbec14809f44d3",
+      "pixels": [
+        3872,
+        2592
+      ],
+      "output": "jpg",
+      "runs": [
+        {
+          "seconds": 0.46,
+          "resident_bytes": 197181440,
+          "output_bytes": 1851855
+        }
+      ],
+      "median_seconds": 0.46,
+      "median_resident_bytes": 197181440
+    },
+    {
+      "camera": "Pentax K10D",
+      "file": "k10d.pef",
+      "input_sha256": "e35ae4154a468be3154f5f462e884ba5941f010d3e8f23d347fbec14809f44d3",
+      "pixels": [
+        3872,
+        2592
+      ],
+      "output": "tiff",
+      "runs": [
+        {
+          "seconds": 0.44,
+          "resident_bytes": 199294976,
+          "output_bytes": 60223652
+        }
+      ],
+      "median_seconds": 0.44,
+      "median_resident_bytes": 199294976
+    }
+  ],
+  "scope": "Complete command conversions of pinned CC0 camera samples. Includes native RAW decoding, output encoding, validation, and publication. PNG also includes recompression. Fixture integrity reads warm cache. Python image checks and GUI are excluded. RSS is per-process high-water memory, not aggregate simultaneous memory. One run is a check, not a stable performance estimate. Camera support depends on macOS."
+}

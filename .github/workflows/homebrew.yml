@@ -1,0 +1,94 @@
+name: Publish Homebrew cask
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing GitHub release tag to publish
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: homebrew-cask
+  cancel-in-progress: false
+
+env:
+  HOMEBREW_TAP_REPOSITORY: ashbench/homebrew-tap
+
+jobs:
+  publish:
+    environment: homebrew-release
+    runs-on: macos-15
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.release.tag_name || inputs.tag }}
+          persist-credentials: false
+      - name: Download and inspect release assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ github.event.release.tag_name || inputs.tag }}
+        run: |
+          mkdir -p dist/preview
+          gh release download "$RELEASE_TAG" \
+            --repo "$GITHUB_REPOSITORY" \
+            --pattern 'Allomer-*.dmg' \
+            --pattern 'release-manifest.json' \
+            --dir dist/preview
+          gh api "repos/$GITHUB_REPOSITORY/releases/tags/$RELEASE_TAG" > "$RUNNER_TEMP/allomer-release.json"
+          python3 - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          import subprocess
+
+          manifest = json.loads(Path("dist/preview/release-manifest.json").read_text())
+          release = json.loads(Path(os.environ["RUNNER_TEMP"], "allomer-release.json").read_text())
+          expected_tag = f"v{manifest['version']}"
+          if os.environ["RELEASE_TAG"] != expected_tag:
+              raise SystemExit(f"Release tag must be {expected_tag}.")
+          revision = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
+          if manifest.get("source", {}).get("revision") != revision:
+              raise SystemExit("The release manifest revision does not match the release tag.")
+          if manifest.get("release_url") != release["html_url"]:
+              raise SystemExit("The release manifest URL does not match this GitHub release.")
+          image_name = manifest["disk_image"]["name"]
+          urls = [asset["browser_download_url"] for asset in release["assets"] if asset["name"] == image_name]
+          if len(urls) != 1:
+              raise SystemExit(f"Expected one release asset named {image_name}; found {len(urls)}.")
+          with Path(os.environ["GITHUB_ENV"]).open("a") as environment:
+              environment.write(f"ALLOMER_DOWNLOAD_URL={urls[0]}\n")
+              environment.write(f"ALLOMER_VERSION={manifest['version']}\n")
+          PY
+      - name: Generate the cask
+        run: python3 tools/build-homebrew-cask.py --download-url "$ALLOMER_DOWNLOAD_URL"
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: ${{ env.HOMEBREW_TAP_REPOSITORY }}
+          ssh-key: ${{ secrets.HOMEBREW_TAP_DEPLOY_KEY }}
+          path: homebrew-tap
+      - name: Check the cask
+        run: |
+          mkdir -p homebrew-tap/Casks
+          cp dist/preview/allomer.rb homebrew-tap/Casks/allomer.rb
+          brew tap-new --no-git ashbench/tap
+          mkdir -p "$(brew --repository ashbench/tap)/Casks"
+          cp homebrew-tap/Casks/allomer.rb "$(brew --repository ashbench/tap)/Casks/allomer.rb"
+          brew style --cask ashbench/tap/allomer
+      - name: Publish the cask
+        run: |
+          git -C homebrew-tap config user.name 'github-actions[bot]'
+          git -C homebrew-tap config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git -C homebrew-tap add Casks/allomer.rb
+          if git -C homebrew-tap diff --cached --quiet; then
+            echo "The Homebrew cask is already current."
+            exit 0
+          fi
+          git -C homebrew-tap commit -m "Update Allomer to $ALLOMER_VERSION"
+          git -C homebrew-tap push

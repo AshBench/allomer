@@ -1,0 +1,116 @@
+--- a/utils/pdftops.cc
++++ b/utils/pdftops.cc
+@@ -40,6 +40,8 @@
+ #include <cstdio>
+ #include <cstdlib>
+ #include <cstring>
++// Local changes, 2026-09-08: require bundled resources and propagate conversion errors.
++#include <filesystem>
+ #include "parseargs.h"
+ #include "goo/GooString.h"
+ #include "GlobalParams.h"
+@@ -48,6 +50,7 @@
+ #include "PDFDoc.h"
+ #include "PDFDocFactory.h"
+ #include "PSOutputDev.h"
++#include "PreScanOutputDev.h"
+ #include "Error.h"
+ #include "Win32Console.h"
+ #include "sanitychecks.h"
+@@ -115,6 +118,7 @@
+ static bool quiet = false;
+ static bool printVersion = false;
+ static bool printHelp = false;
++static bool validateOnly = false;
+ static bool overprint = false;
+ static GooString processcolorformatname;
+ static SplashColorMode processcolorformat;
+@@ -131,6 +135,7 @@
+ #endif
+ 
+ static const ArgDesc argDesc[] = {
++    { .arg = "-validate-only", .kind = argFlag, .val = &validateOnly, .size = 0, .usage = "check page drawing commands without writing output" },
+     { .arg = "-f", .kind = argInt, .val = &firstPage, .size = 0, .usage = "first page to print" },
+     { .arg = "-l", .kind = argInt, .val = &lastPage, .size = 0, .usage = "last page to print" },
+     { .arg = "-level1", .kind = argFlag, .val = &level1, .size = 0, .usage = "generate Level 1 PostScript" },
+@@ -182,8 +187,29 @@
+     {}
+ };
+ 
++static bool conversionError = false;
++
++static void conversionErrorCallback(ErrorCategory category, Goffset, const char *message)
++{
++    fprintf(stderr, "%s\n", message);
++    if (category != errSyntaxWarning) {
++        conversionError = true;
++    }
++}
++
+ int main(int argc, char *argv[])
+ {
++    std::error_code resourceError;
++    if (argc < 2 || !std::filesystem::path(argv[1]).is_absolute() || !std::filesystem::is_directory(argv[1], resourceError)) {
++        fprintf(stderr, "Expected an absolute local resource directory.\n");
++        return 1;
++    }
++    const std::string resourceDirectory = argv[1];
++    for (int i = 1; i < argc; ++i) {
++        argv[i] = argv[i + 1];
++    }
++    --argc;
++    setErrorCallback(conversionErrorCallback);
+     std::unique_ptr<PDFDoc> doc;
+     GooString *fileName;
+     std::string psFileName;
+@@ -246,7 +272,8 @@
+     fileName = new GooString(argv[1]);
+ 
+     // read config file
+-    globalParams = std::make_unique<GlobalParams>();
++    globalParams = std::make_unique<GlobalParams>(resourceDirectory.c_str());
++    globalParams->setupBaseFonts((resourceDirectory + "/fonts").c_str());
+     if (origPageSizes) {
+         paperWidth = paperHeight = -1;
+     }
+@@ -420,6 +447,15 @@
+         pages.push_back(i);
+     }
+ 
++    if (validateOnly) {
++        PreScanOutputDev scan(level);
++        for (int i = firstPage; i <= lastPage; ++i) {
++            doc->displayPage(&scan, i, 72, 72, 0, noCrop, !noCrop, true);
++        }
++        exitCode = 0;
++        goto err1;
++    }
++
+     // write PostScript file
+     psOut = new PSOutputDev(psFileName.c_str(), doc.get(), nullptr, pages, mode, paperWidth, paperHeight, noCrop, duplex, /*imgLLXA*/ 0, /*imgLLYA*/ 0,
+                             /*imgURXA*/ 0, /*imgURYA*/ 0, psRasterizeWhenNeeded, /*manualCtrlA*/ false, /*customCodeCbkA*/ nullptr, /*customCodeCbkDataA*/ nullptr, level);
+@@ -498,5 +534,5 @@
+     delete fileName;
+ err0:
+ 
+-    return exitCode;
++    return conversionError && exitCode == 0 ? 2 : exitCode;
+ }
+--- a/poppler/PSOutputDev.cc
++++ b/poppler/PSOutputDev.cc
+@@ -3099,12 +3099,15 @@
+         sliceH = static_cast<int>((box.y2 - box.y1) * vDPI2 / 72.0);
+     }
+     int sliceArea;
++    // Local change, 2026-09-08: report pages that would otherwise be silently omitted.
+     if (checkedMultiply(sliceW, sliceH, &sliceArea)) {
++        error(errSyntaxError, -1, "The transparent page exceeds the raster size limit.");
+         delete splashOut;
+         return false;
+     }
+     nStripes = static_cast<int>(ceil(static_cast<double>(sliceArea) / rasterizationSliceSize));
+     if (unlikely(nStripes == 0)) {
++        error(errSyntaxError, -1, "The transparent page has no raster pixels.");
+         delete splashOut;
+         return false;
+     }

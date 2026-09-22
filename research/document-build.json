@@ -1,0 +1,40 @@
+{
+  "previous_packaged_bytes": 9764304,
+  "source_build_bytes_before_package_signing": 8424048,
+  "source_build_sha256": "5fb8afaacfec778beffc1735160aeb44a600914af14c2c143ae1507835e86404",
+  "matching_capability_lists": {
+    "--list-input-formats": {
+      "sha256": "a4768570970bd511fb24ce8abbad67b75c40fc7fa2b806b5e228db924dac75c9",
+      "lines": 28
+    },
+    "--list-output-formats": {
+      "sha256": "01100e53a873e1bb33e0c328632e032246f7f15b99582b2354b7bc5e117a0779",
+      "lines": 35
+    },
+    "--list-highlight-languages": {
+      "sha256": "21486b1f92dcb188af7e2dbb35d3d78baf5b1f02425614f77b54ca3db189f03e",
+      "lines": 163
+    },
+    "--list-highlight-styles": {
+      "sha256": "957ae77dbd553c39ed572fb5d4fe2356c0970d93dca8f66686dc14b24fd65ac9",
+      "lines": 8
+    }
+  },
+  "build": {
+    "rust": "1.98.1",
+    "target": "aarch64-apple-darwin",
+    "minimum_macos": "14.0",
+    "features": [
+      "--no-default-features",
+      "--features",
+      "cli,full"
+    ],
+    "cargo_lock_sha256": "1e2aa771afa3ceb7b37d323a68720b6c27b00b917129047e30823c7792610f64",
+    "binary_sha256": "5fb8afaacfec778beffc1735160aeb44a600914af14c2c143ae1507835e86404",
+    "source_commit": "df621b1074c9751494cedc782342765cacdd81de",
+    "source_sha256": "3ef3695c0d95837075408bb374e85e15a5b33e1f7be9fe91fcf90ed14ef2106f",
+    "resource_patch_sha256": "461e8823e1859671b64999377ed2509b3f0e812255be6f728e8a76a6ce2520d0"
+  },
+  "packaged_binary_bytes": 8393200,
+  "packaged_binary_sha256": "9d777a29f0d1326fc448e5a0a0f81ae6ebe86b3b8f54cc56fc7323ac2effb203"
+}

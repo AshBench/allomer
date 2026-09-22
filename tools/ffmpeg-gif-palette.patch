@@ -1,0 +1,277 @@
+--- a/libavfilter/vf_palettegen.c
++++ b/libavfilter/vf_palettegen.c
+@@ -73,6 +73,8 @@
+ 
+     int max_colors;
+     int reserve_transparent;
++    int alpha_threshold;
++    int bounded_histogram;
+     int stats_mode;
+ 
+     AVFrame *prev_frame;                    // previous frame used for the diff stats_mode
+@@ -90,6 +92,8 @@
+ static const AVOption palettegen_options[] = {
+     { "max_colors", "set the maximum number of colors to use in the palette", OFFSET(max_colors), AV_OPT_TYPE_INT, {.i64=256}, 2, 256, FLAGS },
+     { "reserve_transparent", "reserve a palette entry for transparency", OFFSET(reserve_transparent), AV_OPT_TYPE_BOOL, {.i64=1}, 0, 1, FLAGS },
++    { "bounded_histogram", "bound large single-frame histograms with 6-bit color channels", OFFSET(bounded_histogram), AV_OPT_TYPE_BOOL, {.i64=0}, 0, 1, FLAGS },
++    { "alpha_threshold", "ignore colors below this alpha value", OFFSET(alpha_threshold), AV_OPT_TYPE_INT, {.i64=0}, 0, 255, FLAGS },
+     { "transparency_color", "set a background color for transparency", OFFSET(transparency_color), AV_OPT_TYPE_COLOR, {.str="lime"}, 0, 0, FLAGS },
+     { "stats_mode", "set statistics mode", OFFSET(stats_mode), AV_OPT_TYPE_INT, {.i64=STATS_MODE_ALL_FRAMES}, 0, NB_STATS_MODE-1, FLAGS, .unit = "mode" },
+         { "full", "compute full frame histograms", 0, AV_OPT_TYPE_CONST, {.i64=STATS_MODE_ALL_FRAMES}, INT_MIN, INT_MAX, FLAGS, .unit = "mode" },
+@@ -316,6 +320,8 @@
+  * Main function implementing the Median Cut Algorithm defined by Paul Heckbert
+  * in Color Image Quantization for Frame Buffer Display (1982)
+  */
++static int color_inc(struct hist_node *hist, uint32_t color, int alpha_threshold, int color_bits);
++
+ static AVFrame *get_palette_frame(AVFilterContext *ctx)
+ {
+     AVFrame *out;
+@@ -325,6 +331,14 @@
+     int box_id = 0;
+     struct range_box *box;
+ 
++    /* An all-transparent input still needs a palette frame. */
++    if (!s->nb_refs) {
++        int ret = color_inc(s->histogram, 0xff000000U, 0, 8);
++        if (ret < 0)
++            return NULL;
++        s->nb_refs = ret;
++    }
++
+     /* reference only the used colors from histogram */
+     s->refs = load_color_refs(s->histogram, s->nb_refs);
+     if (!s->refs) {
+@@ -345,7 +359,8 @@
+     compute_box_stats(s, box);
+     s->nb_boxes = 1;
+ 
+-    while (box && box->len > 1) {
++    while (box && box->len > 1 &&
++           s->nb_boxes < s->max_colors - s->reserve_transparent) {
+         int i;
+         int64_t median, weight;
+ 
+@@ -382,7 +397,9 @@
+            s->nb_boxes, s->reserve_transparent ? "(+1)" : "", s->nb_refs, ratio);
+ 
+     for (int i = 0; i < s->nb_boxes; i++)
+-        s->boxes[i].color = 0xffU<<24 | ff_oklab_int_to_srgb_u8(s->boxes[i].avg);
++        s->boxes[i].color = 0xffU<<24 | (s->boxes[i].len == 1
++            ? s->refs[s->boxes[i].start]->color & 0xffffff
++            : ff_oklab_int_to_srgb_u8(s->boxes[i].avg));
+ 
+     qsort(s->boxes, s->nb_boxes, sizeof(*s->boxes), cmp_color);
+ 
+@@ -394,8 +411,14 @@
+ /**
+  * Locate the color in the hash table and increment its counter.
+  */
+-static int color_inc(struct hist_node *hist, uint32_t color)
+-{
++static int color_inc(struct hist_node *hist, uint32_t color, int alpha_threshold, int color_bits)
++{
++    if (color >> 24 < alpha_threshold)
++        return 0;
++    if (alpha_threshold)
++        color |= 0xff000000U;
++    if (color_bits == 6)
++        color = (color & 0x00fcfcfcU) | 0xff020202U;
+     const uint32_t hash = ff_lowbias32(color) & (HIST_SIZE - 1);
+     struct hist_node *node = &hist[hash];
+     struct color_ref *e;
+@@ -422,7 +445,7 @@
+  * Update histogram when pixels differ from previous frame.
+  */
+ static int update_histogram_diff(struct hist_node *hist,
+-                                 const AVFrame *f1, const AVFrame *f2)
++                                 const AVFrame *f1, const AVFrame *f2, int alpha_threshold)
+ {
+     int x, y, ret, nb_diff_colors = 0;
+ 
+@@ -433,7 +456,7 @@
+         for (x = 0; x < f1->width; x++) {
+             if (p[x] == q[x])
+                 continue;
+-            ret = color_inc(hist, p[x]);
++            ret = color_inc(hist, p[x], alpha_threshold, 8);
+             if (ret < 0)
+                 return ret;
+             nb_diff_colors += ret;
+@@ -445,7 +468,7 @@
+ /**
+  * Simple histogram of the frame.
+  */
+-static int update_histogram_frame(struct hist_node *hist, const AVFrame *f)
++static int update_histogram_frame(struct hist_node *hist, const AVFrame *f, int alpha_threshold, int color_bits, int max_refs)
+ {
+     int x, y, ret, nb_diff_colors = 0;
+ 
+@@ -453,10 +476,12 @@
+         const uint32_t *p = (const uint32_t *)(f->data[0] + y*f->linesize[0]);
+ 
+         for (x = 0; x < f->width; x++) {
+-            ret = color_inc(hist, p[x]);
++            ret = color_inc(hist, p[x], alpha_threshold, color_bits);
+             if (ret < 0)
+                 return ret;
+             nb_diff_colors += ret;
++            if (max_refs && nb_diff_colors > max_refs)
++                return AVERROR(E2BIG);
+         }
+     }
+     return nb_diff_colors;
+@@ -465,6 +490,13 @@
+ /**
+  * Update the histogram for each passing frame. No frame will be pushed here.
+  */
++static void clear_histogram(PaletteGenContext *s)
++{
++    for (int i = 0; i < HIST_SIZE; i++)
++        av_freep(&s->histogram[i].entries);
++    memset(s->histogram, 0, sizeof(s->histogram));
++}
++
+ static int filter_frame(AVFilterLink *inlink, AVFrame *in)
+ {
+     AVFilterContext *ctx = inlink->dst;
+@@ -474,29 +506,38 @@
+     if (in->color_trc != AVCOL_TRC_UNSPECIFIED && in->color_trc != AVCOL_TRC_IEC61966_2_1)
+         av_log(ctx, AV_LOG_WARNING, "The input frame is not in sRGB, colors may be off\n");
+ 
+-    ret = s->prev_frame ? update_histogram_diff(s->histogram, s->prev_frame, in)
+-                        : update_histogram_frame(s->histogram, in);
++    ret = s->prev_frame ? update_histogram_diff(s->histogram, s->prev_frame, in, s->alpha_threshold)
++                        : update_histogram_frame(s->histogram, in, s->alpha_threshold, 8,
++                            s->bounded_histogram ? 65536 : 0);
++    if (ret == AVERROR(E2BIG) && s->bounded_histogram) {
++        clear_histogram(s);
++        ret = update_histogram_frame(s->histogram, in, s->alpha_threshold, 6, 0);
++    }
++    if (ret < 0) {
++        av_frame_free(&in);
++        return ret;
++    }
+     if (ret > 0)
+         s->nb_refs += ret;
+ 
+     if (s->stats_mode == STATS_MODE_DIFF_FRAMES) {
+         av_frame_free(&s->prev_frame);
+         s->prev_frame = in;
+-    } else if (s->stats_mode == STATS_MODE_SINGLE_FRAMES && s->nb_refs > 0) {
++    } else if (s->stats_mode == STATS_MODE_SINGLE_FRAMES && (s->nb_refs > 0 || s->alpha_threshold)) {
+         AVFrame *out;
+-        int i;
+-
+         out = get_palette_frame(ctx);
++        if (!out) {
++            av_frame_free(&in);
++            return AVERROR(ENOMEM);
++        }
+         out->pts = in->pts;
+         av_frame_free(&in);
+         ret = ff_filter_frame(ctx->outputs[0], out);
+-        for (i = 0; i < HIST_SIZE; i++)
+-            av_freep(&s->histogram[i].entries);
++        clear_histogram(s);
+         av_freep(&s->refs);
+         s->nb_refs = 0;
+         s->nb_boxes = 0;
+         memset(s->boxes, 0, sizeof(s->boxes));
+-        memset(s->histogram, 0, sizeof(s->histogram));
+     } else {
+         av_frame_free(&in);
+     }
+@@ -515,8 +556,11 @@
+     int r;
+ 
+     r = ff_request_frame(inlink);
+-    if (r == AVERROR_EOF && !s->palette_pushed && s->nb_refs && s->stats_mode != STATS_MODE_SINGLE_FRAMES) {
+-        r = ff_filter_frame(outlink, get_palette_frame(ctx));
++    if (r == AVERROR_EOF && !s->palette_pushed && (s->nb_refs || s->alpha_threshold) && s->stats_mode != STATS_MODE_SINGLE_FRAMES) {
++        AVFrame *out = get_palette_frame(ctx);
++        if (!out)
++            return AVERROR(ENOMEM);
++        r = ff_filter_frame(outlink, out);
+         s->palette_pushed = 1;
+         return r;
+     }
+@@ -535,13 +579,11 @@
+ 
+ static int init(AVFilterContext *ctx)
+ {
+-    PaletteGenContext* s = ctx->priv;
+-
+-    if (s->max_colors - s->reserve_transparent < 2) {
+-        av_log(ctx, AV_LOG_ERROR, "max_colors=2 is only allowed without reserving a transparent color slot\n");
++    PaletteGenContext *s = ctx->priv;
++    if (s->bounded_histogram && s->stats_mode != STATS_MODE_SINGLE_FRAMES) {
++        av_log(ctx, AV_LOG_ERROR, "bounded_histogram requires stats_mode=single\n");
+         return AVERROR(EINVAL);
+     }
+-
+     return 0;
+ }
+ 
+--- a/libavfilter/vf_paletteuse.c
++++ b/libavfilter/vf_paletteuse.c
+@@ -85,6 +85,8 @@
+ typedef int (*set_frame_func)(struct PaletteUseContext *s, AVFrame *out, AVFrame *in,
+                               int x_start, int y_start, int width, int height);
+ 
++static const set_frame_func set_frame_lut[NB_DITHERING];
++
+ typedef struct PaletteUseContext {
+     const AVClass *class;
+     FFFrameSync fs;
+@@ -94,10 +96,12 @@
+     int transparency_index; /* index in the palette of transparency. -1 if there is no transparency in the palette. */
+     int trans_thresh;
+     int palette_loaded;
++    int palette_exact;
+     int dither;
+     int new;
+     set_frame_func set_frame;
+     int bayer_scale;
++    int cache_limit;
+     int ordered_dither[8*8];
+     int diff_mode;
+     AVFrame *last_in;
+@@ -121,6 +125,7 @@
+         { "sierra3",         "Frankie Sierra dithering v3 (error diffusion)",                          0, AV_OPT_TYPE_CONST, {.i64=DITHERING_SIERRA3},         INT_MIN, INT_MAX, FLAGS, .unit = "dithering_mode" },
+         { "burkes",          "Burkes dithering (error diffusion)",                                     0, AV_OPT_TYPE_CONST, {.i64=DITHERING_BURKES},          INT_MIN, INT_MAX, FLAGS, .unit = "dithering_mode" },
+         { "atkinson",        "Atkinson dithering by Bill Atkinson at Apple Computer (error diffusion)",0, AV_OPT_TYPE_CONST, {.i64=DITHERING_ATKINSON},        INT_MIN, INT_MAX, FLAGS, .unit = "dithering_mode" },
++    { "cache_limit", "maximum entries per color cache bucket (0 is unlimited)", OFFSET(cache_limit), AV_OPT_TYPE_INT, {.i64=0}, 0, INT_MAX, FLAGS },
+     { "bayer_scale", "set scale for bayer dithering", OFFSET(bayer_scale), AV_OPT_TYPE_INT, {.i64=2}, 0, 5, FLAGS },
+     { "diff_mode",   "set frame difference mode",     OFFSET(diff_mode),   AV_OPT_TYPE_INT, {.i64=DIFF_MODE_NONE}, 0, NB_DIFF_MODE-1, FLAGS, .unit = "diff_mode" },
+         { "rectangle", "process smallest different rectangle", 0, AV_OPT_TYPE_CONST, {.i64=DIFF_MODE_RECTANGLE}, INT_MIN, INT_MAX, FLAGS, .unit = "diff_mode" },
+@@ -255,6 +260,11 @@
+         e = &node->entries[i];
+         if (e->color == color)
+             return e->pal_entry;
++    }
++
++    if (s->cache_limit && node->nb_entries >= s->cache_limit) {
++        clrinfo = get_color_from_srgb(color);
++        return colormap_nearest(s->map, &clrinfo, s->trans_thresh);
+     }
+ 
+     e = av_dynarray2_add((void**)&node->entries, &node->nb_entries,
+@@ -795,7 +805,7 @@
+     ff_dlog(ctx, "%dx%d rect: (%d;%d) -> (%d,%d) [area:%dx%d]\n",
+             w, h, x, y, x+w, y+h, in->width, in->height);
+ 
+-    ret = s->set_frame(s, out, in, x, y, w, h);
++    ret = (s->palette_exact ? set_frame_lut[DITHERING_NONE] : s->set_frame)(s, out, in, x, y, w, h);
+     if (ret < 0) {
+         av_frame_free(&out);
+         *outf = NULL;
+@@ -848,6 +858,9 @@
+     int i, x, y;
+     const uint32_t *p = (const uint32_t *)palette_frame->data[0];
+     const ptrdiff_t p_linesize = palette_frame->linesize[0] >> 2;
++    const AVDictionaryEntry *ratio = av_dict_get(palette_frame->metadata, "lavfi.color_quant_ratio", NULL, 0);
++
++    s->palette_exact = ratio && !strcmp(ratio->value, "1.000000");
+ 
+     s->transparency_index = -1;

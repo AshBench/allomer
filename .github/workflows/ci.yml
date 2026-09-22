@@ -1,0 +1,54 @@
+name: Check app
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: app-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-test:
+    name: ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: macos-14
+            xcode: /Applications/Xcode_16.2.app/Contents/Developer
+          - runner: macos-15
+            xcode: ''
+          - runner: macos-26
+            xcode: ''
+          - runner: xcode-27
+            xcode: ''
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Select Xcode with Swift 6
+        if: matrix.xcode != ''
+        run: sudo xcode-select --switch '${{ matrix.xcode }}'
+      - name: Check the runner
+        run: |
+          sw_vers
+          test "$(uname -m)" = arm64
+          xcodebuild -version
+          swift --version
+      - name: Check dependency records
+        run: python3 tools/check-dependencies.py
+      - name: Check native framework sandbox behavior
+        run: python3 tools/check-macos-runtime.py
+      - name: Run Swift tests
+        run: swift test
+      - name: Build the release executables
+        run: swift build -c release --arch arm64

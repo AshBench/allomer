@@ -1,0 +1,35 @@
+{
+  "recorded_at_utc": "2026-09-08T14:46:08.042257+00:00",
+  "macos": "26.6.2",
+  "architecture": "arm64",
+  "workload": "Original two-page HTML with print CSS, table, links, Unicode text, and a local bitmap",
+  "source_sha256": "9c52b712f10be4ea325f70e0a609de770aeec5fa624d075d75b96a92e286aad7",
+  "source_bytes": 734,
+  "assets_sha256": {
+    "print.css": "acc55009e36580b146e6e04204ccdae596ffd681eae4ae366880eb4a3ec76f6f",
+    "asset % caf\u00e9.png": "a76a4c41922cf3c19cf222cc56c03da3c7aa8c88441643f1e7e07e29af5c0659"
+  },
+  "helper_sha256": "7ebad5cbe10a89de06139869826d558906701fe68bbc48a68936cb64989b8b06",
+  "launcher_sha256": "d0799e692f70a1dface6ee64801c223da34daeb64455eb450c52eaa4496aae77",
+  "packaged": true,
+  "samples": [
+    {
+      "elapsed_seconds": 0.38,
+      "peak_resident_bytes": 70664192,
+      "output_bytes": 23256
+    },
+    {
+      "elapsed_seconds": 0.39,
+      "peak_resident_bytes": 70729728,
+      "output_bytes": 23256
+    },
+    {
+      "elapsed_seconds": 0.39,
+      "peak_resident_bytes": 70680576,
+      "output_bytes": 23256
+    }
+  ],
+  "median_elapsed_seconds": 0.39,
+  "median_peak_resident_bytes": 70680576,
+  "memory_scope": "Peak renderer helper RSS from macOS time -l. Excludes separate WebKit services, the native app, Swift adapter checks, and PDF index rebuilding. This is not total conversion memory. Three warm serial runs after content checks."
+}

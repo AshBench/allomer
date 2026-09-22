@@ -1,0 +1,75 @@
+Preserve the first packet timing in single-page Vorbis streams.
+The first packet primes the decoder and has no PCM output. Track its page
+and ending segment so length probes and seeks apply the same correction.
+This local change is licensed under LGPL-2.1-or-later, like the source file.
+
+--- a/libavformat/oggparsevorbis.c
++++ b/libavformat/oggparsevorbis.c
+@@ -213,6 +213,8 @@
+     unsigned int len[3];
+     unsigned char *packet[3];
+     AVVorbisParseContext *vp;
++    int64_t first_audio_pos;
++    int first_audio_seg;
+     int64_t final_pts;
+     int final_duration;
+     uint8_t *header;
+@@ -387,8 +389,11 @@
+ 
+     priv = os->private;
+ 
+-    if (!(pkt_type & 1))
++    if (!(pkt_type & 1)) {
++        priv->first_audio_pos = os->page_pos;
++        priv->first_audio_seg = os->segp;
+         return priv->vp ? 0 : AVERROR_INVALIDDATA;
++    }
+ 
+     if (pkt_type > 5) {
+         av_log(s, AV_LOG_VERBOSE, "Ignoring packet with unknown type %d\n", pkt_type);
+@@ -457,11 +462,27 @@
+     struct oggvorbis_private *priv = os->private;
+     int duration, flags = 0;
+     int skip_packet = 0;
++    int first_eos_packet = 0;
+     int ret, new_extradata_size;
+     PutByteContext pb;
+ 
+     if (!priv->vp)
+         return AVERROR_INVALIDDATA;
++
++    if (os->psize > 0 && !(os->buf[os->pstart] & 1)) {
++        if (priv->first_audio_pos < 0) {
++            priv->first_audio_pos = os->page_pos;
++            priv->first_audio_seg = os->segp;
++        }
++        first_eos_packet = (os->flags & OGG_FLAG_EOS) &&
++                           os->page_pos == priv->first_audio_pos &&
++                           os->segp == priv->first_audio_seg;
++        if (first_eos_packet) {
++            av_vorbis_parse_reset(priv->vp);
++            if (s->streams[idx]->start_time == AV_NOPTS_VALUE)
++                s->streams[idx]->start_time = 0;
++        }
++    }
+ 
+     /* first packet handling
+      * here we parse the duration of each packet in the first page and compare
+@@ -565,6 +586,9 @@
+             skip_packet = 1;
+         }
+ 
++        /* The first audio packet primes the decoder and emits no samples. */
++        if (first_eos_packet)
++            os->lastpts = os->lastdts = -duration;
+         os->pduration = duration;
+     }
+ 
+@@ -610,6 +634,7 @@
+         priv->setup_size = 0;
+ 
+         av_vorbis_parse_free(&priv->vp);
++        priv->first_audio_pos = -1;
+         priv->vp = av_vorbis_parse_init(os->new_extradata, os->new_extradata_size);
+         if (!priv->vp) {
+             av_log(s, AV_LOG_ERROR, "Failed to re-initialize Vorbis parser\n");

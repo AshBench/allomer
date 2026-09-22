@@ -1,0 +1,106 @@
+[
+  {
+    "camera": "Canon EOS 7D",
+    "variant": "RAW (3:2)",
+    "file": "eos-7d.cr2",
+    "url": "https://raw.pixls.us/getfile.php/131/nice/Canon%20-%20EOS%207D%20-%20RAW%20%283:2%29.CR2",
+    "sha256": "b5e47c5fcf7332ac03e0134926f17a338a42e68c1fd7f83e16f45f4b767544e8",
+    "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source": "https://raw.pixls.us/",
+    "pixels": [
+      5184,
+      3456
+    ]
+  },
+  {
+    "camera": "Nikon D90",
+    "variant": "12bit 12bit compressed (Lossy (type 2)) (3:2)",
+    "file": "d90.nef",
+    "url": "https://raw.pixls.us/getfile.php/1325/nice/Nikon%20-%20D90%20-%2012bit%2012bit%20compressed%20%28Lossy%20%28type%202%29%29%20%283:2%29.NEF",
+    "sha256": "9eb3daa4e3d1c1614bccc4c6d136c4166960f936f17c437cc4d11a5786b2df06",
+    "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source": "https://raw.pixls.us/",
+    "pixels": [
+      4288,
+      2848
+    ]
+  },
+  {
+    "camera": "Sony NEX-5",
+    "variant": "12bit 12bit compressed (3:2)",
+    "file": "nex-5.arw",
+    "url": "https://raw.pixls.us/getfile.php/1457/nice/Sony%20-%20NEX-5%20-%2012bit%2012bit%20compressed%20%283:2%29.ARW",
+    "sha256": "3b085569ac1fec37a1289ed5ea517497692a3ea14cea41953dd6e878abf230a3",
+    "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source": "https://raw.pixls.us/",
+    "pixels": [
+      4592,
+      3056
+    ]
+  },
+  {
+    "camera": "Pentax K10D",
+    "variant": "12bit 12bit uncompressed (3:2)",
+    "file": "k10d.dng",
+    "url": "https://raw.pixls.us/getfile.php/2768/nice/Pentax%20-%20K10D%20-%2012bit%2012bit%20uncompressed%20%283:2%29.DNG",
+    "sha256": "e7ea961edfea725ad2753f261d20da5e6addd5d641e5bcbc373999710f27941f",
+    "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source": "https://raw.pixls.us/",
+    "pixels": [
+      3872,
+      2592
+    ]
+  },
+  {
+    "camera": "Fujifilm X-T1",
+    "variant": "14bit 14bit uncompressed (3:2)",
+    "file": "x-t1.raf",
+    "url": "https://raw.pixls.us/getfile.php/2421/nice/Fujifilm%20-%20X-T1%20-%2014bit%2014bit%20uncompressed%20%283:2%29.RAF",
+    "sha256": "e994a1fd6e87e392432fe146a35b0b88584dc2bd50bee2c8c7e886ac2b59fcde",
+    "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source": "https://raw.pixls.us/",
+    "pixels": [
+      4896,
+      3264
+    ]
+  },
+  {
+    "camera": "Olympus E-M5",
+    "variant": "16bit (4:3)",
+    "file": "e-m5.orf",
+    "url": "https://raw.pixls.us/getfile.php/1084/nice/Olympus%20-%20E-M5%20-%2016bit%20%284:3%29.ORF",
+    "sha256": "b2221977cbc6eba0d3b363351072092e5647eaa0d02a5d8432b5d985b29f669f",
+    "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source": "https://raw.pixls.us/",
+    "pixels": [
+      4608,
+      3456
+    ]
+  },
+  {
+    "camera": "Panasonic DMC-GF1",
+    "variant": "4:3",
+    "file": "dmc-gf1.rw2",
+    "url": "https://raw.pixls.us/getfile.php/880/nice/Panasonic%20-%20DMC-GF1%20-%204:3.rw2",
+    "sha256": "c660fac3f9e4a3e03c1496db62abbe50a73ed3bd6a11056c41badf87cd0b7841",
+    "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source": "https://raw.pixls.us/",
+    "pixels": [
+      4000,
+      3000
+    ]
+  },
+  {
+    "camera": "Pentax K10D",
+    "variant": "12bit 12bit compressed (3:2)",
+    "file": "k10d.pef",
+    "url": "https://raw.pixls.us/getfile.php/2239/nice/Pentax%20-%20K10D%20-%2012bit%2012bit%20compressed%20%283:2%29.PEF",
+    "sha256": "e35ae4154a468be3154f5f462e884ba5941f010d3e8f23d347fbec14809f44d3",
+    "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source": "https://raw.pixls.us/",
+    "pixels": [
+      3872,
+      2592
+    ]
+  }
+]

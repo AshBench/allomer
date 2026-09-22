@@ -1,0 +1,106 @@
+{
+  "recorded_at_utc": "2026-09-08T18:32:05.348179+00:00",
+  "macos": "26.6.2",
+  "architecture": "arm64",
+  "command_sha256": "bab89c0e790872fa90a848f732e531de3932dec73118a329fc228ba1281d29f1",
+  "tool_sha256": {
+    "mutool": "8a02f511b3d5668af58d96d30065531642c7a1fcf11c07276aa44006b45b81aa",
+    "pdfguard": "157b880fb34e9210c0744c157b6dfeaa2b4beb6127100626c54c024d16ffb3be",
+    "ffmpeg": "db0e370419f7790d579e6c392cb906665526bf5ca1bd899c5ef1f78b0924e290"
+  },
+  "scope": "Three complete JPEG-to-PNG CLI conversions per case. Reported RSS is not aggregate parent-plus-helper memory. GUI excluded.",
+  "workloads": [
+    {
+      "width": 1024,
+      "height": 1024,
+      "progressive": false,
+      "input_bytes": 940588,
+      "input_sha256": "8a0248ba49f4f2ed74d4ca97084213af30e5efe9e4c35b58b126a1ab4d2d2352",
+      "runs": [
+        {
+          "seconds": 0.16,
+          "resident_bytes": 35110912
+        },
+        {
+          "seconds": 0.16,
+          "resident_bytes": 34947072
+        },
+        {
+          "seconds": 0.16,
+          "resident_bytes": 35012608
+        }
+      ],
+      "median_seconds": 0.16,
+      "median_resident_bytes": 35012608
+    },
+    {
+      "width": 1024,
+      "height": 1024,
+      "progressive": true,
+      "input_bytes": 857738,
+      "input_sha256": "e37a94ccc82e108722a8def54156ffafe8ea8c301182f79c79ab3e3fae2e3035",
+      "runs": [
+        {
+          "seconds": 0.15,
+          "resident_bytes": 31997952
+        },
+        {
+          "seconds": 0.15,
+          "resident_bytes": 31965184
+        },
+        {
+          "seconds": 0.15,
+          "resident_bytes": 32079872
+        }
+      ],
+      "median_seconds": 0.15,
+      "median_resident_bytes": 31997952
+    },
+    {
+      "width": 6000,
+      "height": 4000,
+      "progressive": false,
+      "input_bytes": 21514198,
+      "input_sha256": "bd400bff1eb4cd7be807a0b6a8f60efec6d14938baf029fc91ae917b20df7d89",
+      "runs": [
+        {
+          "seconds": 2.16,
+          "resident_bytes": 239255552
+        },
+        {
+          "seconds": 2.17,
+          "resident_bytes": 239353856
+        },
+        {
+          "seconds": 2.17,
+          "resident_bytes": 239222784
+        }
+      ],
+      "median_seconds": 2.17,
+      "median_resident_bytes": 239255552
+    },
+    {
+      "width": 6000,
+      "height": 4000,
+      "progressive": true,
+      "input_bytes": 19617413,
+      "input_sha256": "d98fd8b0d2f8ed30b1236198bc3054cba701d9ee83f4aff153739e4a4a450573",
+      "runs": [
+        {
+          "seconds": 2.64,
+          "resident_bytes": 234848256
+        },
+        {
+          "seconds": 2.63,
+          "resident_bytes": 234799104
+        },
+        {
+          "seconds": 2.64,
+          "resident_bytes": 234766336
+        }
+      ],
+      "median_seconds": 2.64,
+      "median_resident_bytes": 234799104
+    }
+  ]
+}

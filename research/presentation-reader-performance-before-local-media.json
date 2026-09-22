@@ -1,0 +1,91 @@
+{
+  "recorded_at_utc": "2026-09-08T17:01:42.646581+00:00",
+  "macos": "26.6.2",
+  "architecture": "arm64",
+  "workload": "One and twelve 10 by 7.5 inch slides, each with text and a deterministic 1024-square RGB noise image. Twelve-slide cases cover both one shared image and twelve distinct images.",
+  "sha256": {
+    "MacOS/allomer": "1409d4f0e84bc865a48f11fd632c9554bdfeea3c6b5442a800e06fd06ad64c7e",
+    "Helpers/webconvert": "6e6144ebb98e0fb2f8da068f1c1b5b68f2f8948351a28a04a0fc875399c831f5",
+    "Helpers/webguard": "d0799e692f70a1dface6ee64801c223da34daeb64455eb450c52eaa4496aae77",
+    "Resources/Presentation/renderer.js": "e4849404cab97ec96836c20f519cdd0dc207664e4775e88a150494c37f9c9ec5"
+  },
+  "memory_scope": "macOS time -l reports the conversion command and its waited-for child processes. This is not aggregate memory. It excludes separate WebKit services and the GUI.",
+  "timing_scope": "Complete command conversion, including ZIP and image validation, WebKit rendering, PDF cleanup, checks, and publication. Three warm local runs; no cross-app comparison.",
+  "runs": [
+    {
+      "slides": 1,
+      "distinct_images": false,
+      "source_bytes": 3180781,
+      "source_sha256": "f54e5efaee0ff3d7311afd5683d94fd50d644dec30d792a1af90b5fa09cdd6fb",
+      "samples": [
+        {
+          "elapsed_seconds": 0.66,
+          "reported_peak_resident_bytes": 90521600,
+          "output_bytes": 3160787
+        },
+        {
+          "elapsed_seconds": 0.7,
+          "reported_peak_resident_bytes": 89997312,
+          "output_bytes": 3160787
+        },
+        {
+          "elapsed_seconds": 0.67,
+          "reported_peak_resident_bytes": 90046464,
+          "output_bytes": 3160787
+        }
+      ],
+      "median_elapsed_seconds": 0.67,
+      "median_reported_peak_resident_bytes": 90046464
+    },
+    {
+      "slides": 12,
+      "distinct_images": false,
+      "source_bytes": 3192633,
+      "source_sha256": "3b40037209735a88c69079ed92f229fbca6eaf2202d4c9b2b7a81f0cecc66e33",
+      "samples": [
+        {
+          "elapsed_seconds": 1.63,
+          "reported_peak_resident_bytes": 91930624,
+          "output_bytes": 3279639
+        },
+        {
+          "elapsed_seconds": 1.67,
+          "reported_peak_resident_bytes": 92241920,
+          "output_bytes": 3279639
+        },
+        {
+          "elapsed_seconds": 1.72,
+          "reported_peak_resident_bytes": 92651520,
+          "output_bytes": 3279639
+        }
+      ],
+      "median_elapsed_seconds": 1.67,
+      "median_reported_peak_resident_bytes": 92241920
+    },
+    {
+      "slides": 12,
+      "distinct_images": true,
+      "source_bytes": 37863543,
+      "source_sha256": "666d0b158851d909454f4bc72dacfdf81d59ad8d2daccb21d1c549b6c0877ff3",
+      "samples": [
+        {
+          "elapsed_seconds": 2.41,
+          "reported_peak_resident_bytes": 163610624,
+          "output_bytes": 37895460
+        },
+        {
+          "elapsed_seconds": 2.4,
+          "reported_peak_resident_bytes": 166625280,
+          "output_bytes": 37895460
+        },
+        {
+          "elapsed_seconds": 2.39,
+          "reported_peak_resident_bytes": 163299328,
+          "output_bytes": 37895460
+        }
+      ],
+      "median_elapsed_seconds": 2.4,
+      "median_reported_peak_resident_bytes": 163610624
+    }
+  ]
+}

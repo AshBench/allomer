@@ -1,0 +1,46 @@
+{
+  "input_sha256": "64825faadf45e5230d9cbe5d22c35201587ca3b22589e2c1840e1ddafe0b5150",
+  "pixels": [
+    1024,
+    1024
+  ],
+  "macos": "26.6.2",
+  "runs": {
+    "before": {
+      "command_sha256": "9d62ef5cdf0375fb372bab466fc944c61d231fc3c6651dba5ad60dc3af120ab1",
+      "output_bytes": 597229,
+      "streams": [
+        {
+          "r_frame_rate": "100/1",
+          "nb_read_frames": "10"
+        }
+      ],
+      "rgb_rms_error": 65.18759086751288,
+      "rgb_rms_error_by_channel": [
+        72.73014988084842,
+        30.567414323557685,
+        80.77267167311005
+      ],
+      "absolute_error_95th_percentile": 136.0
+    },
+    "after": {
+      "command_sha256": "5a93a3ebe574cd76711ed5362be529041df18f407e437778bd90efb24c9acacc",
+      "output_bytes": 573727,
+      "streams": [
+        {
+          "r_frame_rate": "10/1",
+          "nb_read_frames": "1"
+        }
+      ],
+      "rgb_rms_error": 65.18759086751288,
+      "rgb_rms_error_by_channel": [
+        72.73014988084842,
+        30.567414323557685,
+        80.77267167311005
+      ],
+      "absolute_error_95th_percentile": 136.0
+    }
+  },
+  "changed_native_rgb_components": 0,
+  "scope": "One original RGB noise fixture per packaged command. Compare the first frame decoded by AVFoundation into sRGB against the original PNG. Default GIF and video settings. This includes palette reduction, video compression, and chroma subsampling. It is not a general image-quality score or a performance measurement."
+}

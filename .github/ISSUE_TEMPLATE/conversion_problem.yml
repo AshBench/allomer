@@ -1,0 +1,41 @@
+name: Conversion problem
+description: Report wrong output, a failed route, or a missing format pair.
+title: "[Conversion] "
+labels: [bug, conversion]
+body:
+  - type: input
+    attributes:
+      label: Source and target formats
+      placeholder: PNG to WebP
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Allomer version or commit
+      placeholder: Version, commit, or build date
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Mac and macOS version
+      placeholder: Mac model and macOS version
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Settings and route
+      description: List changed options and any stages shown in History.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Result
+      description: Include the error or describe the wrong output and the expected result.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Reproducible sample
+      description: Explain how to create a small sample. Do not attach private or copyrighted files without permission.
+    validations:
+      required: false

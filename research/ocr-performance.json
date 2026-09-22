@@ -1,0 +1,30 @@
+{
+  "recorded_at_utc": "2026-09-08T12:38:04.788577+00:00",
+  "macos": "26.6.2",
+  "architecture": "arm64",
+  "workload": "1000 by 480 RGB image with three text lines and two colored shapes to searchable PDF",
+  "source_sha256": "05fb1c11c367ffd51a7fe68e043c8da4c7a10762882f57affbb46b141837c580",
+  "source_bytes": 22619,
+  "helper_sha256": "415516466ba0a2f5db102768bf5c1d0450b5d5c185792cf01f590684eba5e5c1",
+  "launcher_sha256": "0b7679028e25df203eb7c78a566d0eb207a20c4c189bbeac6e68165bb5a9902b",
+  "samples": [
+    {
+      "elapsed_seconds": 0.34,
+      "peak_resident_bytes": 66174976,
+      "output_bytes": 38648
+    },
+    {
+      "elapsed_seconds": 0.34,
+      "peak_resident_bytes": 69763072,
+      "output_bytes": 38648
+    },
+    {
+      "elapsed_seconds": 0.33,
+      "peak_resident_bytes": 64929792,
+      "output_bytes": 38648
+    }
+  ],
+  "memory_scope": "Peak helper RSS from macOS time -l, including PDF text checks. Excludes the app and separate system services. Warm runs after the content checks.",
+  "median_elapsed_seconds": 0.34,
+  "median_peak_resident_bytes": 66174976
+}

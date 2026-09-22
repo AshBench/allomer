@@ -1,0 +1,18 @@
+[package]
+name = "vectortrace"
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+publish = false
+
+[dependencies]
+vtracer = "=0.6.5"
+visioncortex = "=0.8.10"
+
+[patch.crates-io]
+visioncortex = { path = "../../.tools/vectortrace/visioncortex" }
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true

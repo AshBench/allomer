@@ -1,0 +1,74 @@
+{
+  "recorded_at_utc": "2026-09-09T04:12:19.479972+00:00",
+  "macos": "26.6.2",
+  "architecture": "arm64",
+  "command_sha256": "a2ee20a7b52d795aab5973a3f85580cd5f1b728dd1b0f92f42cd97629c70c9ef",
+  "ffmpeg_sha256": "db0e370419f7790d579e6c392cb906665526bf5ca1bd899c5ef1f78b0924e290",
+  "media_libraries": {
+    "libavfilter.12.1.101.dylib": "a01633d2e335af35c847acd31bd9a5e3b528f0de42d5db18d774146d6ec38948",
+    "libswresample.7.1.101.dylib": "d7466f49d38bb7d24c2c93047bf0750d07c3cdadc7273b4bcaeae33076d7be1a",
+    "libswscale.10.1.101.dylib": "d5338449910cfafff025d8c8055ebf3fb361fb8a31bc0f45fa2f480cb7ad8070",
+    "libavutil.61.1.101.dylib": "dcc01a9e63b9a7b837a5cf77c523d9f4b0934de77827b6f20193b5782e35bd71",
+    "libavcodec.63.1.101.dylib": "bcd9084730ad5d33bf169b3a93b06c52925bff5b57a87bab5e684b978ffeb442",
+    "libavformat.63.1.101.dylib": "8cd2cdb9457c52d37c11d07caa35cc5ca8eff69a24622de1cdee6dbafa592c02"
+  },
+  "input_sha256": "9b297abab015afc11e88bb70ec95f4d80572b92a83c465d9f95259b1510c5168",
+  "input_bytes": 72062266,
+  "width": 6000,
+  "height": 4000,
+  "gif_max_colors": 256,
+  "gif_dither": true,
+  "samples": [
+    {
+      "seconds": 0.8,
+      "resident_bytes": 487440384,
+      "output_bytes": 32988513,
+      "output_sha256": "89bb4e1d30a12d479cd4f516b4414e5d6033d07739957f30748ce3e72545b0f6",
+      "mean_rgb_error": [
+        10.5596295,
+        10.368764416666666,
+        11.118023458333333
+      ],
+      "rms_rgb_error": [
+        12.937961875813363,
+        12.70045938145546,
+        13.611151134578344
+      ]
+    },
+    {
+      "seconds": 0.82,
+      "resident_bytes": 487522304,
+      "output_bytes": 32988513,
+      "output_sha256": "89bb4e1d30a12d479cd4f516b4414e5d6033d07739957f30748ce3e72545b0f6",
+      "mean_rgb_error": [
+        10.5596295,
+        10.368764416666666,
+        11.118023458333333
+      ],
+      "rms_rgb_error": [
+        12.937961875813363,
+        12.70045938145546,
+        13.611151134578344
+      ]
+    },
+    {
+      "seconds": 0.79,
+      "resident_bytes": 487407616,
+      "output_bytes": 32988513,
+      "output_sha256": "89bb4e1d30a12d479cd4f516b4414e5d6033d07739957f30748ce3e72545b0f6",
+      "mean_rgb_error": [
+        10.5596295,
+        10.368764416666666,
+        11.118023458333333
+      ],
+      "rms_rgb_error": [
+        12.937961875813363,
+        12.70045938145546,
+        13.611151134578344
+      ]
+    }
+  ],
+  "median_seconds": 0.8,
+  "median_resident_bytes": 487440384,
+  "scope": "Three complete conversions of one original 24-megapixel RGB noise PNG. Input generation and verification are not timed. RSS can include a child helper peak; it is not aggregate simultaneous process memory. GUI excluded. Older commands can ignore the palette settings."
+}

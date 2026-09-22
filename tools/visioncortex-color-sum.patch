@@ -1,0 +1,54 @@
+--- a/src/color.rs
++++ b/src/color.rs
+@@ -37,13 +37,13 @@
+ }
+ 
+-/// RGBA; each channel is 32 bit unsigned
++/// RGBA sums use 64 bits so large regions keep their original average color.
+ #[derive(Copy, Clone, Default, PartialEq, Eq)]
+ pub struct ColorSum {
+-    pub r: u32,
+-    pub g: u32,
+-    pub b: u32,
+-    pub a: u32,
+-    pub counter: u32,
++    pub r: u64,
++    pub g: u64,
++    pub b: u64,
++    pub a: u64,
++    pub counter: u64,
+ }
+ 
+ /// HSV; each channel is 64 bit float
+@@ -259,10 +259,10 @@
+     }
+ 
+     pub fn add(&mut self, color: &Color) {
+-        self.r += color.r as u32;
+-        self.g += color.g as u32;
+-        self.b += color.b as u32;
+-        self.a += color.a as u32;
++        self.r += color.r as u64;
++        self.g += color.g as u64;
++        self.b += color.b as u64;
++        self.a += color.a as u64;
+         self.counter += 1;
+     }
+ 
+@@ -276,6 +276,16 @@
+     }
+ 
+     pub fn average(&self) -> Color {
++        // Keep 32-bit division for regions whose channel totals cannot overflow.
++        if self.counter <= u32::MAX as u64 / 255 {
++            let count = self.counter as u32;
++            return Color::new_rgba(
++                (self.r as u32 / count) as u8,
++                (self.g as u32 / count) as u8,
++                (self.b as u32 / count) as u8,
++                (self.a as u32 / count) as u8,
++            );
++        }
+         Color::new_rgba(
+             (self.r / self.counter) as u8,
+             (self.g / self.counter) as u8,

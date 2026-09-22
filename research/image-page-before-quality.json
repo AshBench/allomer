@@ -1,0 +1,58 @@
+{
+  "recorded_at_utc": "2026-09-09T01:12:35.612270+00:00",
+  "macos": "26.6.2",
+  "architecture": "arm64",
+  "command_sha256": "293139e9fed18d8d027b1189a1dd00cce987b7cb0ed15f786094420fcb440c9a",
+  "workload": "One or twelve TIFF pages with distinct deterministic 1024-square RGB noise at 144 DPI.",
+  "scope": "Three complete CLI conversions. Native ImageIO runs in this process. The GUI is excluded. No cross-app comparison.",
+  "workloads": [
+    {
+      "pages": 1,
+      "input_bytes": 3145920,
+      "input_sha256": "c3aa38015f70a47d94385416ee5376427371fffe2deee534af5127a536c36c4c",
+      "median_seconds": 0.09,
+      "median_resident_bytes": 47529984,
+      "runs": [
+        {
+          "seconds": 0.09,
+          "resident_bytes": 47529984,
+          "output_bytes": 1090834
+        },
+        {
+          "seconds": 0.09,
+          "resident_bytes": 47529984,
+          "output_bytes": 1090834
+        },
+        {
+          "seconds": 0.09,
+          "resident_bytes": 47513600,
+          "output_bytes": 1090834
+        }
+      ]
+    },
+    {
+      "pages": 12,
+      "input_bytes": 37751040,
+      "input_sha256": "61d2b5cfa89d31be2a3e9da7b11056eab30129c86a3adb4f52e583980ead235a",
+      "median_seconds": 0.29,
+      "median_resident_bytes": 148176896,
+      "runs": [
+        {
+          "seconds": 0.3,
+          "resident_bytes": 148406272,
+          "output_bytes": 13052012
+        },
+        {
+          "seconds": 0.29,
+          "resident_bytes": 148176896,
+          "output_bytes": 13052012
+        },
+        {
+          "seconds": 0.29,
+          "resident_bytes": 147456000,
+          "output_bytes": 13052012
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,274 @@
+{
+  "recorded_at_utc": "2026-09-09T07:41:06.328095+00:00",
+  "macos": "26.6.2",
+  "chip": "Apple M2 Max",
+  "command_sha256": "c4374306329e615a9962eac48b83234453c96df13ad4f5f1f07f4edbad677d8b",
+  "helper_sha256": {
+    "webguard": "d0799e692f70a1dface6ee64801c223da34daeb64455eb450c52eaa4496aae77",
+    "webconvert": "7e224546422d8b31a7324d1177a1230320751a70aa3a36826e6c437e3ad0e8a9"
+  },
+  "cases": [
+    {
+      "case": "one-raster",
+      "runs": [
+        {
+          "seconds": 0.35,
+          "resident_bytes": 78856192,
+          "output_bytes": 5450
+        },
+        {
+          "seconds": 0.34,
+          "resident_bytes": 78594048,
+          "output_bytes": 5450
+        },
+        {
+          "seconds": 0.34,
+          "resident_bytes": 79003648,
+          "output_bytes": 5450
+        }
+      ],
+      "input_files": {
+        "icon.json": [
+          "file",
+          "57bf50ba54dc253224a2cbedd69d440c7489f105676a0ad932ceb946fd07cfc3"
+        ],
+        "Assets": [
+          "directory",
+          ""
+        ],
+        "Assets/Shape.svg": [
+          "file",
+          "b9c21986958d3d59c41e451cb073ea9a26b3c5ed47ba672b0f1c5fc0d5396c30"
+        ],
+        "Assets/Vector-2.svg": [
+          "file",
+          "277aa05cc93d434df3dca5314b2f3f28af45f73e4fad56b6fb65488a4e2aa96c"
+        ],
+        "Assets/Vector-3.svg": [
+          "file",
+          "e0bcaa788d24deab00b3223d13c091b85ebaf09e359f5ecb885a8d52b15b2e09"
+        ],
+        "Assets/Vector-1.svg": [
+          "file",
+          "e7ed0c6d5db6f11b447c240edc62f8de3556fe1a9139a8523026bcdc1cc06340"
+        ],
+        "Assets/Blue.png": [
+          "file",
+          "392d226c8ee7c1ff6f8e65a4e45464dd39e4b334b7630949886f45f9480be63d"
+        ],
+        "Assets/Vector-0.svg": [
+          "file",
+          "c04996bda779fab831de158a19f55eb66ef42136c332bd0f361688993310cea5"
+        ],
+        "Assets/Noise.png": [
+          "file",
+          "a880e9117c6ff8035d8ff494dbc3e4e2c2528f8d6104a575ad5433db4608ab49"
+        ],
+        "Assets/Red.png": [
+          "file",
+          "977611a374b05f35e7e4bfe644a9f3c8639d3a4c2fd6d9031f3647ef76f50f75"
+        ]
+      },
+      "median_seconds": 0.34,
+      "median_resident_bytes": 78856192
+    },
+    {
+      "case": "four-vectors",
+      "runs": [
+        {
+          "seconds": 1.28,
+          "resident_bytes": 81149952,
+          "output_bytes": 15161
+        },
+        {
+          "seconds": 1.26,
+          "resident_bytes": 75857920,
+          "output_bytes": 15161
+        },
+        {
+          "seconds": 1.3,
+          "resident_bytes": 81297408,
+          "output_bytes": 15161
+        }
+      ],
+      "input_files": {
+        "icon.json": [
+          "file",
+          "9ade8338c146b8075de3c5253ba213ba3ee5009a13eaa84233a6888d304c2419"
+        ],
+        "Assets": [
+          "directory",
+          ""
+        ],
+        "Assets/Shape.svg": [
+          "file",
+          "b9c21986958d3d59c41e451cb073ea9a26b3c5ed47ba672b0f1c5fc0d5396c30"
+        ],
+        "Assets/Vector-2.svg": [
+          "file",
+          "277aa05cc93d434df3dca5314b2f3f28af45f73e4fad56b6fb65488a4e2aa96c"
+        ],
+        "Assets/Vector-3.svg": [
+          "file",
+          "e0bcaa788d24deab00b3223d13c091b85ebaf09e359f5ecb885a8d52b15b2e09"
+        ],
+        "Assets/Vector-1.svg": [
+          "file",
+          "e7ed0c6d5db6f11b447c240edc62f8de3556fe1a9139a8523026bcdc1cc06340"
+        ],
+        "Assets/Blue.png": [
+          "file",
+          "392d226c8ee7c1ff6f8e65a4e45464dd39e4b334b7630949886f45f9480be63d"
+        ],
+        "Assets/Vector-0.svg": [
+          "file",
+          "c04996bda779fab831de158a19f55eb66ef42136c332bd0f361688993310cea5"
+        ],
+        "Assets/Noise.png": [
+          "file",
+          "a880e9117c6ff8035d8ff494dbc3e4e2c2528f8d6104a575ad5433db4608ab49"
+        ],
+        "Assets/Red.png": [
+          "file",
+          "977611a374b05f35e7e4bfe644a9f3c8639d3a4c2fd6d9031f3647ef76f50f75"
+        ]
+      },
+      "median_seconds": 1.28,
+      "median_resident_bytes": 81149952
+    },
+    {
+      "case": "128-repeated-layers",
+      "runs": [
+        {
+          "seconds": 1.54,
+          "resident_bytes": 176455680,
+          "output_bytes": 7569
+        },
+        {
+          "seconds": 1.5,
+          "resident_bytes": 176390144,
+          "output_bytes": 7569
+        },
+        {
+          "seconds": 1.49,
+          "resident_bytes": 176209920,
+          "output_bytes": 7569
+        }
+      ],
+      "input_files": {
+        "icon.json": [
+          "file",
+          "b2010bfd472495fefd1b0e5544bddb26680553492749b0ce38b603d2653a91dc"
+        ],
+        "Assets": [
+          "directory",
+          ""
+        ],
+        "Assets/Shape.svg": [
+          "file",
+          "b9c21986958d3d59c41e451cb073ea9a26b3c5ed47ba672b0f1c5fc0d5396c30"
+        ],
+        "Assets/Vector-2.svg": [
+          "file",
+          "277aa05cc93d434df3dca5314b2f3f28af45f73e4fad56b6fb65488a4e2aa96c"
+        ],
+        "Assets/Vector-3.svg": [
+          "file",
+          "e0bcaa788d24deab00b3223d13c091b85ebaf09e359f5ecb885a8d52b15b2e09"
+        ],
+        "Assets/Vector-1.svg": [
+          "file",
+          "e7ed0c6d5db6f11b447c240edc62f8de3556fe1a9139a8523026bcdc1cc06340"
+        ],
+        "Assets/Blue.png": [
+          "file",
+          "392d226c8ee7c1ff6f8e65a4e45464dd39e4b334b7630949886f45f9480be63d"
+        ],
+        "Assets/Vector-0.svg": [
+          "file",
+          "c04996bda779fab831de158a19f55eb66ef42136c332bd0f361688993310cea5"
+        ],
+        "Assets/Noise.png": [
+          "file",
+          "a880e9117c6ff8035d8ff494dbc3e4e2c2528f8d6104a575ad5433db4608ab49"
+        ],
+        "Assets/Red.png": [
+          "file",
+          "977611a374b05f35e7e4bfe644a9f3c8639d3a4c2fd6d9031f3647ef76f50f75"
+        ]
+      },
+      "median_seconds": 1.5,
+      "median_resident_bytes": 176390144
+    },
+    {
+      "case": "one-megapixel-noise",
+      "runs": [
+        {
+          "seconds": 1.21,
+          "resident_bytes": 155369472,
+          "output_bytes": 3659624
+        },
+        {
+          "seconds": 1.2,
+          "resident_bytes": 155385856,
+          "output_bytes": 3659624
+        },
+        {
+          "seconds": 1.21,
+          "resident_bytes": 156221440,
+          "output_bytes": 3659624
+        }
+      ],
+      "input_files": {
+        "icon.json": [
+          "file",
+          "20306f2f5d63deb2cfaf95adb8df3769019f2411607edf400bc8774a677c7193"
+        ],
+        "Assets": [
+          "directory",
+          ""
+        ],
+        "Assets/Shape.svg": [
+          "file",
+          "b9c21986958d3d59c41e451cb073ea9a26b3c5ed47ba672b0f1c5fc0d5396c30"
+        ],
+        "Assets/Vector-2.svg": [
+          "file",
+          "277aa05cc93d434df3dca5314b2f3f28af45f73e4fad56b6fb65488a4e2aa96c"
+        ],
+        "Assets/Vector-3.svg": [
+          "file",
+          "e0bcaa788d24deab00b3223d13c091b85ebaf09e359f5ecb885a8d52b15b2e09"
+        ],
+        "Assets/Vector-1.svg": [
+          "file",
+          "e7ed0c6d5db6f11b447c240edc62f8de3556fe1a9139a8523026bcdc1cc06340"
+        ],
+        "Assets/Blue.png": [
+          "file",
+          "392d226c8ee7c1ff6f8e65a4e45464dd39e4b334b7630949886f45f9480be63d"
+        ],
+        "Assets/Vector-0.svg": [
+          "file",
+          "c04996bda779fab831de158a19f55eb66ef42136c332bd0f361688993310cea5"
+        ],
+        "Assets/Noise.png": [
+          "file",
+          "a880e9117c6ff8035d8ff494dbc3e4e2c2528f8d6104a575ad5433db4608ab49"
+        ],
+        "Assets/Red.png": [
+          "file",
+          "977611a374b05f35e7e4bfe644a9f3c8639d3a4c2fd6d9031f3647ef76f50f75"
+        ]
+      },
+      "median_seconds": 1.21,
+      "median_resident_bytes": 155385856,
+      "rms_rgb_error": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "scope": "Three complete packaged command conversions per original workload. Includes package checks, preparation, rendering, and publication. RSS may include a child helper peak; it excludes aggregate simultaneous processes and may omit separate WebKit service memory. GUI excluded. Pixel reads and overwrite checks are untimed."
+}

@@ -1,0 +1,35 @@
+{
+  "recorded_at_utc": "2026-09-21T01:14:40.054960+00:00",
+  "macos": "27.0",
+  "architecture": "arm64",
+  "workload": "Original 2-page Word document with a repeated header and footer, a bordered and shaded table, and an inline bitmap",
+  "source_sha256": "d667fd6d888d8c4ee38dfcf741e8916705b56fb8f9b4eee08be1b3fc8d55e633",
+  "source_bytes": 3085,
+  "assets_sha256": {
+    "word/media/square.png": "08fb48da7337b0e016bc9b20516ed5a68c4d1c7854fb525a07f6047a4170b413"
+  },
+  "helper_sha256": "488af1e7c7c479b7de1e5c9b8167f77ad85d6acea3a2dbbd71b7570328f27ccb",
+  "launcher_sha256": "cce569f2fc0a9ea29f4ba20976af69c25a3de490aa970f99b05f33ea1b1c2b8f",
+  "packaged": false,
+  "pages": 2,
+  "samples": [
+    {
+      "elapsed_seconds": 0.38,
+      "peak_resident_bytes": 72318976,
+      "output_bytes": 35645
+    },
+    {
+      "elapsed_seconds": 0.39,
+      "peak_resident_bytes": 71843840,
+      "output_bytes": 35645
+    },
+    {
+      "elapsed_seconds": 0.39,
+      "peak_resident_bytes": 72335360,
+      "output_bytes": 35645
+    }
+  ],
+  "median_elapsed_seconds": 0.39,
+  "median_peak_resident_bytes": 72318976,
+  "memory_scope": "Peak renderer helper RSS from macOS time -l. Excludes separate WebKit services, the native app, Swift adapter checks, and PDF cleaning. This is not total conversion memory. Three warm serial runs after content checks."
+}

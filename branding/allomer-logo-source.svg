@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="280" viewBox="0 0 800 280">
+  <title>Allomer logo source</title>
+  <g fill="#111318" font-family="Instrument Sans" font-size="220" font-weight="600" letter-spacing="-7">
+    <text id="word-left" x="24" y="222">all</text>
+    <text id="word-right" x="362" y="222">mer</text>
+  </g>
+  <g id="wordmark-o" transform="translate(235 96) scale(0.55)" fill="none" stroke="#111318" stroke-width="48" stroke-linecap="butt">
+    <path d="M176.20 61.66 A82 82 0 1 0 176.20 194.34"/>
+    <path d="M182.87 67.06 A82 82 0 0 1 209.69 120.85"/>
+    <path d="M209.69 135.15 A82 82 0 0 1 182.87 188.94"/>
+  </g>
+</svg>

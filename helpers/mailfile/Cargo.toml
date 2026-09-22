@@ -1,0 +1,21 @@
+[package]
+name = "mailfile"
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+publish = false
+
+[dependencies]
+ammonia = "=4.1.4"
+base64 = "=0.23.1"
+cfb = "=0.14.0"
+compressed-rtf = "=1.0.1"
+encoding_rs = "=0.8.40"
+mail-builder = { version = "=0.5.0", default-features = false }
+mail-parser = { version = "=0.11.8", features = ["full_encoding"] }
+uuid = "=1.26.0"
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true

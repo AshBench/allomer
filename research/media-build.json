@@ -1,0 +1,321 @@
+{
+  "recorded_at_utc": "2026-09-09T20:42:41.223862+00:00",
+  "ffmpeg_version": "9.0.1",
+  "dav1d_version": "1.5.4",
+  "license_reported": "LGPL-2.1-or-later",
+  "source_manifest": "tools/native-sources.json",
+  "protocols": [
+    "file",
+    "pipe"
+  ],
+  "architecture": "arm64",
+  "minimum_macos": "14.0",
+  "runtime_macos14_tested": false,
+  "packaged_files": {
+    "Contents/Helpers/ffmpeg": {
+      "bytes": 375696,
+      "sha256": "7d675aebfa5a10385cddd54097052b4bb172bac1fa72fb3cafb3925b28a7244a"
+    },
+    "Contents/Helpers/ffprobe": {
+      "bytes": 203584,
+      "sha256": "5be91cfddb59ea2216a3acc9a822d41276392e8192feaec9537987ed1a21201f"
+    },
+    "Contents/Frameworks/Media/libavfilter.12.1.101.dylib": {
+      "bytes": 2469472,
+      "sha256": "0b6976a1af6363ac1ba4f6a82ccd40eeac69f1d036969f8f3d1205474b7a75a7"
+    },
+    "Contents/Frameworks/Media/libswresample.7.1.101.dylib": {
+      "bytes": 104592,
+      "sha256": "98d4ae5dab9a180c8a96d73e8769ed18ca77f8372a0bb0d408cd45f0db97a035"
+    },
+    "Contents/Frameworks/Media/libswscale.10.1.101.dylib": {
+      "bytes": 621168,
+      "sha256": "2fcce5ba6613fd5d91789a4c053ec83e00fce045a3333c92d378d477cd00dce9"
+    },
+    "Contents/Frameworks/Media/libavutil.61.1.101.dylib": {
+      "bytes": 559760,
+      "sha256": "7573638effe4b6ddb1750bb07b399517cf3c150db9d70e511945c63e78453dec"
+    },
+    "Contents/Frameworks/Media/libavcodec.63.1.101.dylib": {
+      "bytes": 16839376,
+      "sha256": "a9785761f4db4b311a3bd2693f702c9476b6c85a47e3d7d2a13f89bd76eb7165"
+    },
+    "Contents/Frameworks/Media/libavformat.63.1.101.dylib": {
+      "bytes": 1876368,
+      "sha256": "1e789bb654f93c0ed38a918634b1c2489bf0e0fdf8fac77c8032df5cdae65eca"
+    }
+  },
+  "previous_static_build": {
+    "recorded_at": "2026-09-08T03:36:09.979354+00:00",
+    "ffmpeg_version": "9.0.1",
+    "license_reported": "LGPL-2.1-or-later",
+    "source_manifest": "tools/media-sources.json",
+    "protocols": [
+      "file",
+      "pipe"
+    ],
+    "binaries": [
+      {
+        "name": "ffmpeg",
+        "bytes": 21470056,
+        "sha256": "458470d4cfafb4fe7216e4e2773503811337a6c0ef9b8743be11f47b64cb0296",
+        "architecture": "arm64",
+        "dependencies": [
+          "/usr/lib/libSystem.B.dylib",
+          "/usr/lib/libz.1.dylib",
+          "/System/Library/Frameworks/VideoToolbox.framework/Versions/A/VideoToolbox",
+          "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+          "/System/Library/Frameworks/CoreMedia.framework/Versions/A/CoreMedia",
+          "/System/Library/Frameworks/CoreVideo.framework/Versions/A/CoreVideo",
+          "/System/Library/Frameworks/CoreServices.framework/Versions/A/CoreServices",
+          "/usr/lib/libbz2.1.0.dylib",
+          "/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox"
+        ],
+        "minimum_macos": "14.0"
+      },
+      {
+        "name": "ffprobe",
+        "bytes": 21310328,
+        "sha256": "49667bbd7ce3487b616cf95899a444bea0c49aa8696e10a06067b59eb77b765d",
+        "architecture": "arm64",
+        "dependencies": [
+          "/usr/lib/libSystem.B.dylib",
+          "/usr/lib/libz.1.dylib",
+          "/System/Library/Frameworks/VideoToolbox.framework/Versions/A/VideoToolbox",
+          "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+          "/System/Library/Frameworks/CoreMedia.framework/Versions/A/CoreMedia",
+          "/System/Library/Frameworks/CoreVideo.framework/Versions/A/CoreVideo",
+          "/System/Library/Frameworks/CoreServices.framework/Versions/A/CoreServices",
+          "/usr/lib/libbz2.1.0.dylib",
+          "/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox"
+        ],
+        "minimum_macos": "14.0"
+      }
+    ],
+    "validation": {
+      "swift_tests_passed": 5,
+      "audio_output_formats": 17,
+      "video_output_formats": 13,
+      "fixture": "Two seconds; original stereo 48 kHz PCM and 720x576 video at 25 fps.",
+      "all_input_pairs_verified": false,
+      "all_options_verified": false,
+      "app_packaging_complete": false
+    }
+  },
+  "validation": {
+    "av1_input_conversions": 18,
+    "av1_input_containers": [
+      "mkv",
+      "mp4",
+      "webm"
+    ],
+    "av1_input_bit_depths": [
+      8,
+      10
+    ],
+    "video_control_cases": 82,
+    "av1_output_controls": true,
+    "vp9_exact_decoded_pixel_depths": [
+      10,
+      12
+    ],
+    "image_video_cases": 201,
+    "swift_tests": 53,
+    "signed_build_origins_verified": 12,
+    "all_input_pairs_verified": false,
+    "all_options_verified": false,
+    "scope": "Final package passes 237 audio timing cases, 121 audio/video sync cases with track metadata/flags, 125 audio options/artwork cases, 82 video controls, 201 image/video cases, 18 AV1 conversions plus truncated input, and copied-app checks. Includes 64 concurrent TTA/WMV conversions and exact 24-bit PCM across nine lossless outputs. All 53 Swift tests passed before the last graph refinements; all five focused audio/video tests pass afterward. Both signed Swift build origins, all unchanged helper/library files, and notices are verified. No media library or helper changed. Media matrices and benchmarks refer to the recorded audio-timing checkpoint. Later watcher and UI changes use the same media helpers; see research/progress.md for current app checks. Runtime macOS14, all format pairs/options, multitrack, HDR, and full malformed-input fidelity remain open. The short Vorbis input decoder can lose final samples; see docs/audio.md.",
+    "audio_video_sync_cases": 121,
+    "signed_swift_build_origins_verified": 2,
+    "unchanged_packaged_helpers_and_libraries": 34,
+    "audio_timing_cases": 237,
+    "concurrent_audio_timing_cases": 64,
+    "lossless_24_bit_outputs": 9,
+    "audio_option_cases": 125,
+    "short_vorbis_input_tail_limit_open": true,
+    "focused_audio_video_tests_after_graph_changes": 5,
+    "source_timing_graphs": "One graph per stream, split between encoding and timing; audio and video remain separate."
+  },
+  "before_video_controls": {
+    "recorded_at_utc": "2026-09-09T17:23:17.038401+00:00",
+    "ffmpeg_version": "9.0.1",
+    "dav1d_version": "1.5.4",
+    "license_reported": "LGPL-2.1-or-later",
+    "source_manifest": "tools/native-sources.json",
+    "protocols": [
+      "file",
+      "pipe"
+    ],
+    "architecture": "arm64",
+    "minimum_macos": "14.0",
+    "runtime_macos14_tested": false,
+    "packaged_files": {
+      "Contents/Helpers/ffmpeg": {
+        "bytes": 375696,
+        "sha256": "7d675aebfa5a10385cddd54097052b4bb172bac1fa72fb3cafb3925b28a7244a"
+      },
+      "Contents/Helpers/ffprobe": {
+        "bytes": 203584,
+        "sha256": "5be91cfddb59ea2216a3acc9a822d41276392e8192feaec9537987ed1a21201f"
+      },
+      "Contents/Frameworks/Media/libavfilter.12.1.101.dylib": {
+        "bytes": 2469472,
+        "sha256": "0b6976a1af6363ac1ba4f6a82ccd40eeac69f1d036969f8f3d1205474b7a75a7"
+      },
+      "Contents/Frameworks/Media/libswresample.7.1.101.dylib": {
+        "bytes": 104592,
+        "sha256": "98d4ae5dab9a180c8a96d73e8769ed18ca77f8372a0bb0d408cd45f0db97a035"
+      },
+      "Contents/Frameworks/Media/libswscale.10.1.101.dylib": {
+        "bytes": 621168,
+        "sha256": "2fcce5ba6613fd5d91789a4c053ec83e00fce045a3333c92d378d477cd00dce9"
+      },
+      "Contents/Frameworks/Media/libavutil.61.1.101.dylib": {
+        "bytes": 559760,
+        "sha256": "7573638effe4b6ddb1750bb07b399517cf3c150db9d70e511945c63e78453dec"
+      },
+      "Contents/Frameworks/Media/libavcodec.63.1.101.dylib": {
+        "bytes": 16099168,
+        "sha256": "b80b739ddb2649363f138f3b4f807ce7d56de92065e132072afb6cdc4d0bbb05"
+      },
+      "Contents/Frameworks/Media/libavformat.63.1.101.dylib": {
+        "bytes": 1876368,
+        "sha256": "1e789bb654f93c0ed38a918634b1c2489bf0e0fdf8fac77c8032df5cdae65eca"
+      }
+    },
+    "validation": {
+      "av1_input_conversions": 18,
+      "av1_input_containers": [
+        "mkv",
+        "mp4",
+        "webm"
+      ],
+      "av1_input_bit_depths": [
+        8,
+        10
+      ],
+      "av1_output_controls": false,
+      "image_video_cases": 201,
+      "full_swift_tests_before_final_buffer_refinement": 49,
+      "focused_media_tests_after_refinement": 2,
+      "all_input_pairs_verified": false,
+      "all_options_verified": false,
+      "scope": "Original one-second 720x576 AV1 clips at 25 fps. Actual decoded frames, matching decoder pixels, audio, source bytes and failed-output cleanup. Converted timestamps allow one frame of quantization. Copied-app, shared bitmap-subtitle, source hashes, notices and signed-build-origin checks pass. No general speed or memory claim."
+    }
+  },
+  "vp9_high_bit_depth": true,
+  "before_media_sync": {
+    "recorded_at_utc": "2026-09-09T18:16:54.020489+00:00",
+    "validation": {
+      "av1_input_conversions": 18,
+      "av1_input_containers": [
+        "mkv",
+        "mp4",
+        "webm"
+      ],
+      "av1_input_bit_depths": [
+        8,
+        10
+      ],
+      "video_control_cases": 82,
+      "av1_output_controls": true,
+      "vp9_exact_decoded_pixel_depths": [
+        10,
+        12
+      ],
+      "image_video_cases": 201,
+      "swift_tests": 52,
+      "signed_build_origins_verified": 12,
+      "all_input_pairs_verified": false,
+      "all_options_verified": false,
+      "scope": "Original A/V timing, video controls, AV1 input, GIF/image output, automatic Undo, malformed and bounded timelines, source bytes, cleanup, copied-app, source hashes, notices, signed build origins and ARM64/macOS14 deployment metadata. Final packaged sync (95), video controls (82), and copied-app checks pass. All 52 Swift tests, 201 image/video cases, and 18 packaged AV1 conversions plus truncated input passed before the final queue/CPU-policy refinement; the three focused Swift video tests pass afterward. Media helpers/libraries did not change. Runtime macOS14 and full A/V/HDR/multitrack fidelity remain open. See docs/video.md for measurements and limits.",
+      "focused_video_tests_after_queue_change": 3,
+      "audio_video_sync_cases": 95,
+      "signed_swift_build_origins_verified": 2,
+      "unchanged_packaged_helpers_and_libraries": 34
+    }
+  },
+  "before_audio_timing": {
+    "recorded_at_utc": "2026-09-09T19:20:16.337261+00:00",
+    "ffmpeg_version": "9.0.1",
+    "dav1d_version": "1.5.4",
+    "license_reported": "LGPL-2.1-or-later",
+    "source_manifest": "tools/native-sources.json",
+    "protocols": [
+      "file",
+      "pipe"
+    ],
+    "architecture": "arm64",
+    "minimum_macos": "14.0",
+    "runtime_macos14_tested": false,
+    "packaged_files": {
+      "Contents/Helpers/ffmpeg": {
+        "bytes": 375696,
+        "sha256": "7d675aebfa5a10385cddd54097052b4bb172bac1fa72fb3cafb3925b28a7244a"
+      },
+      "Contents/Helpers/ffprobe": {
+        "bytes": 203584,
+        "sha256": "5be91cfddb59ea2216a3acc9a822d41276392e8192feaec9537987ed1a21201f"
+      },
+      "Contents/Frameworks/Media/libavfilter.12.1.101.dylib": {
+        "bytes": 2469472,
+        "sha256": "0b6976a1af6363ac1ba4f6a82ccd40eeac69f1d036969f8f3d1205474b7a75a7"
+      },
+      "Contents/Frameworks/Media/libswresample.7.1.101.dylib": {
+        "bytes": 104592,
+        "sha256": "98d4ae5dab9a180c8a96d73e8769ed18ca77f8372a0bb0d408cd45f0db97a035"
+      },
+      "Contents/Frameworks/Media/libswscale.10.1.101.dylib": {
+        "bytes": 621168,
+        "sha256": "2fcce5ba6613fd5d91789a4c053ec83e00fce045a3333c92d378d477cd00dce9"
+      },
+      "Contents/Frameworks/Media/libavutil.61.1.101.dylib": {
+        "bytes": 559760,
+        "sha256": "7573638effe4b6ddb1750bb07b399517cf3c150db9d70e511945c63e78453dec"
+      },
+      "Contents/Frameworks/Media/libavcodec.63.1.101.dylib": {
+        "bytes": 16839376,
+        "sha256": "a9785761f4db4b311a3bd2693f702c9476b6c85a47e3d7d2a13f89bd76eb7165"
+      },
+      "Contents/Frameworks/Media/libavformat.63.1.101.dylib": {
+        "bytes": 1876368,
+        "sha256": "1e789bb654f93c0ed38a918634b1c2489bf0e0fdf8fac77c8032df5cdae65eca"
+      }
+    },
+    "validation": {
+      "av1_input_conversions": 18,
+      "av1_input_containers": [
+        "mkv",
+        "mp4",
+        "webm"
+      ],
+      "av1_input_bit_depths": [
+        8,
+        10
+      ],
+      "video_control_cases": 82,
+      "av1_output_controls": true,
+      "vp9_exact_decoded_pixel_depths": [
+        10,
+        12
+      ],
+      "image_video_cases": 201,
+      "swift_tests": 53,
+      "signed_build_origins_verified": 12,
+      "all_input_pairs_verified": false,
+      "all_options_verified": false,
+      "scope": "Final package passes 237 audio timing cases, 121 audio/video sync cases with track metadata/flags, 125 audio options/artwork cases, 82 video controls, 201 image/video cases, 18 AV1 conversions plus truncated input, and copied-app checks. Includes 64 concurrent TTA/WMV conversions and exact 24-bit PCM across nine lossless outputs. All 53 Swift tests passed before the last timing-only precision change; both focused audio tests pass afterward. Both signed Swift build origins, all unchanged helper/library files, and notices are verified. No media library or helper changed. Runtime macOS14, all format pairs/options, multitrack, HDR, and full malformed-input fidelity remain open. The short Vorbis input decoder can lose final samples; see docs/audio.md.",
+      "audio_video_sync_cases": 121,
+      "signed_swift_build_origins_verified": 2,
+      "unchanged_packaged_helpers_and_libraries": 34,
+      "focused_audio_tests_after_precision_change": 2,
+      "audio_timing_cases": 237,
+      "concurrent_audio_timing_cases": 64,
+      "lossless_24_bit_outputs": 9,
+      "audio_option_cases": 125,
+      "short_vorbis_input_tail_limit_open": true
+    },
+    "vp9_high_bit_depth": true
+  },
+  "conversion_engine_checkpoint_cli_sha256": "26dda8a135f134197cc15ed80ab2253bae0d4aa66fe8d4298d034a92d39e2943"
+}

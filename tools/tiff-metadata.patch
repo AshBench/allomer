@@ -1,0 +1,41 @@
+--- a/tools/tiffcp.c
++++ b/tools/tiffcp.c
+@@ -53,6 +53,7 @@
+ #include "tiff_tools.h"
+ #include "tiffio.h"
+ #include "tiffiop.h"
++#include "metadata.h"
+ 
+ #ifndef EXIT_SUCCESS
+ #define EXIT_SUCCESS 0
+@@ -373,5 +374,6 @@
+     if (out == NULL)
+         return (EXIT_FAILURE);
++    tdir_t outputPage = TIFFNumberOfDirectories(out);
+     if ((argc - optind) == 2)
+         pageNum = -1;
+     for (; optind < argc - 1; optind++)
+@@ -402,7 +404,8 @@
+             tilewidth = deftilewidth;
+             tilelength = deftilelength;
+             g3opts = defg3opts;
+-            if (!tiffcp(in, out) || !TIFFWriteDirectory(out))
++            if (!tiffcp(in, out) || !TIFFWriteDirectory(out) ||
++                !copyPageMetadata(in, out, outputPage++))
+             {
+                 TIFFClose(in);
+                 TIFFClose(out);
+@@ -1132,6 +1135,13 @@
+             TIFFSetField(out, TIFFTAG_ICCPROFILE, len32, data);
+     }
+     {
++        uint32_t length;
++        void *packet;
++        if (TIFFGetField(in, TIFFTAG_XMLPACKET, &length, &packet) &&
++            !TIFFSetField(out, TIFFTAG_XMLPACKET, length, packet))
++            return FALSE;
++    }
++    {
+         uint16_t ninks;
+         const char *inknames;
+         if (TIFFGetField(in, TIFFTAG_NUMBEROFINKS, &ninks))

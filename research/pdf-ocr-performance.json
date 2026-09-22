@@ -1,0 +1,76 @@
+{
+  "recorded_at_utc": "2026-09-08T12:38:08.027135+00:00",
+  "macos": "26.6.2",
+  "architecture": "arm64",
+  "workload": "Seven-page PDF with five scanned images, one selectable page, and one blank page to DOCX. Includes crop bounds and four rotations.",
+  "source_bytes": 112319,
+  "source_sha256": "acbe006ad448f652a7ac763904905bdd7c586293d90f32c5c87e32f3d1b25660",
+  "helper_sha256": {
+    "nativeconvert": "415516466ba0a2f5db102768bf5c1d0450b5d5c185792cf01f590684eba5e5c1",
+    "nativeguard": "0b7679028e25df203eb7c78a566d0eb207a20c4c189bbeac6e68165bb5a9902b",
+    "mutool": "8a02f511b3d5668af58d96d30065531642c7a1fcf11c07276aa44006b45b81aa",
+    "pdfguard": "157b880fb34e9210c0744c157b6dfeaa2b4beb6127100626c54c024d16ffb3be"
+  },
+  "samples": [
+    {
+      "stages": {
+        "recognition": {
+          "elapsed_seconds": 0.99,
+          "peak_resident_bytes": 204505088
+        },
+        "text_layer_merge": {
+          "elapsed_seconds": 0.01,
+          "peak_resident_bytes": 4325376
+        },
+        "docx_export": {
+          "elapsed_seconds": 0.05,
+          "peak_resident_bytes": 20905984
+        }
+      },
+      "elapsed_seconds": 1.05,
+      "peak_resident_bytes": 204505088,
+      "output_bytes": 99919
+    },
+    {
+      "stages": {
+        "recognition": {
+          "elapsed_seconds": 0.97,
+          "peak_resident_bytes": 210731008
+        },
+        "text_layer_merge": {
+          "elapsed_seconds": 0.01,
+          "peak_resident_bytes": 4341760
+        },
+        "docx_export": {
+          "elapsed_seconds": 0.05,
+          "peak_resident_bytes": 18808832
+        }
+      },
+      "elapsed_seconds": 1.03,
+      "peak_resident_bytes": 210731008,
+      "output_bytes": 99919
+    },
+    {
+      "stages": {
+        "recognition": {
+          "elapsed_seconds": 1.01,
+          "peak_resident_bytes": 219414528
+        },
+        "text_layer_merge": {
+          "elapsed_seconds": 0.01,
+          "peak_resident_bytes": 4308992
+        },
+        "docx_export": {
+          "elapsed_seconds": 0.05,
+          "peak_resident_bytes": 16941056
+        }
+      },
+      "elapsed_seconds": 1.07,
+      "peak_resident_bytes": 219414528,
+      "output_bytes": 99919
+    }
+  ],
+  "memory_scope": "Maximum of sequential helper peaks from macOS time -l. Not aggregate app memory. Excludes Swift adapter checks and separate system services. Warm runs after content checks.",
+  "median_elapsed_seconds": 1.05,
+  "median_peak_resident_bytes": 210731008
+}

@@ -1,0 +1,301 @@
+--- a/source/fitz/output-docx.c
++++ b/source/fitz/output-docx.c
+@@ -162,6 +162,7 @@
+ static void
+ dev_ignore_text(fz_context *ctx, fz_device *dev_, const fz_text *text, fz_matrix ctm)
+ {
++	dev_text(ctx, dev_, text, ctm, NULL, NULL, 0, fz_default_color_params);
+ }
+ 
+ static void writer_image_free(void *handle, void *image_data)
+@@ -172,74 +172,71 @@
+ 
+ static void dev_fill_image(fz_context *ctx, fz_device *dev_, fz_image *img, fz_matrix ctm, float alpha, fz_color_params color_params)
+ {
+-	fz_docx_device *dev = (fz_docx_device*) dev_;
+-	const char *type = NULL;
+-	fz_compressed_buffer *compressed = fz_compressed_image_buffer(ctx, img);
+-
++	fz_docx_device *dev = (fz_docx_device*)dev_;
++	fz_pixmap *pixels = NULL;
++	fz_device *draw = NULL;
++	fz_buffer *png = NULL;
++	unsigned char *data = NULL;
++	fz_rect bounds = fz_intersect_rect(fz_transform_rect(fz_unit_rect, ctm), dev->writer->mediabox);
++	float xscale = hypotf(ctm.a, ctm.b), yscale = hypotf(ctm.c, ctm.d);
++	float scale;
++	fz_matrix matrix;
++	fz_irect box;
++	int result;
++
++	if (!isfinite(xscale) || !isfinite(yscale) || !isfinite(alpha) ||
++		!isfinite(bounds.x0) || !isfinite(bounds.y0) || !isfinite(bounds.x1) || !isfinite(bounds.y1))
++		fz_throw(ctx, FZ_ERROR_ARGUMENT, "Invalid DOCX image transform");
++	if (alpha <= 0 || fz_is_empty_rect(bounds) || xscale == 0 || yscale == 0)
++		return;
++	if ((double)img->w * img->h > 128000000)
++		fz_throw(ctx, FZ_ERROR_LIMIT, "DOCX image exceeds 128 megapixels");
++	scale = fmaxf(img->w / xscale, img->h / yscale);
++	float width = (bounds.x1 - bounds.x0) * scale, height = (bounds.y1 - bounds.y0) * scale;
++	if (!isfinite(scale) || !isfinite(width) || !isfinite(height) || width <= 0 || height <= 0 ||
++		width > 128000000 || height > 128000000 || (double)width * height > 128000000)
++		fz_throw(ctx, FZ_ERROR_LIMIT, "DOCX transformed image exceeds its size limit");
++	matrix = fz_concat(fz_translate(-bounds.x0, -bounds.y0), fz_scale(scale, scale));
++	box = fz_round_rect(fz_transform_rect(bounds, matrix));
++	if (!isfinite(scale) || box.x1 <= box.x0 || box.y1 <= box.y0 ||
++		(double)(box.x1 - box.x0) * (box.y1 - box.y0) > 128000000)
++		fz_throw(ctx, FZ_ERROR_LIMIT, "DOCX transformed image exceeds its size limit");
++
++	fz_var(pixels);
++	fz_var(draw);
++	fz_var(png);
++	fz_var(data);
+ 	assert(!dev->writer->ctx);
+ 	dev->writer->ctx = ctx;
+ 	fz_try(ctx)
+ 	{
+-		if (compressed)
+-		{
+-			if (0) { /* For alignment */ }
+-			else if (compressed->params.type == FZ_IMAGE_RAW) type = "raw";
+-			else if (compressed->params.type == FZ_IMAGE_FAX) type = "fax";
+-			else if (compressed->params.type == FZ_IMAGE_FLATE) type = "flate";
+-			else if (compressed->params.type == FZ_IMAGE_LZW) type = "lzw";
+-			else if (compressed->params.type == FZ_IMAGE_BROTLI) type = "brotli";
+-			else if (compressed->params.type == FZ_IMAGE_BMP) type = "bmp";
+-			else if (compressed->params.type == FZ_IMAGE_GIF) type = "gif";
+-			else if (compressed->params.type == FZ_IMAGE_JBIG2) type = "jbig2";
+-			else if (compressed->params.type == FZ_IMAGE_JPEG) type = "jpeg";
+-			else if (compressed->params.type == FZ_IMAGE_JPX) type = "jpx";
+-			else if (compressed->params.type == FZ_IMAGE_JXR) type = "jxr";
+-			else if (compressed->params.type == FZ_IMAGE_PNG) type = "png";
+-			else if (compressed->params.type == FZ_IMAGE_PNM) type = "pnm";
+-			else if (compressed->params.type == FZ_IMAGE_TIFF) type = "tiff";
+-
+-			if (type)
+-			{
+-				/* Write out raw data. */
+-				unsigned char *data;
+-				size_t datasize = fz_buffer_extract(ctx, compressed->buffer, &data);
+-				if (extract_add_image(
+-						dev->writer->extract,
+-						type,
+-						ctm.e /*x*/,
+-						ctm.f /*y*/,
+-						img->w /*w*/,
+-						img->h /*h*/,
+-						data,
+-						datasize,
+-						writer_image_free,
+-						dev->writer
+-						))
+-				{
+-					fz_throw(ctx, FZ_ERROR_LIBRARY, "Failed to add image type=%s", type);
+-				}
+-			}
+-			else
+-			{
+-				/* We don't recognise this image type, so ignore. */
+-			}
+-		}
+-		else
+-		{
+-			/*
+-			 * Compressed data not available, so we could write out
+-			 * raw pixel values. But for now we ignore.
+-			 */
+-		}
++		/* Render the image at its source resolution. This applies its mask,
++		 * color conversion, opacity, and transform before packaging PNG. */
++		pixels = fz_new_pixmap_with_bbox(ctx, fz_device_rgb(ctx), box, NULL, 1);
++		fz_clear_pixmap(ctx, pixels);
++		draw = fz_new_draw_device(ctx, matrix, pixels);
++		fz_fill_image(ctx, draw, img, ctm, alpha, color_params);
++		fz_close_device(ctx, draw);
++		png = fz_new_buffer_from_pixmap_as_png(ctx, pixels, color_params);
++		size_t length = fz_buffer_extract(ctx, png, &data);
++		result = extract_add_image(dev->writer->extract, "png", bounds.x0, bounds.y0,
++			bounds.x1 - bounds.x0, bounds.y1 - bounds.y0, data, length,
++			writer_image_free, dev->writer);
++		/* extract_add_image takes ownership on both success and failure. */
++		data = NULL;
++		if (result)
++			fz_throw(ctx, FZ_ERROR_LIBRARY, "Failed to add the DOCX image");
+ 	}
+ 	fz_always(ctx)
+ 	{
++		fz_free(ctx, data);
++		fz_drop_buffer(ctx, png);
++		fz_drop_device(ctx, draw);
++		fz_drop_pixmap(ctx, pixels);
+ 		dev->writer->ctx = NULL;
+ 	}
+ 	fz_catch(ctx)
+-	{
+-		fz_rethrow(ctx);
+-	}
++		fz_rethrow(ctx);
+ }
+ 
+ /*
+--- a/thirdparty/extract/src/extract.c
++++ b/thirdparty/extract/src/extract.c
+@@ -477,7 +477,7 @@
+ {
+ 	int     e = -1;
+ 	int      p;
+-	images_t images = {0};
++	images_t images = *o_images;
+ 
+ 	outf("extract_document_images(): images.images_num=%i", images.images_num);
+ 	for (p=0; p<document->pages_num; ++p)
+@@ -495,8 +495,8 @@
+ 			{
+ 				if (extract_realloc2(alloc,
+ 						 &images.images,
+-						 sizeof(image_t) * images.images_num,
+-						 sizeof(image_t) * (images.images_num + 1))) goto end;
++						 sizeof(image_t*) * images.images_num,
++						 sizeof(image_t*) * (images.images_num + 1))) goto end;
+ 				outf("p=%i i=%i image->name=%s image->id=%s", p, i, image->name, image->id);
+ 				assert(image->name);
+ 				content_unlink(&image->base);
+@@ -537,14 +537,8 @@
+ 	e = 0;
+ end:
+ 
+-	if (e)
+-	{
+-		extract_free(alloc, &images.images);
+-	}
+-	else
+-	{
+-		*o_images = images;
+-	}
++	/* Keep images from earlier pages. Retain ownership after a partial failure. */
++	*o_images = images;
+ 
+ 	return e;
+ }
+@@ -1383,10 +1377,14 @@
+ 	int             e       = -1;
+ 	extract_page_t *page    = extract->document.pages[extract->document.pages_num-1];
+ 	subpage_t      *subpage = page->subpages[page->subpages_num-1];
+-	image_t        *image;
++	image_t        *image = NULL;
+ 
+ 	extract->image_n += 1;
+-	if (content_append_new_image(extract->alloc, &subpage->content, &image)) goto end;
++	if (content_append_new_image(extract->alloc, &subpage->content, &image))
++	{
++		if (data_free) data_free(data_free_handle, data);
++		goto end;
++	}
+ 	image->x = x;
+ 	image->y = y;
+ 	image->w = w;
+--- a/thirdparty/extract/src/docx.c
++++ b/thirdparty/extract/src/docx.c
+@@ -228,70 +228,29 @@
+ 
+ /* Write reference to image into docx content. */
+ static int
+-docx_append_image(
+-		extract_alloc_t   *alloc,
+-		extract_astring_t *output,
+-		image_t           *image)
+-{
+-	extract_astring_cat(alloc, output, "\n");
+-	extract_astring_cat(alloc, output, "     <w:p>\n");
+-	extract_astring_cat(alloc, output, "       <w:r>\n");
+-	extract_astring_cat(alloc, output, "         <w:rPr>\n");
+-	extract_astring_cat(alloc, output, "           <w:noProof/>\n");
+-	extract_astring_cat(alloc, output, "         </w:rPr>\n");
+-	extract_astring_cat(alloc, output, "         <w:drawing>\n");
+-	extract_astring_cat(alloc, output, "           <wp:inline distT=\"0\" distB=\"0\" distL=\"0\" distR=\"0\" wp14:anchorId=\"7057A832\" wp14:editId=\"466EB3FB\">\n");
+-	//extract_astring_cat(alloc, output, "             <wp:extent cx=\"2933700\" cy=\"2200275\"/>\n");
+-	//extract_astring_cat(alloc, output, "             <wp:effectExtent l=\"0\" t=\"0\" r=\"0\" b=\"9525\"/>\n");
+-	extract_astring_cat(alloc, output, "             <wp:docPr id=\"1\" name=\"Picture 1\"/>\n");
+-	extract_astring_cat(alloc, output, "             <wp:cNvGraphicFramePr>\n");
+-	extract_astring_cat(alloc, output, "               <a:graphicFrameLocks xmlns:a=\"http://schemas.openxmlformats.org/drawingml/2006/main\" noChangeAspect=\"1\"/>\n");
+-	extract_astring_cat(alloc, output, "             </wp:cNvGraphicFramePr>\n");
+-	extract_astring_cat(alloc, output, "             <a:graphic xmlns:a=\"http://schemas.openxmlformats.org/drawingml/2006/main\">\n");
+-	extract_astring_cat(alloc, output, "               <a:graphicData uri=\"http://schemas.openxmlformats.org/drawingml/2006/picture\">\n");
+-	extract_astring_cat(alloc, output, "                 <pic:pic xmlns:pic=\"http://schemas.openxmlformats.org/drawingml/2006/picture\">\n");
+-	extract_astring_cat(alloc, output, "                   <pic:nvPicPr>\n");
+-	extract_astring_cat(alloc, output, "                     <pic:cNvPr id=\"1\" name=\"Picture 1\"/>\n");
+-	extract_astring_cat(alloc, output, "                     <pic:cNvPicPr>\n");
+-	extract_astring_cat(alloc, output, "                       <a:picLocks noChangeAspect=\"1\" noChangeArrowheads=\"1\"/>\n");
+-	extract_astring_cat(alloc, output, "                     </pic:cNvPicPr>\n");
+-	extract_astring_cat(alloc, output, "                   </pic:nvPicPr>\n");
+-	extract_astring_cat(alloc, output, "                   <pic:blipFill>\n");
+-	extract_astring_catf(alloc, output,"                     <a:blip r:embed=\"%s\">\n", image->id);
+-	extract_astring_cat(alloc, output, "                       <a:extLst>\n");
+-	extract_astring_cat(alloc, output, "                         <a:ext uri=\"{28A0092B-C50C-407E-A947-70E740481C1C}\">\n");
+-	extract_astring_cat(alloc, output, "                           <a14:useLocalDpi xmlns:a14=\"http://schemas.microsoft.com/office/drawing/2010/main\" val=\"0\"/>\n");
+-	extract_astring_cat(alloc, output, "                         </a:ext>\n");
+-	extract_astring_cat(alloc, output, "                       </a:extLst>\n");
+-	extract_astring_cat(alloc, output, "                     </a:blip>\n");
+-	//extract_astring_cat(alloc, output, "                     <a:srcRect/>\n");
+-	extract_astring_cat(alloc, output, "                     <a:stretch>\n");
+-	extract_astring_cat(alloc, output, "                       <a:fillRect/>\n");
+-	extract_astring_cat(alloc, output, "                     </a:stretch>\n");
+-	extract_astring_cat(alloc, output, "                   </pic:blipFill>\n");
+-	extract_astring_cat(alloc, output, "                   <pic:spPr bwMode=\"auto\">\n");
+-	extract_astring_cat(alloc, output, "                     <a:xfrm>\n");
+-	extract_astring_cat(alloc, output, "                       <a:off x=\"0\" y=\"0\"/>\n");
+-	//extract_astring_cat(alloc, output, "                       <a:ext cx=\"2933700\" cy=\"2200275\"/>\n");
+-	extract_astring_cat(alloc, output, "                     </a:xfrm>\n");
+-	extract_astring_cat(alloc, output, "                     <a:prstGeom prst=\"rect\">\n");
+-	extract_astring_cat(alloc, output, "                       <a:avLst/>\n");
+-	extract_astring_cat(alloc, output, "                     </a:prstGeom>\n");
+-	extract_astring_cat(alloc, output, "                     <a:noFill/>\n");
+-	extract_astring_cat(alloc, output, "                     <a:ln>\n");
+-	extract_astring_cat(alloc, output, "                       <a:noFill/>\n");
+-	extract_astring_cat(alloc, output, "                     </a:ln>\n");
+-	extract_astring_cat(alloc, output, "                   </pic:spPr>\n");
+-	extract_astring_cat(alloc, output, "                 </pic:pic>\n");
+-	extract_astring_cat(alloc, output, "               </a:graphicData>\n");
+-	extract_astring_cat(alloc, output, "             </a:graphic>\n");
+-	extract_astring_cat(alloc, output, "           </wp:inline>\n");
+-	extract_astring_cat(alloc, output, "         </w:drawing>\n");
+-	extract_astring_cat(alloc, output, "       </w:r>\n");
+-	extract_astring_cat(alloc, output, "     </w:p>\n");
+-	extract_astring_cat(alloc, output, "\n");
+-
+-	return 0;
++docx_append_image(extract_alloc_t *alloc, extract_astring_t *output, image_t *image)
++{
++	/* DrawingML uses 12,700 EMU per PDF point. Both extents are required. */
++	double width = image->w * 12700, height = image->h * 12700;
++	unsigned long id = strtoul(image->id + 3, NULL, 10) + 1000000000UL;
++	if (!isfinite(width) || !isfinite(height) || width <= 0 || height <= 0 ||
++		width > 27273042316900.0 || height > 27273042316900.0 || id > 4294967295UL)
++	{
++		errno = EINVAL;
++		return -1;
++	}
++	return extract_astring_catf(alloc, output,
++		"<w:p><w:r><w:drawing><wp:inline distT=\"0\" distB=\"0\" distL=\"0\" distR=\"0\">"
++		"<wp:extent cx=\"%.0f\" cy=\"%.0f\"/><wp:docPr id=\"%lu\" name=\"Picture %lu\"/>"
++		"<a:graphic xmlns:a=\"http://schemas.openxmlformats.org/drawingml/2006/main\">"
++		"<a:graphicData uri=\"http://schemas.openxmlformats.org/drawingml/2006/picture\">"
++		"<pic:pic xmlns:pic=\"http://schemas.openxmlformats.org/drawingml/2006/picture\">"
++		"<pic:nvPicPr><pic:cNvPr id=\"%lu\" name=\"Picture %lu\"/><pic:cNvPicPr/></pic:nvPicPr>"
++		"<pic:blipFill><a:blip r:embed=\"%s\"/><a:stretch><a:fillRect/></a:stretch></pic:blipFill>"
++		"<pic:spPr><a:xfrm><a:off x=\"0\" y=\"0\"/><a:ext cx=\"%.0f\" cy=\"%.0f\"/></a:xfrm>"
++		"<a:prstGeom prst=\"rect\"><a:avLst/></a:prstGeom></pic:spPr>"
++		"</pic:pic></a:graphicData></a:graphic></wp:inline></w:drawing></w:r></w:p>\n",
++		width, height, id, id, id, id, image->id, width, height);
+ }
+ 
+ 
+@@ -718,7 +677,7 @@
+ 				image_t                *image;
+ 
+ 				for (image = content_image_iterator_init(&iit, &subpage->content); image != NULL; image = content_image_iterator_next(&iit))
+-					docx_append_image(alloc, output, image);
++					if (docx_append_image(alloc, output, image)) goto end;
+ 			}
+ 		}
+ 	}

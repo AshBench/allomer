@@ -1,0 +1,96 @@
+{
+  "recorded_at_utc": "2026-09-09T11:06:28.800570+00:00",
+  "macos": "26.6.2",
+  "chip": "Apple M2 Max",
+  "command_sha256": "9d62ef5cdf0375fb372bab466fc944c61d231fc3c6651dba5ad60dc3af120ab1",
+  "cases": [
+    {
+      "case": "artwork",
+      "pixels": [
+        512,
+        512
+      ],
+      "input_bytes": 2227,
+      "input_sha256": "d92e01da4c8b1b59e2d9ee0e4bb24bbb5f038282f24cb973381ff962e49fd4f1",
+      "runs": [
+        {
+          "seconds": 1.04,
+          "resident_bytes": 50118656,
+          "output_bytes": 1455
+        },
+        {
+          "seconds": 0.27,
+          "resident_bytes": 50593792,
+          "output_bytes": 1455
+        },
+        {
+          "seconds": 0.26,
+          "resident_bytes": 49610752,
+          "output_bytes": 1455
+        }
+      ],
+      "status": "passed",
+      "median_seconds": 0.27,
+      "median_resident_bytes": 50118656
+    },
+    {
+      "case": "noise",
+      "pixels": [
+        1024,
+        1024
+      ],
+      "input_bytes": 3150161,
+      "input_sha256": "64825faadf45e5230d9cbe5d22c35201587ca3b22589e2c1840e1ddafe0b5150",
+      "runs": [
+        {
+          "seconds": 0.9,
+          "resident_bytes": 87556096,
+          "output_bytes": 597229
+        },
+        {
+          "seconds": 0.93,
+          "resident_bytes": 87212032,
+          "output_bytes": 597229
+        },
+        {
+          "seconds": 0.92,
+          "resident_bytes": 90079232,
+          "output_bytes": 597229
+        }
+      ],
+      "status": "passed",
+      "median_seconds": 0.92,
+      "median_resident_bytes": 87556096
+    },
+    {
+      "case": "flat-24mp",
+      "pixels": [
+        6000,
+        4000
+      ],
+      "input_bytes": 79783,
+      "input_sha256": "5cd200c2e68ac12fed96eacdfc21a1d9497ddc7aa1e791895f999f47e0ead577",
+      "runs": [
+        {
+          "seconds": 2.55,
+          "resident_bytes": 909197312,
+          "output_bytes": 13099
+        },
+        {
+          "seconds": 2.3,
+          "resident_bytes": 945668096,
+          "output_bytes": 13099
+        },
+        {
+          "seconds": 2.35,
+          "resident_bytes": 945209344,
+          "output_bytes": 13099
+        }
+      ],
+      "status": "passed",
+      "median_seconds": 2.35,
+      "median_resident_bytes": 945209344
+    }
+  ],
+  "scope": "Three PNG-to-MP4 attempts per original workload. Successful runs include GIF preparation, video encoding, validation, and publication. Failed attempts are marked and have no completed-conversion median. Inputs warm the file cache. Python work and external frame checks are excluded. RSS is per-process high-water memory, not aggregate simultaneous memory or native service memory. GUI memory is excluded."
+}

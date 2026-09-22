@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <title>Allomer app icon</title>
+  <desc>The Allomer mark shown as three related materials within one stable form.</desc>
+  <defs>
+    <linearGradient id="background" x1="512" y1="48" x2="512" y2="944" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#29305A"/>
+      <stop offset="0.55" stop-color="#171B36"/>
+      <stop offset="1" stop-color="#0C0F22"/>
+    </linearGradient>
+    <radialGradient id="light" cx="0" cy="0" r="1" gradientTransform="translate(370 274) rotate(52) scale(690)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7885E8" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#7885E8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="longSection" x1="315" y1="256" x2="664" y2="792" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#D9DDF2"/>
+    </linearGradient>
+    <linearGradient id="upperSection" x1="650" y1="290" x2="760" y2="468" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A7E8DE"/>
+      <stop offset="1" stop-color="#50BEAE"/>
+    </linearGradient>
+    <linearGradient id="lowerSection" x1="750" y1="556" x2="650" y2="730" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#AAB0FF"/>
+      <stop offset="1" stop-color="#737BE2"/>
+    </linearGradient>
+    <filter id="markShadow" x="-25%" y="-25%" width="150%" height="160%">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+  </defs>
+  <rect x="64" y="48" width="896" height="896" rx="210" fill="url(#background)"/>
+  <rect x="65" y="49" width="894" height="894" rx="209" fill="none" stroke="#FFFFFF" stroke-opacity="0.12" stroke-width="2"/>
+  <rect x="64" y="48" width="896" height="896" rx="210" fill="url(#light)"/>
+  <g transform="translate(128 146) scale(3)" fill="none" stroke="#050714" stroke-opacity="0.48" stroke-width="48" stroke-linecap="butt" filter="url(#markShadow)">
+    <path d="M176.20 61.66 A82 82 0 1 0 176.20 194.34"/>
+    <path d="M182.87 67.06 A82 82 0 0 1 209.69 120.85"/>
+    <path d="M209.69 135.15 A82 82 0 0 1 182.87 188.94"/>
+  </g>
+  <g transform="translate(128 128) scale(3)" fill="none" stroke-width="48" stroke-linecap="butt">
+    <path d="M176.20 61.66 A82 82 0 1 0 176.20 194.34" stroke="url(#longSection)"/>
+    <path d="M182.87 67.06 A82 82 0 0 1 209.69 120.85" stroke="url(#upperSection)"/>
+    <path d="M209.69 135.15 A82 82 0 0 1 182.87 188.94" stroke="url(#lowerSection)"/>
+  </g>
+</svg>

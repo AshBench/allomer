@@ -1,0 +1,66 @@
+version: 2
+updates:
+  - package-ecosystem: swift
+    directory: /
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 1
+    groups:
+      swift-packages:
+        patterns: ["*"]
+  - package-ecosystem: npm
+    directory: /website
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 1
+    groups:
+      website-packages:
+        patterns: ["*"]
+  - package-ecosystem: npm
+    directory: /helpers/presentation
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 1
+    groups:
+      presentation-packages:
+        patterns: ["*"]
+  - package-ecosystem: cargo
+    directory: /helpers/fontconvert
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 1
+    groups:
+      font-packages:
+        patterns: ["*"]
+  - package-ecosystem: cargo
+    directory: /helpers/mailfile
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 1
+    groups:
+      mail-packages:
+        patterns: ["*"]
+  - package-ecosystem: cargo
+    directory: /helpers/tabular
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 1
+    groups:
+      spreadsheet-packages:
+        patterns: ["*"]
+  - package-ecosystem: cargo
+    directory: /helpers/vectortrace
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 1
+    groups:
+      tracing-packages:
+        patterns: ["*"]
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 1
+    groups:
+      workflow-actions:
+        patterns: ["*"]

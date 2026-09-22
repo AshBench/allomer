@@ -1,0 +1,159 @@
+{
+  "recorded_at_utc": "2026-09-09T08:05:48.857407+00:00",
+  "macos": "26.6.2",
+  "chip": "Apple M2 Max",
+  "command_sha256": "dde4b1ac20370eebc8f03fd09a00f3d4386568e38c6a336323da8a60c0f22d94",
+  "cases": [
+    {
+      "case": "small-artwork",
+      "output": "ico",
+      "input_bytes": 3121,
+      "input_sha256": "10aa883453376b3b05aa91b2204ab293931b62156ced1b67d9995c518e95ebc1",
+      "runs": [
+        {
+          "seconds": 0.04,
+          "resident_bytes": 23461888,
+          "output_bytes": 6798
+        },
+        {
+          "seconds": 0.04,
+          "resident_bytes": 23511040,
+          "output_bytes": 6798
+        },
+        {
+          "seconds": 0.04,
+          "resident_bytes": 23429120,
+          "output_bytes": 6798
+        }
+      ],
+      "median_seconds": 0.04,
+      "median_resident_bytes": 23461888
+    },
+    {
+      "case": "small-artwork",
+      "output": "icns",
+      "input_bytes": 3121,
+      "input_sha256": "10aa883453376b3b05aa91b2204ab293931b62156ced1b67d9995c518e95ebc1",
+      "runs": [
+        {
+          "seconds": 0.06,
+          "resident_bytes": 32178176,
+          "output_bytes": 41822
+        },
+        {
+          "seconds": 0.06,
+          "resident_bytes": 32161792,
+          "output_bytes": 41822
+        },
+        {
+          "seconds": 0.06,
+          "resident_bytes": 31080448,
+          "output_bytes": 41822
+        }
+      ],
+      "median_seconds": 0.06,
+      "median_resident_bytes": 32161792
+    },
+    {
+      "case": "noise-one-megapixel",
+      "output": "ico",
+      "input_bytes": 3319951,
+      "input_sha256": "711da893b0a67406c4e2f0734b1be68c3a4f3d8226a12b6cc572c175b22ff693",
+      "runs": [
+        {
+          "seconds": 0.06,
+          "resident_bytes": 28852224,
+          "output_bytes": 255838
+        },
+        {
+          "seconds": 0.06,
+          "resident_bytes": 28721152,
+          "output_bytes": 255838
+        },
+        {
+          "seconds": 0.06,
+          "resident_bytes": 29278208,
+          "output_bytes": 255838
+        }
+      ],
+      "median_seconds": 0.06,
+      "median_resident_bytes": 28852224
+    },
+    {
+      "case": "noise-one-megapixel",
+      "output": "icns",
+      "input_bytes": 3319951,
+      "input_sha256": "711da893b0a67406c4e2f0734b1be68c3a4f3d8226a12b6cc572c175b22ff693",
+      "runs": [
+        {
+          "seconds": 0.21,
+          "resident_bytes": 60637184,
+          "output_bytes": 5825127
+        },
+        {
+          "seconds": 0.21,
+          "resident_bytes": 61374464,
+          "output_bytes": 5825127
+        },
+        {
+          "seconds": 0.21,
+          "resident_bytes": 59932672,
+          "output_bytes": 5825127
+        }
+      ],
+      "median_seconds": 0.21,
+      "median_resident_bytes": 60637184
+    },
+    {
+      "case": "flat-24-megapixels",
+      "output": "ico",
+      "input_bytes": 935485,
+      "input_sha256": "ac0b027638b378b5887aaa591368dac204e2ff9fddc7e7c78996adeffa8a79e0",
+      "runs": [
+        {
+          "seconds": 0.11,
+          "resident_bytes": 30539776,
+          "output_bytes": 7081
+        },
+        {
+          "seconds": 0.1,
+          "resident_bytes": 30687232,
+          "output_bytes": 7081
+        },
+        {
+          "seconds": 0.1,
+          "resident_bytes": 30654464,
+          "output_bytes": 7081
+        }
+      ],
+      "median_seconds": 0.1,
+      "median_resident_bytes": 30654464
+    },
+    {
+      "case": "flat-24-megapixels",
+      "output": "icns",
+      "input_bytes": 935485,
+      "input_sha256": "ac0b027638b378b5887aaa591368dac204e2ff9fddc7e7c78996adeffa8a79e0",
+      "runs": [
+        {
+          "seconds": 0.13,
+          "resident_bytes": 48496640,
+          "output_bytes": 42847
+        },
+        {
+          "seconds": 0.13,
+          "resident_bytes": 48480256,
+          "output_bytes": 42847
+        },
+        {
+          "seconds": 0.13,
+          "resident_bytes": 47759360,
+          "output_bytes": 42847
+        }
+      ],
+      "median_seconds": 0.13,
+      "median_resident_bytes": 48480256
+    }
+  ],
+  "scope": "Three complete command conversions per original workload and output format. Includes thumbnail preparation, every output size, native decode validation, and publication. GUI and Python fixture/pixel work excluded. RSS is per-process high-water memory, not aggregate simultaneous memory."
+}

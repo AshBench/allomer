@@ -1,0 +1,30 @@
+{
+  "measured_at": "2026-09-08T10:25:21.558574+00:00",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "scope": "Model helper only, including output geometry validation. App memory is excluded.",
+  "operation": "OBJ to GLB",
+  "triangles": 80000,
+  "vertices": 40401,
+  "input_bytes": 2279109,
+  "input_sha256": "9db3925a34aac95669e6e9a25ddbdc3951623ba5aa3936eca0e1de8940d449b5",
+  "helper_sha256": "eb38b18ee9c553e690ba7368671f35402be4c4e71abea4097e573f704c8152a0",
+  "samples": [
+    {
+      "seconds": 0.19,
+      "peak_rss_bytes": 71237632,
+      "output_bytes": 1446016
+    },
+    {
+      "seconds": 0.19,
+      "peak_rss_bytes": 73334784,
+      "output_bytes": 1446016
+    },
+    {
+      "seconds": 0.19,
+      "peak_rss_bytes": 70811648,
+      "output_bytes": 1446016
+    }
+  ],
+  "median_seconds": 0.19,
+  "median_peak_rss_bytes": 71237632
+}

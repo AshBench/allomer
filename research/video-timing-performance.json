@@ -1,0 +1,74 @@
+{
+  "recorded_at_utc": "2026-09-09T19:23:00.563969+00:00",
+  "macos": "26.6.2",
+  "chip": "Apple M2 Max",
+  "helper_sha256": "7d675aebfa5a10385cddd54097052b4bb172bac1fa72fb3cafb3925b28a7244a",
+  "source_sha256": "8edfa97f918bbe86f9beb74952dafb3c7170389044b18174fa49163718fa3c27",
+  "source_bytes": 556341341,
+  "cases": [
+    {
+      "case": "default-queue-one-thread",
+      "decoder_threads": 1,
+      "queue_microseconds": 10000000,
+      "runs": [
+        {
+          "seconds": 15.22,
+          "resident_bytes": 677773312
+        },
+        {
+          "seconds": 15.25,
+          "resident_bytes": 752451584
+        },
+        {
+          "seconds": 15.19,
+          "resident_bytes": 694566912
+        }
+      ],
+      "median_seconds": 15.22,
+      "median_resident_bytes": 694566912
+    },
+    {
+      "case": "short-queue-one-thread",
+      "decoder_threads": 1,
+      "queue_microseconds": 1,
+      "runs": [
+        {
+          "seconds": 15.14,
+          "resident_bytes": 504791040
+        },
+        {
+          "seconds": 15.16,
+          "resident_bytes": 506413056
+        },
+        {
+          "seconds": 15.23,
+          "resident_bytes": 504070144
+        }
+      ],
+      "median_seconds": 15.16,
+      "median_resident_bytes": 504791040
+    },
+    {
+      "case": "short-queue-two-threads",
+      "decoder_threads": 2,
+      "queue_microseconds": 1,
+      "runs": [
+        {
+          "seconds": 7.73,
+          "resident_bytes": 509460480
+        },
+        {
+          "seconds": 7.67,
+          "resident_bytes": 516947968
+        },
+        {
+          "seconds": 7.69,
+          "resident_bytes": 514523136
+        }
+      ],
+      "median_seconds": 7.69,
+      "median_resident_bytes": 514523136
+    }
+  ],
+  "scope": "Three isolated FFmpeg timing decodes per setting. Original 30-second 1280x720 FFV1 video at 24 fps with four seconds of stereo 48 kHz PCM. All picture timing/size records, audio timing/checksums, and decoded sample counts match. Source hashing warms the cache. Fixture generation and external checks are excluded. RSS is the helper process high-water reading, not the command process or aggregate app/helper memory. This is not a general performance or memory guarantee."
+}

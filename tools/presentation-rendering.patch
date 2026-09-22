@@ -1,0 +1,115 @@
+--- a/src/renderer/chart/echartsRuntime.ts
++++ b/src/renderer/chart/echartsRuntime.ts
+@@ -18,7 +18,7 @@
+   TooltipComponent,
+ } from 'echarts/components';
+ import { LabelLayout } from 'echarts/features';
+-import { CanvasRenderer } from 'echarts/renderers';
++import { SVGRenderer } from 'echarts/renderers';
+ 
+ echarts.use([
+   BarChart,
+@@ -36,7 +36,7 @@
+   TitleComponent,
+   TooltipComponent,
+   LabelLayout,
+-  CanvasRenderer,
++  SVGRenderer,
+ ]);
+ 
+ export { echarts };
+--- a/src/renderer/ChartRenderer.ts
++++ b/src/renderer/ChartRenderer.ts
+@@ -2637,7 +2637,7 @@
+   signal?: AbortSignal,
+ ): void {
+   try {
+-    const chart = echarts.init(container);
++    const chart = echarts.init(container, undefined, { renderer: 'svg' });
+     chart.setOption(option);
+     chartInstances?.add(chart);
+ 
+--- a/src/renderer/SlideRenderer.ts
++++ b/src/renderer/SlideRenderer.ts
+@@ -324,6 +324,6 @@
+           const el = renderNode(node, masterCtx);
+           container.appendChild(el);
+-        } catch {
+-          // Master shape errors are non-fatal
++        } catch (error) {
++          options?.onNodeError?.(node.id, error);
+         }
+       }
+@@ -346,6 +346,6 @@
+           const el = renderNode(node, layoutCtx);
+           container.appendChild(el);
+-        } catch {
+-          // Layout shape errors are non-fatal
++        } catch (error) {
++          options?.onNodeError?.(node.id, error);
+         }
+       }
+@@ -375,7 +375,7 @@
+   // Build SlideHandle
+   let disposed = false;
+   const mediaUrlCache = ctx.mediaUrlCache;
+-  const ready = Promise.allSettled(asyncTasks).then(() => undefined);
++  const ready = Promise.all(asyncTasks).then(() => undefined);
+ 
+   const dispose = (): void => {
+     if (disposed) return;
+--- a/src/renderer/ImageRenderer.ts
++++ b/src/renderer/ImageRenderer.ts
+@@ -901,3 +901,4 @@
+ function renderPlaceholder(wrapper: HTMLElement, message: string): void {
++  console.warn(message);
+   const placeholder = document.createElement('div');
+   placeholder.style.width = '100%';
+@@ -919,3 +920,4 @@
+ function renderUnsupportedPlaceholder(wrapper: HTMLElement, path: string): void {
++  console.warn(`Unsupported image: ${path}`);
+   const ext = path.split('.').pop()?.toUpperCase() || 'Unknown';
+   const placeholder = document.createElement('div');
+@@ -970,3 +972,4 @@
+     case 'unsupported':
++      console.warn('Unsupported EMF image');
+       // Vector-only EMF cannot be faithfully rendered in the browser. A visible
+       // placeholder is worse than transparent fallback because it pollutes the
+@@ -988,3 +991,4 @@
+ ): void | Promise<void> {
++  if (ctx.pdfjs === false) throw new Error('Embedded PDF image rendering is unavailable');
+   const cacheKey = `${mediaPath}:emf-pdf`;
+   const cached = ctx.mediaUrlCache.get(cacheKey);
+--- a/src/parser/ZipParser.ts
++++ b/src/parser/ZipParser.ts
+@@ -82,4 +82,5 @@
+ function setPathMapEntry<T>(map: Map<string, T>, path: string, value: T): void {
++  path = path.normalize('NFC');
+   map.set(path, value);
+-  const decodedPath = decodeZipPath(path);
++  const decodedPath = decodeZipPath(path).normalize('NFC');
+   if (decodedPath !== path && !map.has(decodedPath)) {
+--- a/src/parser/RelParser.ts
++++ b/src/parser/RelParser.ts
+@@ -80,3 +80,3 @@
+   if (targetPath.startsWith('/')) {
+-    return targetPath.slice(1).replace(/\\/g, '/').split('/').map(decodeUriPathSegment).join('/');
++    return targetPath.slice(1).replace(/\\/g, '/').split('/').map(decodeUriPathSegment).join('/').normalize('NFC');
+   }
+@@ -104,2 +104,2 @@
+-  return resolved.join('/');
++  return resolved.join('/').normalize('NFC');
+ }
+--- a/src/utils/media.ts
++++ b/src/utils/media.ts
+@@ -84,4 +84,4 @@
+ export function resolveMediaPath(target: string): string {
+   const decodedPath = mediaRelativePath(target).split('/').map(decodeUriPathSegment).join('/');
+-  return `ppt/media/${decodedPath}`;
++  return `ppt/media/${decodedPath}`.normalize('NFC');
+ }
+@@ -100,3 +100,3 @@
+   const decodedPath = resolveMediaPath(target);
+-  const rawPath = `ppt/media/${rawRelativePath}`;
++  const rawPath = `ppt/media/${rawRelativePath}`.normalize('NFC');
+   return decodedPath === rawPath ? [decodedPath] : [decodedPath, rawPath];

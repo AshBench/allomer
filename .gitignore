@@ -1,0 +1,14 @@
+.research/
+research/progress.md
+.build/
+.tools/
+helpers/*/target/
+.venv/
+__pycache__/
+.DS_Store
+.idea/
+*.xcuserstate
+dist/
+website/node_modules/
+website/.docusaurus/
+website/build/

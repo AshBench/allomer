@@ -1,0 +1,10 @@
+{
+  "status": "failed_before_container_repair",
+  "input_bytes": 1550000,
+  "input_sha256": "667a22c94477127436abcf48d53416212b9ad711ce4f275a375fede305ebcb76",
+  "paragraphs": 25000,
+  "seconds": 0.11,
+  "resident_bytes": 31047680,
+  "error": "Native DOC output could not be reopened. No output was published; source was preserved.",
+  "scope": "One failed attempt, not a successful conversion or a benchmark median. Raw failure log: .tools/doc-benchmark.log. The retained raw native DOC has 47 FAT sectors for 6039 sectors, leaving directory entries outside the FAT."
+}

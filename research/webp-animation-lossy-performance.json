@@ -1,0 +1,133 @@
+{
+  "recorded_at_utc": "2026-09-08T22:14:18.185998+00:00",
+  "macos": "26.6.2",
+  "command_sha256": "eb53e7b34994358346c9159188ae2588925ec5959f1bb48aa307ce125f9aff42",
+  "ffmpeg_sha256": "db0e370419f7790d579e6c392cb906665526bf5ca1bd899c5ef1f78b0924e290",
+  "media_libraries": {
+    "libavfilter.12.1.101.dylib": "a01633d2e335af35c847acd31bd9a5e3b528f0de42d5db18d774146d6ec38948",
+    "libswresample.7.1.101.dylib": "d7466f49d38bb7d24c2c93047bf0750d07c3cdadc7273b4bcaeae33076d7be1a",
+    "libswscale.10.1.101.dylib": "d5338449910cfafff025d8c8055ebf3fb361fb8a31bc0f45fa2f480cb7ad8070",
+    "libavutil.61.1.101.dylib": "dcc01a9e63b9a7b837a5cf77c523d9f4b0934de77827b6f20193b5782e35bd71",
+    "libavcodec.63.1.101.dylib": "bcd9084730ad5d33bf169b3a93b06c52925bff5b57a87bab5e684b978ffeb442",
+    "libavformat.63.1.101.dylib": "8cd2cdb9457c52d37c11d07caa35cc5ca8eff69a24622de1cdee6dbafa592c02"
+  },
+  "cases": [
+    {
+      "input_format": "gif",
+      "frames": 30,
+      "width": 640,
+      "height": 360,
+      "input_sha256": "e3c31e4d2637ad453c933fb073eeecf4e34898a37d39336546eee38e81f5650c",
+      "input_bytes": 19099,
+      "runs": [
+        {
+          "seconds": 0.49,
+          "resident_bytes": 28180480,
+          "output_bytes": 91594
+        },
+        {
+          "seconds": 0.52,
+          "resident_bytes": 28213248,
+          "output_bytes": 91594
+        },
+        {
+          "seconds": 0.49,
+          "resident_bytes": 28229632,
+          "output_bytes": 91594
+        }
+      ],
+      "maximum_rgb_error": 135,
+      "median_seconds": 0.49,
+      "median_resident_bytes": 28213248
+    },
+    {
+      "input_format": "gif",
+      "frames": 120,
+      "width": 640,
+      "height": 360,
+      "input_sha256": "ee5582844696a047a50bfe3e0d5c3287ef286c8c6d7e41dc3d581e80b559a1fc",
+      "input_bytes": 68425,
+      "runs": [
+        {
+          "seconds": 1.76,
+          "resident_bytes": 28950528,
+          "output_bytes": 362060
+        },
+        {
+          "seconds": 1.76,
+          "resident_bytes": 28950528,
+          "output_bytes": 362060
+        },
+        {
+          "seconds": 1.81,
+          "resident_bytes": 28934144,
+          "output_bytes": 362060
+        }
+      ],
+      "maximum_rgb_error": 135,
+      "median_seconds": 1.76,
+      "median_resident_bytes": 28950528
+    },
+    {
+      "input_format": "webp",
+      "frames": 120,
+      "width": 640,
+      "height": 360,
+      "input_sha256": "6d4079f4253a1fe6ff29b2453da2f3c223dee0c1f6c0257517458e61e3d79ea5",
+      "input_bytes": 44998,
+      "runs": [
+        {
+          "seconds": 2.42,
+          "resident_bytes": 30687232,
+          "output_bytes": 362060
+        },
+        {
+          "seconds": 2.45,
+          "resident_bytes": 30638080,
+          "output_bytes": 362060
+        },
+        {
+          "seconds": 2.43,
+          "resident_bytes": 30670848,
+          "output_bytes": 362060
+        }
+      ],
+      "maximum_rgb_error": 135,
+      "median_seconds": 2.43,
+      "median_resident_bytes": 30670848
+    },
+    {
+      "input_format": "png",
+      "frames": 120,
+      "width": 640,
+      "height": 360,
+      "input_sha256": "3dc185f78a1a912e5a08e4dcfce34d06c841cff37fdb76649f4dad3de970867f",
+      "input_bytes": 54019,
+      "runs": [
+        {
+          "seconds": 2.76,
+          "resident_bytes": 25411584,
+          "output_bytes": 362060
+        },
+        {
+          "seconds": 2.76,
+          "resident_bytes": 25427968,
+          "output_bytes": 362060
+        },
+        {
+          "seconds": 2.75,
+          "resident_bytes": 25444352,
+          "output_bytes": 362060
+        }
+      ],
+      "maximum_rgb_error": 135,
+      "median_seconds": 2.76,
+      "median_resident_bytes": 25427968
+    }
+  ],
+  "scope": "Three complete conversions per case. Original 640 by 360 animation with irregular delays. RSS can include a child helper's peak; it is not aggregate simultaneous process memory. GUI excluded.",
+  "webpanim_sha256": "f7a74cb338ef32ea7ff9bc1b2862566078352e4dbd3f464d58e72617dadc3e96",
+  "compression": "lossy",
+  "quality": 85,
+  "effort": 4
+}

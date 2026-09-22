@@ -1,0 +1,33 @@
+{
+  "recorded_at_utc": "2026-09-09T13:58:59.798343+00:00",
+  "macos": "26.6.2",
+  "command_sha256": "c2566d6e5dbc6b9eb9182177ffa0bc13c1f097bc1e254128ef5531ddc535537b",
+  "input_sha256": "8ba7bcd09500fdb3f43094d89647657ae554b03c08bc79b7e4097261a1ea8de8",
+  "helper_sha256": {
+    "ffmpeg": "db0e370419f7790d579e6c392cb906665526bf5ca1bd899c5ef1f78b0924e290",
+    "ffprobe": "b5cdb425fd3d198cdc8c5259d686a938af1a5e62e6cb759831aec2b47c200267"
+  },
+  "input_bytes": 687625,
+  "cues": 10000,
+  "runs": [
+    {
+      "seconds": 0.48,
+      "resident_bytes": 65355776,
+      "output_bytes": 698894
+    },
+    {
+      "seconds": 0.48,
+      "resident_bytes": 63913984,
+      "output_bytes": 698894
+    },
+    {
+      "seconds": 0.53,
+      "resident_bytes": 65077248,
+      "output_bytes": 698894
+    }
+  ],
+  "median_seconds": 0.48,
+  "median_resident_bytes": 65077248,
+  "scope": "Three complete Matroska-to-SRT conversions. A short VP9 video and a 50-minute original text track share the container. Includes track probing, extraction, cue validation, and publication. Source hashing warms the cache. Python comparisons and GUI memory are excluded. RSS is per-process high-water, not aggregate simultaneous memory.",
+  "input_fixture": ".tools/subtitle-extraction-benchmark-8ba7bcd09500.mkv"
+}
