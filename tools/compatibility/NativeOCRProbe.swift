@@ -11,13 +11,16 @@ func runProbe() throws {
     guard CommandLine.arguments.count == 3 else {
         throw ProbeFailure.failed("Expected an allowed file and a blocked file.")
     }
-    let allowed = URL(fileURLWithPath: CommandLine.arguments[1])
-    let blocked = URL(fileURLWithPath: CommandLine.arguments[2])
+    let visionOnly = CommandLine.arguments[1] == "--vision-only"
+    let allowed = URL(fileURLWithPath: CommandLine.arguments[visionOnly ? 2 : 1])
     guard try String(contentsOf: allowed, encoding: .utf8) == "allowed\n" else {
         throw ProbeFailure.failed("The sandbox blocked the declared input.")
     }
-    guard (try? Data(contentsOf: blocked)) == nil else {
-        throw ProbeFailure.failed("The sandbox exposed an unrelated file.")
+    if !visionOnly {
+        let blocked = URL(fileURLWithPath: CommandLine.arguments[2])
+        guard (try? Data(contentsOf: blocked)) == nil else {
+            throw ProbeFailure.failed("The sandbox exposed an unrelated file.")
+        }
     }
 
     guard let context = CGContext(

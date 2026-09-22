@@ -96,7 +96,7 @@ extension ConversionModel {
     func clearFinishedHistory() async {
         guard !clearingHistory else { return }
         clearingHistory = true
-        let selected = Set(visibleHistory.filter(canClearHistory).map(\.id))
+        let selected = Set(visibleHistory.filter { canClearHistory($0) }.map(\.id))
         let previous = historyWriter
         let directory = jobHistoryDirectory
         let task = Task { @MainActor [weak self] in

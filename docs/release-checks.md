@@ -27,7 +27,8 @@ once, and nothing else in the suite reads that write path.
 
 [GitHub Actions](https://github.com/actions/runner-images) runs these source checks on Apple Silicon hosts with macOS 14, 15, 26, and 27. The
 labels are pinned to exact system generations. A change must pass every job. The macOS 27 job is a
-preview runner while that image is new.
+preview runner while that image is new. It warns and continues when Vision is unavailable outside
+the sandbox on the hosted image. A sandbox-only Vision failure still fails the job.
 
 The native runtime check exists because macOS 27 changed Vision. Vision began compiling recognition
 models under the helper's user cache. The old sandbox denied that write even though the code still

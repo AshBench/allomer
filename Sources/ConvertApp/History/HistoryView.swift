@@ -16,7 +16,7 @@ struct HistoryView: View {
                 Text("Conversion history").font(.title.bold())
                 Spacer()
                 Button("Clear Finished…") { confirmClear = true }
-                    .disabled(model.clearingHistory || !all.contains(where: model.canClearHistory))
+                    .disabled(model.clearingHistory || !all.contains { model.canClearHistory($0) })
             }
             HStack {
                 TextField("Search names, paths, or messages", text: $query)

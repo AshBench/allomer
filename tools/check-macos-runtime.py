@@ -54,7 +54,26 @@ def main():
             ], cwd=work, env={"PATH": "/usr/bin:/bin"}, text=True,
                 capture_output=True, timeout=180)
             if result.returncode:
-                raise SystemExit(result.stderr.strip() or "The native runtime probe failed.")
+                direct = subprocess.run([
+                    converter, "--vision-only", allowed,
+                ], cwd=work, env=environment, text=True, capture_output=True,
+                    timeout=180)
+                if direct.returncode == 0:
+                    raise SystemExit(result.stderr.strip() or "The sandboxed native runtime probe failed.")
+                major = int(platform.mac_ver()[0].split(".", maxsplit=1)[0])
+                message = direct.stderr.strip() or "Vision OCR is unavailable."
+                unavailable_on_hosted_macos_27 = (
+                    os.environ.get("GITHUB_ACTIONS") == "true"
+                    and os.environ.get("RUNNER_ENVIRONMENT") == "github-hosted"
+                    and major == 27
+                    and "Foundation._GenericObjCError 0" in message
+                )
+                if unavailable_on_hosted_macos_27:
+                    print(f"::warning::The hosted macOS {major} image cannot run Vision OCR: {message}")
+                    print(f"macOS {platform.mac_ver()[0]} arm64: Vision runtime check unavailable on this hosted image")
+                    return
+                raise SystemExit(direct.stderr.strip() or result.stderr.strip()
+                    or "The native runtime probe failed.")
             if "4827" not in result.stdout:
                 raise SystemExit("The native runtime probe returned an unexpected result.")
             print(f"macOS {platform.mac_ver()[0]} arm64: {result.stdout.strip()}")
