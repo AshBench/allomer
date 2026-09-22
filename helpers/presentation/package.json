@@ -3,9 +3,9 @@
   "private": true,
   "type": "module",
   "dependencies": {
-    "echarts": "6.0.0",
-    "jszip": "3.10.1",
-    "mtx-decompressor": "1.4.2",
+    "echarts": "6.1.0",
+    "jszip": "3.10.2",
+    "mtx-decompressor": "1.6.0",
     "esbuild": "0.28.2"
   }
 }
