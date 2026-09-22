@@ -41,14 +41,15 @@ The last command checks the seal, every Mach-O file, ARM64 architecture, the mac
 
 ## Inputs needed for a public release
 
-The repository still needs these external inputs:
+The first public release still needs these external Apple inputs:
 
-1. A committed, clean Git revision.
-2. An Apple Developer Program account and a Developer ID Application certificate with its private key.
-3. A notary credential stored in the login keychain.
-4. The final HTTPS release address in `tools/release.json`.
-5. A clean Apple silicon Mac or virtual machine running macOS 14 for the first-launch checks in [Release checks](release-checks.md).
-6. Source-path remapping in the native, Rust, and Swift builders. The current preview embeds its checkout path. Signed builds refuse this until the builders remove it.
+1. An Apple Developer Program account and a Developer ID Application certificate with its private key.
+2. A notary credential stored in the login keychain.
+3. A clean Apple silicon account or virtual machine for the signed-build checks in [Release checks](release-checks.md).
+
+The release must start from a committed, clean Git revision. The final release address is already in
+`tools/release.json`. The current preview contains no checkout paths. The signed release verifier
+will refuse a future build if a local path appears again.
 
 Confirm the signing identity with:
 
