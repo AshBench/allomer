@@ -217,4 +217,6 @@ The application code is original.
 
 Original code uses the MIT license. Third-party components retain their own licenses and notices. Their official sources and exact versions must be recorded before integration or distribution. Local binary samples and decompiler output remain outside the source release.
 
-These pages use Markdown and Docusaurus. See [Publishing the docs](publishing.md) for local preview and GitHub Pages deployment. No documentation site has been published yet.
+These pages use Markdown and Docusaurus. The published site is
+[allomer.ashbench.com](https://allomer.ashbench.com). See
+[Publishing the docs](publishing.md) for local preview and GitHub Pages deployment.
