@@ -29,7 +29,7 @@ def render(inkscape, source, output, size):
     )
 
 
-def build_dark_wordmark(source, output):
+def build_wordmark(source, output, title, text_color, section_colors):
     ElementTree.register_namespace("", "http://www.w3.org/2000/svg")
     tree = ElementTree.parse(source)
     elements = {
@@ -40,14 +40,10 @@ def build_dark_wordmark(source, output):
     required = {"title1", "g1", "wordmark-o", "path1", "path2", "path3"}
     if missing := required - elements.keys():
         raise SystemExit(f"The wordmark is missing elements: {', '.join(sorted(missing))}.")
-    elements["title1"].text = "Allomer logo for dark backgrounds"
-    elements["g1"].set("fill", "#F4F6F8")
+    elements["title1"].text = title
+    elements["g1"].set("fill", text_color)
     elements["wordmark-o"].attrib.pop("stroke", None)
-    for identifier, color in (
-        ("path1", "#D9DDF2"),
-        ("path2", "#60CDBD"),
-        ("path3", "#8B92ED"),
-    ):
+    for identifier, color in zip(("path1", "path2", "path3"), section_colors):
         elements[identifier].set("stroke", color)
     tree.write(output, encoding="UTF-8", xml_declaration=True)
     with output.open("a") as wordmark:
@@ -72,9 +68,19 @@ def main():
     )
     if "<text" in (BRANDING / "allomer-logo.svg").read_text():
         raise SystemExit("The published wordmark still contains editable text.")
-    build_dark_wordmark(
+    build_wordmark(
+        BRANDING / "allomer-logo.svg",
+        BRANDING / "allomer-logo.svg",
+        "Allomer logo",
+        "#29305A",
+        ("#29305A", "#47BFAE", "#737BE2"),
+    )
+    build_wordmark(
         BRANDING / "allomer-logo.svg",
         BRANDING / "allomer-logo-dark.svg",
+        "Allomer logo for dark backgrounds",
+        "#F4F6F8",
+        ("#D9DDF2", "#60CDBD", "#8B92ED"),
     )
 
     icon_names = {
