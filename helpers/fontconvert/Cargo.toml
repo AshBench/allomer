@@ -13,7 +13,7 @@ skrifa = "=0.47.0"
 write-fonts = "=0.53.0"
 
 [build-dependencies]
-cc = "=1.4.7"
+cc = "=1.5.1"
 
 [profile.release]
 lto = true
